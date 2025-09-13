@@ -375,7 +375,7 @@ export function Header() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
                 <Image
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="AIERGT Logo"
                   width={48}
                   height={48}
@@ -558,7 +558,7 @@ export function Header() {
                         </Button>
                       )}
                       <Image
-                        src="/logo.svg"
+                        src="/logo.png"
                         alt="AIERGT Logo"
                         width={28}
                         height={28}
