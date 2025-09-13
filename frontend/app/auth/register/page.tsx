@@ -5,8 +5,36 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-import { ArrowLeft, User } from "lucide-react"
+import { Tooltip } from "@/components/ui/Tooltip"
+import { ArrowLeft, User, Users, Building, Globe, GraduationCap } from "lucide-react"
 import Link from "next/link"
+
+const userTypes = {
+  africanConsultant: {
+    name: "African Consultants/Experts",
+    description: "A citizen of any of the 54 AU member states",
+    icon: Users,
+    color: "bg-[#2D5016] hover:bg-[#2D5016]/90"
+  },
+  partner: {
+    name: "Partners",
+    description: "Private Institution, Universities, Government Agencies, NGOs, CBOs, Consultancy Firms",
+    icon: Building,
+    color: "bg-[#2D5016] hover:bg-[#2D5016]/90"
+  },
+  expatriateConsultant: {
+    name: "Expatriates Consultants/Experts",
+    description: "Citizen from any of the following regions: Asia, Australia, Europe, North America, South America",
+    icon: Globe,
+    color: "bg-[#2D5016] hover:bg-[#2D5016]/90"
+  },
+  student: {
+    name: "Students",
+    description: "Students enrolled in environmental or geospatial programs",
+    icon: GraduationCap,
+    color: "bg-[#2D5016] hover:bg-[#2D5016]/90"
+  }
+}
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -15,7 +43,8 @@ export default function RegisterPage() {
     password: "",
     confirmPassword: "",
     organization: "",
-    phone: ""
+    phone: "",
+    userType: ""
   })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
@@ -29,10 +58,23 @@ export default function RegisterPage() {
     })
   }
 
+  const handleUserTypeSelect = (userType: string) => {
+    setFormData({
+      ...formData,
+      userType
+    })
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
+
+    if (!formData.userType) {
+      setError("Please select a user type")
+      setIsLoading(false)
+      return
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match")
@@ -55,10 +97,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Back Button */}
-        <div className="flex justify-start">
+        <div className="mb-8">
           <Link href="/" className="flex items-center text-gray-600 hover:text-[#2D5016] transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
@@ -66,7 +108,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Header */}
-        <div className="text-center">
+        <div className="text-center mb-8">
           <div className="mx-auto w-16 h-16 bg-[#2D5016] rounded-full flex items-center justify-center mb-4">
             <User className="h-8 w-8 text-white" />
           </div>
@@ -78,129 +120,185 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        {/* Registration Form */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Create your account</CardTitle>
-            <CardDescription>
-              Fill in your details to get started with AIERGT
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-                  {error}
+        {/* Main Content - Side by Side Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* User Type Selection - Left Side */}
+          <div className="order-2 lg:order-1">
+            <Card>
+              <CardHeader>
+                <CardTitle>Select Your Category</CardTitle>
+                <CardDescription>
+                  Choose the category that best describes your role
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {Object.entries(userTypes).map(([key, userType]) => (
+                    <Tooltip key={key} content={userType.description} side="right">
+                      <button
+                        type="button"
+                        onClick={() => handleUserTypeSelect(key)}
+                        className={`w-full p-4 rounded-lg border-2 transition-all duration-200 text-left ${
+                          formData.userType === key
+                            ? `${userType.color} text-white border-[#2D5016]`
+                            : "bg-white text-gray-700 border-gray-200 hover:border-[#2D5016] hover:bg-gray-50"
+                        }`}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                            formData.userType === key ? "bg-white/20" : "bg-[#2D5016]/10"
+                          }`}>
+                            <userType.icon className={`h-5 w-5 ${
+                              formData.userType === key ? "text-white" : "text-[#2D5016]"
+                            }`} />
+                          </div>
+                          <div>
+                            <h3 className={`font-semibold ${
+                              formData.userType === key ? "text-white" : "text-gray-900"
+                            }`}>
+                              {userType.name}
+                            </h3>
+                            <p className={`text-sm mt-1 ${
+                              formData.userType === key ? "text-white/80" : "text-gray-500"
+                            }`}>
+                              {userType.description}
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+                    </Tooltip>
+                  ))}
                 </div>
-              )}
-              
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Enter your full name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email address
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Enter your email"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number (Optional)
-                </label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
-                  Organization (Optional)
-                </label>
-                <Input
-                  id="organization"
-                  name="organization"
-                  type="text"
-                  value={formData.organization}
-                  onChange={handleChange}
-                  placeholder="Enter your organization"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                  Password
-                </label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                  placeholder="Create a password"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-                  Confirm Password
-                </label>
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-                  placeholder="Confirm your password"
-                />
-              </div>
-              
-              <Button
-                type="submit"
-                className="w-full bg-[#2D5016] hover:bg-[#2D5016]/90"
-                disabled={isLoading}
-              >
-                {isLoading ? "Creating account..." : "Create Account"}
-              </Button>
-            </form>
-            
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Already have an account?{" "}
-                <Link href="/auth/login" className="text-[#2D5016] hover:underline">
-                  Sign in here
-                </Link>
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Registration Form - Right Side */}
+          <div className="order-1 lg:order-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Create your account</CardTitle>
+                <CardDescription>
+                  Fill in your details to get started with AIERGT
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                      {error}
+                    </div>
+                  )}
+                  
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      Full Name
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      Email address
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number (Optional)
+                    </label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
+                      Organization (Optional)
+                    </label>
+                    <Input
+                      id="organization"
+                      name="organization"
+                      type="text"
+                      value={formData.organization}
+                      onChange={handleChange}
+                      placeholder="Enter your organization"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                      Password
+                    </label>
+                    <Input
+                      id="password"
+                      name="password"
+                      type="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                      placeholder="Create a password"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+                      Confirm Password
+                    </label>
+                    <Input
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      type="password"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      required
+                      placeholder="Confirm your password"
+                    />
+                  </div>
+                  
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#2D5016] hover:bg-[#2D5016]/90"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Creating account..." : "Create Account"}
+                  </Button>
+                </form>
+                
+                <div className="mt-6 text-center">
+                  <p className="text-sm text-gray-600">
+                    Already have an account?{" "}
+                    <Link href="/auth/login" className="text-[#2D5016] hover:underline">
+                      Sign in here
+                    </Link>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </div>
   )

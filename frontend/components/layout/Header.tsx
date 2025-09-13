@@ -32,7 +32,9 @@ import {
   Award,
   BookOpen,
   Search,
-  Bell
+  Bell,
+  Building,
+  GraduationCap
 } from "lucide-react"
 
 export function Header() {
@@ -282,7 +284,7 @@ export function Header() {
   const loginOptions = [
     { name: "Member Portal", href: "/auth/login?type=member", icon: User },
     { name: "Geoportal", href: "/auth/login?type=geoportal", icon: Globe },
-    { name: "Training Portal", href: "/auth/login?type=training", icon: User }
+    { name: "Training Portal", href: "/auth/login?type=training", icon: BookOpen }
   ]
 
   return (

@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-import { User, Globe, BookOpen, ArrowLeft } from "lucide-react"
+import { User, Globe, BookOpen, ArrowLeft, Users, Building, GraduationCap } from "lucide-react"
 import Link from "next/link"
 
 const loginTypes = {

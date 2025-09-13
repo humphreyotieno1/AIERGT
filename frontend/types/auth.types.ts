@@ -45,7 +45,7 @@ export interface NotificationSettings {
   newsletter: boolean
 }
 
-export type UserRole = 'member' | 'professional' | 'admin'
+export type UserRole = 'africanConsultant' | 'partner' | 'expatriateConsultant' | 'student' | 'admin'
 
 export interface AuthResult {
   user: User
@@ -66,7 +66,7 @@ export interface RegisterData {
   password: string
   phone?: string
   organization?: string
-  role?: UserRole
+  userType: UserRole
 }
 
 export interface PasswordResetData {
