@@ -143,13 +143,13 @@ export function Header() {
           description: "Comprehensive environmental impact assessments and sustainability evaluations"
         },
         { 
-          name: "Geospatial Assessment", 
+          name: "Geospatial Assessment and Earth Observation", 
           href: "/services/geospatial",
           icon: MapPin,
           description: "Advanced mapping, GIS analysis, and spatial data management solutions"
         },
         { 
-          name: "Social Assessment", 
+          name: "Social Assessment and Development Planning", 
           href: "/services/social",
           icon: Users,
           description: "Social impact assessments and community engagement strategies"
@@ -160,11 +160,47 @@ export function Header() {
           icon: Bell,
           description: "Continuous environmental monitoring and compliance management systems"
         },
-        { 
-          name: "Climate Change", 
+        {
+          name: "Environmental Planning",
+          href: "/services/planning",
+          icon: Building,
+          description: "Environmental planning and sustainable development strategies"
+        },
+        {
+          name: "Environmental Modelling",
+          href: "/services/modelling",
+          icon: Globe,
+          description: "Environmental modelling and simulation tools"
+        },
+        {
+          name: "Environmetal Management",
+          href: "/services/management",
+          icon: Building,
+          description: "Environmental management and compliance systems"
+        },
+        {
+          name: "Environment and Security",
+          href: "/services/security",
+          icon: Building,
+          description: "Environmental security and risk assessment"
+        },
+        {
+          name: "Consultancy Services",
+          href: "/services/consultancy",
+          icon: Settings,
+          description: "Consultancy services for environmental and geospatial projects"
+        },
+        {
+          name: "Climate Change and Renewable Energy",
           href: "/services/climate",
           icon: Globe,
           description: "Climate change adaptation strategies and carbon footprint assessments"
+        },
+        {
+          name: "Management Systems Certifications",
+          href: "/services/certifications",
+          icon: Award,
+          description: "Management systems certifications for environmental and geospatial projects"
         }
       ]
     },
@@ -192,7 +228,7 @@ export function Header() {
       name: "Training", 
       href: "/training",
       icon: Award,
-      description: "Professional development and certification programs",
+      description: "Online Professional Short Courses",
       dropdown: [
         { 
           name: "Online Courses", 
@@ -200,9 +236,21 @@ export function Header() {
           icon: BookOpen,
           description: "Comprehensive online training programs for environmental and geospatial professionals"
         },
-        { 
-          name: "Certifications", 
-          href: "/training/certifications",
+        {
+          name: "Online Certificate and Diploma Courses",
+          href: "/training/certificate",
+          icon: Award,
+          description: "Industry-recognized certifications in environmental assessment and GIS"
+        },
+        {
+          name: "Online Bachelor's Degree Courses",
+          href: "/training/bachelor",
+          icon: Award,
+          description: "Industry-recognized certifications in environmental assessment and GIS"
+        },
+        {
+          name: "Online Master's and PhD Courses",
+          href: "/training/master",
           icon: Award,
           description: "Industry-recognized certifications in environmental assessment and GIS"
         },
@@ -232,14 +280,32 @@ export function Header() {
           icon: Settings,
           description: "Access to specialized environmental and geospatial applications"
         },
+        {
+          name: "Baseline",
+          href: "/apps/baseline",
+          icon: Settings,
+          description: "Access to baseline environmental and geospatial data"
+        },
         { 
           name: "Geoportal", 
           href: "/apps/geoportal",
           icon: MapPin,
           description: "Interactive mapping platform with environmental data visualization"
         },
+        {
+          name: "Drone Application",
+          href: "/apps/drone",
+          icon: Settings,
+          description: "Access to drone applications for environmental and geospatial data collection"
+        },
+        {
+          name: "Metadata Catalog",
+          href: "/apps/metadata",
+          icon: Settings,
+          description: "Access to metadata catalog for environmental and geospatial data"
+        },
         { 
-          name: "Data Catalog", 
+          name: "Product Catalog", 
           href: "/apps/data",
           icon: FileText,
           description: "Comprehensive database of environmental and geospatial datasets"
@@ -257,6 +323,18 @@ export function Header() {
           href: "/media/events",
           icon: Calendar,
           description: "Conferences, workshops, and networking events for environmental professionals"
+        },
+        {
+          name: "Library",
+          href: "/media/library",
+          icon: BookOpen,
+          description: "Access to library for environmental and geospatial data"
+        },
+        {
+          name: "Newsletter",
+          href: "/media/newsletter",
+          icon: Mail,
+          description: "Access to newsletter for environmental and geospatial data"
         },
         { 
           name: "Gallery", 
@@ -404,9 +482,11 @@ export function Header() {
                     {item.dropdown && <ChevronDown className="inline h-3 w-3 ml-1" />}
                   </Link>
                   
-                  {/* Enhanced Dropdown Menu - Side by Side */}
+                  {/* Enhanced Dropdown Menu - Three Columns for Many Sublinks */}
                   {item.dropdown && (
-                    <div className="absolute left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className={`absolute left-0 mt-2 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 ${
+                      item.dropdown.length > 6 ? 'w-[900px]' : 'w-[600px]'
+                    }`}>
                       <div className="p-6">
                         {/* Header */}
                         <div className="flex items-center space-x-3 mb-6 pb-4 border-b">
@@ -419,18 +499,24 @@ export function Header() {
                           </div>
                         </div>
                         
-                        {/* Menu Items - Side by Side Grid */}
-                        <div className="grid grid-cols-2 gap-4">
+                        {/* Menu Items - Dynamic Grid Layout */}
+                        <div className={`grid gap-4 ${
+                          item.dropdown.length > 6 
+                            ? 'grid-cols-3' 
+                            : item.dropdown.length > 3 
+                              ? 'grid-cols-2' 
+                              : 'grid-cols-1'
+                        }`}>
                           {item.dropdown.map((subItem) => (
                             <Link
                               key={subItem.name}
                               href={subItem.href}
                               className="flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-50 transition-colors group/item border border-transparent hover:border-gray-200"
                             >
-                              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mt-0.5 group-hover/item:bg-[#2D5016] transition-colors">
+                              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mt-0.5 group-hover/item:bg-[#2D5016] transition-colors flex-shrink-0">
                                 <subItem.icon className="h-4 w-4 text-gray-600 group-hover/item:text-white transition-colors" />
                               </div>
-                              <div className="flex-1">
+                              <div className="flex-1 min-w-0">
                                 <h4 className="font-semibold text-sm text-gray-900 group-hover/item:text-[#2D5016] transition-colors mb-1">
                                   {subItem.name}
                                 </h4>
