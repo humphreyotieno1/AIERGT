@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
+import { findUserByEmail, verifyPassword } from "@/lib/data/dummyUsers"
 
 // Extend NextAuth types
 declare module "next-auth" {
@@ -37,28 +38,39 @@ const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         try {
-          // TODO: Replace with actual database query
-          // const user = await getUserByEmail(credentials.email)
+          // Find user in dummy users
+          const user = findUserByEmail(credentials.email as string)
           
-          // For now, return a mock user
-          const mockUser = {
-            id: "1",
-            email: credentials.email as string,
-            name: "Test User",
-            role: "member",
+          if (!user) {
+            console.log("User not found:", credentials.email)
+            return null
           }
 
-          // TODO: Verify password with bcrypt
-          // const isValidPassword = await bcrypt.compare(credentials.password, user.password)
+          // Verify password
+          const isValidPassword = await verifyPassword(credentials.password as string, user.password)
           
-          if (mockUser) {
-            return mockUser
+          // Debug logging
+          console.log("Debug - Email:", credentials.email)
+          console.log("Debug - Password:", credentials.password)
+          console.log("Debug - Stored hash:", user.password)
+          console.log("Debug - Verification result:", isValidPassword)
+          
+          if (!isValidPassword) {
+            console.log("Invalid password for:", credentials.email)
+            return null
+          }
+
+          // Return user data (without password)
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
           }
         } catch (error) {
           console.error("Auth error:", error)
+          return null
         }
-
-        return null
       }
     })
   ],

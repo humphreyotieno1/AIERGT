@@ -21,9 +21,7 @@ import {
   Youtube, 
   Linkedin, 
   Instagram,
-  ShoppingCart,
   Settings,
-  HelpCircle,
   Phone,
   MapPin,
   Calendar,
@@ -31,16 +29,18 @@ import {
   Users,
   Award,
   BookOpen,
-  Search,
   Bell,
   Building,
-  GraduationCap
+  UserCircle,
+  Shield,
+  LayoutDashboard,
 } from "lucide-react"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false)
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false)
   const [expandedSections, setExpandedSections] = useState<string[]>([])
   const [mobileCurrentSection, setMobileCurrentSection] = useState<string | null>(null)
   const { data: session, status } = useSession()
@@ -49,6 +49,7 @@ export function Header() {
   // Refs for click outside detection
   const languageDropdownRef = useRef<HTMLDivElement>(null)
   const loginDropdownRef = useRef<HTMLDivElement>(null)
+  const profileDropdownRef = useRef<HTMLDivElement>(null)
 
   // Click outside detection for dropdowns
   useEffect(() => {
@@ -58,6 +59,9 @@ export function Header() {
       }
       if (loginDropdownRef.current && !loginDropdownRef.current.contains(event.target as Node)) {
         setIsLoginDropdownOpen(false)
+      }
+      if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target as Node)) {
+        setIsProfileDropdownOpen(false)
       }
     }
 
@@ -372,20 +376,20 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center min-h-0">
             {/* Social Media Icons */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <Link href="#" className="hover:text-[#D4AF37] transition-colors">
+            <div className="flex items-center space-x-2 sm:space-x-4 ">
+              <Link href="https://www.facebook.com/profile.php?id=100066952923372#" target="_blank" className="hover:text-[#D4AF37] transition-colors">
                 <Facebook className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="#" className="hover:text-[#D4AF37] transition-colors">
+              <Link href="https://x.com/aiergt" target="_blank" className="hover:text-[#D4AF37] transition-colors">
                 <Twitter className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="#" className="hover:text-[#D4AF37] transition-colors">
+              <Link href="https://www.youtube.com/channel/UCHCIovKKlsdytFxRUTAJrGQ" target="_blank" className="hover:text-[#D4AF37] transition-colors">
                 <Youtube className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="#" className="hover:text-[#D4AF37] transition-colors">
+              <Link href="https://www.linkedin.com/company/african-institute-for-environmental-research-and-geospatial-technology/" target="_blank" className="hover:text-[#D4AF37] transition-colors">
                 <Linkedin className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="#" className="hover:text-[#D4AF37] transition-colors">
+              <Link href="https://www.instagram.com/a.i.e.r.g.t/" target="_blank" className="hover:text-[#D4AF37] transition-colors">
                 <Instagram className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
             </div>
@@ -435,8 +439,8 @@ export function Header() {
 
               {/* Mail Button */}
               <Link href="/contact">
-                <Button variant="outline" size="sm" className="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 px-1 sm:px-2">
-                  <Mail className="h-3 w-3 sm:h-4 sm:w-6 mr-0 sm:mr-1" />
+                <Button variant="outline" size="sm" className="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 px-2 sm:px-3 py-1.5 sm:py-2">
+                  <Mail className="h-3 w-3 sm:h-4 sm:w-4 mr-0 sm:mr-1" />
                   <span className="hidden sm:inline">Mails</span>
                 </Button>
               </Link>
@@ -457,11 +461,12 @@ export function Header() {
                   alt="AIERGT Logo"
                   width={48}
                   height={48}
+                  priority
                   className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg object-contain"
                 />
                 {/* Organization Name for Mobile */}
                 <div className="sm:hidden">
-                  <span className="text-sm sm:text-lg font-bold text-[#2D5016]">AIERGT</span>
+                  <span className="text-sm sm:text-lg font-bold text-[#2D5016]">A.I.E.R.G.T</span>
                 </div>
               </Link>
             </div>
@@ -539,58 +544,195 @@ export function Header() {
               {status === "loading" ? (
                 <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />
               ) : session ? (
-                <div className="flex items-center space-x-4">
-                  <Link
-                    href="/dashboard"
-                    className="flex items-center space-x-2 text-gray-700 hover:text-[#2D5016] transition-colors"
+                <div className="relative" ref={profileDropdownRef}>
+                  <button
+                    onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
+                    className="group flex items-center space-x-2 bg-gradient-to-r from-[#2D5016] to-[#3A6B1F] text-white px-4 py-2.5 rounded-lg hover:from-[#3A6B1F] hover:to-[#2D5016] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    <User className="h-5 w-5" />
-                    <span className="text-sm font-medium">{session.user?.name}</span>
-                  </Link>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => signOut()}
-                    className="flex items-center space-x-1"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    <span>Logout</span>
-                  </Button>
+                    <div className="relative">
+                      <UserCircle className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse"></div>
+                    </div>
+                    <span className="font-semibold text-sm">{session.user?.name}</span>
+                    <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isProfileDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {isProfileDropdownOpen && (
+                    <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
+                      {/* Header */}
+                      <div className="bg-gradient-to-r from-[#2D5016] to-[#3A6B1F] px-4 py-3">
+                        <h3 className="text-white font-semibold text-sm">Welcome back!</h3>
+                        <p className="text-gray-200 text-xs mt-1">{session.user?.email}</p>
+                      </div>
+                      
+                      {/* Profile Options */}
+                      <div className="py-2">
+                        <Link
+                          href="/profile"
+                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#2D5016]"
+                          onClick={() => setIsProfileDropdownOpen(false)}
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-[#2D5016] transition-colors duration-200">
+                            <User className="h-4 w-4 text-gray-600 group-hover:text-white transition-colors duration-200" />
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium">My Profile</span>
+                            <p className="text-xs text-gray-500 mt-0.5">View and edit your profile</p>
+                          </div>
+                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#2D5016] transition-colors duration-200" />
+                        </Link>
+                        
+                        <Link
+                          href="/dashboard"
+                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#2D5016]"
+                          onClick={() => setIsProfileDropdownOpen(false)}
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-[#2D5016] transition-colors duration-200">
+                            <LayoutDashboard className="h-4 w-4 text-gray-600 group-hover:text-white transition-colors duration-200" />
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium">Dashboard</span>
+                            <p className="text-xs text-gray-500 mt-0.5">Access your dashboard</p>
+                          </div>
+                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#2D5016] transition-colors duration-200" />
+                        </Link>
+                        
+                        {/* Admin Dashboard - Only show for admin users */}
+                        {session.user?.role === 'admin' && (
+                          <Link
+                            href="/admin/dashboard"
+                            className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#D4AF37]"
+                            onClick={() => setIsProfileDropdownOpen(false)}
+                          >
+                            <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center group-hover:bg-[#D4AF37] transition-colors duration-200">
+                              <Shield className="h-4 w-4 text-yellow-600 group-hover:text-white transition-colors duration-200" />
+                            </div>
+                            <div className="flex-1">
+                              <span className="font-medium">Admin Dashboard</span>
+                              <p className="text-xs text-gray-500 mt-0.5">Manage system settings</p>
+                            </div>
+                            <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#D4AF37] transition-colors duration-200" />
+                          </Link>
+                        )}
+                      </div>
+                      
+                      {/* Divider */}
+                      <div className="border-t border-gray-100 my-2"></div>
+                      
+                      {/* Logout */}
+                      <div className="py-2">
+                        <button
+                          onClick={() => {
+                            signOut()
+                            setIsProfileDropdownOpen(false)
+                          }}
+                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 transition-all duration-200 w-full"
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-600 transition-colors duration-200">
+                            <LogOut className="h-4 w-4 text-red-600 group-hover:text-white transition-colors duration-200" />
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium">Sign Out</span>
+                            <p className="text-xs text-red-500 mt-0.5">Logout from your account</p>
+                          </div>
+                        </button>
+                      </div>
+                      
+                      {/* Footer */}
+                      <div className="bg-gray-50 px-4 py-2 border-t border-gray-100">
+                        <p className="text-xs text-gray-500 text-center">
+                          Need help? <Link href="/contact" className="text-[#2D5016] hover:underline">Contact Support</Link>
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="relative" ref={loginDropdownRef}>
                   <button
                     onClick={() => setIsLoginDropdownOpen(!isLoginDropdownOpen)}
-                    className="flex items-center space-x-1 bg-[#2D5016] text-white px-4 py-2 rounded-md hover:bg-[#2D5016]/90 transition-colors"
+                    className="group flex items-center space-x-2 bg-gradient-to-r from-[#2D5016] to-[#3A6B1F] text-white px-4 py-2.5 rounded-lg hover:from-[#3A6B1F] hover:to-[#2D5016] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    <User className="h-4 w-4" />
-                    <span>LOGIN</span>
-                    <ChevronDown className="h-3 w-3" />
+                    <div className="relative">
+                      <User className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse"></div>
+                    </div>
+                    <span className="font-semibold text-sm">LOGIN</span>
+                    <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isLoginDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
                   
                   {isLoginDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border z-50">
+                    <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
+                      {/* Header */}
+                      <div className="bg-gradient-to-r from-[#2D5016] to-[#3A6B1F] px-4 py-3">
+                        <h3 className="text-white font-semibold text-sm">Access Your Portal</h3>
+                        <p className="text-gray-200 text-xs mt-1">Choose your preferred platform</p>
+                      </div>
+                      
+                      {/* Portal Options */}
                       <div className="py-2">
-                        {loginOptions.map((option) => (
+                        {loginOptions.map((option, index) => (
                           <Link
                             key={option.name}
                             href={option.href}
-                            className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                            className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#2D5016]"
                             onClick={() => setIsLoginDropdownOpen(false)}
                           >
-                            <option.icon className="h-4 w-4" />
-                            <span>{option.name}</span>
+                            <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-[#2D5016] transition-colors duration-200">
+                              <option.icon className="h-4 w-4 text-gray-600 group-hover:text-white transition-colors duration-200" />
+                            </div>
+                            <div className="flex-1">
+                              <span className="font-medium">{option.name}</span>
+                              <p className="text-xs text-gray-500 mt-0.5">
+                                {option.name === "Member Portal" && "Dashboard & Resources"}
+                                {option.name === "Geoportal" && "Maps & Data Analysis"}
+                                {option.name === "Training Portal" && "Courses & Certifications"}
+                              </p>
+                            </div>
+                            <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#2D5016] transition-colors duration-200" />
                           </Link>
                         ))}
-                        <div className="border-t my-1"></div>
+                      </div>
+                      
+                      {/* Divider */}
+                      <div className="border-t border-gray-100 my-2"></div>
+                      
+                      {/* Additional Options */}
+                      <div className="py-2">
                         <Link
                           href="/auth/register"
-                          className="flex items-center space-x-2 px-4 py-2 text-sm text-[#2D5016] hover:bg-gray-100 transition-colors"
+                          className="flex items-center space-x-3 px-4 py-3 text-sm text-[#2D5016] hover:bg-gradient-to-r hover:from-[#2D5016]/5 hover:to-[#3A6B1F]/5 transition-all duration-200"
                           onClick={() => setIsLoginDropdownOpen(false)}
                         >
-                          <User className="h-4 w-4" />
-                          <span>Register</span>
+                          <div className="flex-shrink-0 w-8 h-8 bg-[#2D5016]/10 rounded-lg flex items-center justify-center">
+                            <User className="h-4 w-4 text-[#2D5016]" />
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium">Create Account</span>
+                            <p className="text-xs text-gray-500 mt-0.5">Join our community</p>
+                          </div>
                         </Link>
+                        
+                        <Link
+                          href="/auth/forgot-password"
+                          className="flex items-center space-x-3 px-4 py-3 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
+                          onClick={() => setIsLoginDropdownOpen(false)}
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                            <Settings className="h-4 w-4 text-gray-600" />
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium">Reset Password</span>
+                            <p className="text-xs text-gray-500 mt-0.5">Forgot your password?</p>
+                          </div>
+                        </Link>
+                      </div>
+                      
+                      {/* Footer */}
+                      <div className="bg-gray-50 px-4 py-2 border-t border-gray-100">
+                        <p className="text-xs text-gray-500 text-center">
+                          Need help? <Link href="/contact" className="text-[#2D5016] hover:underline">Contact Support</Link>
+                        </p>
                       </div>
                     </div>
                   )}
@@ -649,6 +791,7 @@ export function Header() {
                         width={28}
                         height={28}
                         className="rounded"
+                        style={{ width: "auto", height: "auto" }}
                       />
                       <span className="font-bold text-base sm:text-lg">
                         {mobileCurrentSection ? mobileCurrentSection : "AIERGT"}
@@ -732,16 +875,72 @@ export function Header() {
                   {!mobileCurrentSection && (
                     <div className="border-t p-3 sm:p-4 space-y-3">
                       {session ? (
-                        <>
-                          <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#2D5016] rounded-full flex items-center justify-center">
-                              <User className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
+                        <div className="space-y-3">
+                          {/* User Info */}
+                          <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gradient-to-r from-[#2D5016] to-[#3A6B1F] rounded-lg">
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center">
+                              <UserCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                             </div>
                             <div className="flex-1">
-                              <p className="font-medium text-xs sm:text-sm">{session.user?.name}</p>
-                              <p className="text-xs text-gray-600">{session.user?.email}</p>
+                              <p className="font-medium text-xs sm:text-sm text-white">{session.user?.name}</p>
+                              <p className="text-xs text-white/80">{session.user?.email}</p>
                             </div>
                           </div>
+                          
+                          {/* Profile Options */}
+                          <div className="space-y-2">
+                            <h4 className="text-sm font-semibold text-gray-900 px-2">Account</h4>
+                            
+                            <Link
+                              href="/profile"
+                              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-[#2D5016] hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                                <User className="h-4 w-4 text-gray-600" />
+                              </div>
+                              <div className="flex-1">
+                                <span className="font-medium text-sm text-gray-900">My Profile</span>
+                                <p className="text-xs text-gray-500 mt-0.5">View and edit your profile</p>
+                              </div>
+                              <ChevronRight className="h-3 w-3 text-gray-400" />
+                            </Link>
+                            
+                            <Link
+                              href="/dashboard"
+                              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-[#2D5016] hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                                <LayoutDashboard className="h-4 w-4 text-gray-600" />
+                              </div>
+                              <div className="flex-1">
+                                <span className="font-medium text-sm text-gray-900">Dashboard</span>
+                                <p className="text-xs text-gray-500 mt-0.5">Access your dashboard</p>
+                              </div>
+                              <ChevronRight className="h-3 w-3 text-gray-400" />
+                            </Link>
+                            
+                            {/* Admin Dashboard - Only show for admin users */}
+                            {session.user?.role === 'admin' && (
+                              <Link
+                                href="/admin/dashboard"
+                                className="flex items-center space-x-3 p-3 rounded-lg border border-yellow-200 hover:border-[#D4AF37] hover:bg-gradient-to-r hover:from-yellow-50 hover:to-yellow-100 transition-all duration-200"
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                <div className="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                  <Shield className="h-4 w-4 text-yellow-600" />
+                                </div>
+                                <div className="flex-1">
+                                  <span className="font-medium text-sm text-gray-900">Admin Dashboard</span>
+                                  <p className="text-xs text-gray-500 mt-0.5">Manage system settings</p>
+                                </div>
+                                <ChevronRight className="h-3 w-3 text-gray-400" />
+                              </Link>
+                            )}
+                          </div>
+                          
+                          {/* Logout */}
                           <Button
                             variant="outline"
                             size="sm"
@@ -749,12 +948,12 @@ export function Header() {
                               signOut()
                               setIsMenuOpen(false)
                             }}
-                            className="w-full justify-start"
+                            className="w-full justify-start border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300"
                           >
                             <LogOut className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
-                            Logout
+                            Sign Out
                           </Button>
-                        </>
+                        </div>
                       ) : (
                         <div className="space-y-2">
                           {loginOptions.map((option) => (

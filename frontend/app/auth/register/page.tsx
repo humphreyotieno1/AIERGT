@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Tooltip } from "@/components/ui/Tooltip"
-import { ArrowLeft, User, Users, Building, Globe, GraduationCap } from "lucide-react"
+import { ArrowLeft, User, Users, Building, Globe, GraduationCap, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 
 const userTypes = {
@@ -46,6 +46,8 @@ export default function RegisterPage() {
     phone: "",
     userType: ""
   })
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   
@@ -252,30 +254,50 @@ export default function RegisterPage() {
                     <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                       Password
                     </label>
-                    <Input
-                      id="password"
-                      name="password"
-                      type="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
-                      placeholder="Create a password"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        name="password"
+                        type={showPassword ? "text" : "password"}
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                        placeholder="Create a password"
+                        className="pr-10"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      >
+                        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </button>
+                    </div>
                   </div>
                   
                   <div>
                     <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
                       Confirm Password
                     </label>
-                    <Input
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      type="password"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      required
-                      placeholder="Confirm your password"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type={showConfirmPassword ? "text" : "password"}
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        required
+                        placeholder="Confirm your password"
+                        className="pr-10"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      >
+                        {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </button>
+                    </div>
                   </div>
                   
                   <Button
@@ -286,6 +308,16 @@ export default function RegisterPage() {
                     {isLoading ? "Creating account..." : "Create Account"}
                   </Button>
                 </form>
+                
+                {/* Forgot Password Link */}
+                <div className="mt-4 text-center">
+                  <Link 
+                    href="/auth/forgot-password" 
+                    className="text-sm text-[#2D5016] hover:underline font-medium"
+                  >
+                    Forgot your password?
+                  </Link>
+                </div>
                 
                 <div className="mt-6 text-center">
                   <p className="text-sm text-gray-600">
