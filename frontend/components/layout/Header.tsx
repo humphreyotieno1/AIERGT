@@ -546,14 +546,14 @@ export function Header() {
               ) : session ? (
                 <>
                   {/* Logout Button */}
-                  <button
+                  {/* <button
                     onClick={() => signOut()}
                     className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg transition-colors duration-200 text-sm font-medium"
                   >
                     <LogOut className="h-4 w-4" />
                     <span>Logout</span>
                   </button>
-                  
+                   */}
                   <div className="relative" ref={profileDropdownRef}>
                   <button
                     onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
@@ -608,7 +608,7 @@ export function Header() {
                         </Link>
                         
                         {/* Admin Dashboard - Only show for admin users */}
-                        {session.user?.role === 'admin' && (
+                        {session.user?.role === 'ADMIN' && (
                           <Link
                             href="/admin/dashboard"
                             className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#D4AF37]"
@@ -933,7 +933,7 @@ export function Header() {
                             </Link>
                             
                             {/* Admin Dashboard - Only show for admin users */}
-                            {session.user?.role === 'admin' && (
+                            {session.user?.role === 'ADMIN' && (
                               <Link
                                 href="/admin/dashboard"
                                 className="flex items-center space-x-3 p-3 rounded-lg border border-yellow-200 hover:border-[#D4AF37] hover:bg-gradient-to-r hover:from-yellow-50 hover:to-yellow-100 transition-all duration-200"
