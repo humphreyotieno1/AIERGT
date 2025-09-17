@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import bcrypt from 'bcryptjs'
+import { resetPassword } from '@/lib/actions/password.actions'
 
 // Validation schema
 const resetPasswordSchema = z.object({
@@ -21,40 +21,26 @@ export async function POST(request: NextRequest) {
     const validatedData = resetPasswordSchema.parse(body)
     const { token, password } = validatedData
 
-    // TODO: Implement actual password reset logic
-    // 1. Verify the reset token is valid and not expired
-    // 2. Find the user associated with the token
-    // 3. Hash the new password
-    // 4. Update the user's password in database
-    // 5. Invalidate the reset token
-    // 6. Return success response
+    // Use server action for password reset
+    const result = await resetPassword({ token, password })
 
-    // For now, we'll simulate the process
-    console.log(`Password reset attempt with token: ${token.substring(0, 10)}...`)
-    
-    // Simulate token validation and password update delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
-    // In a real implementation, you would:
-    // - Validate the token against your database
-    // - Check if the token is not expired
-    // - Find the user associated with the token
-    // - Hash the new password using bcrypt
-    // - Update the user's password in your database
-    // - Delete or mark the token as used
-    // - Handle various error cases (invalid token, expired token, etc.)
-
-    // Example of password hashing (you would do this in your database update)
-    const hashedPassword = await bcrypt.hash(password, 12)
-    console.log('Password hashed successfully')
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Password reset successfully',
-      },
-      { status: 200 }
-    )
+    if (result.success) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: result.message || 'Password has been reset successfully'
+        },
+        { status: 200 }
+      )
+    } else {
+      return NextResponse.json(
+        {
+          success: false,
+          message: result.error || 'Failed to reset password'
+        },
+        { status: 400 }
+      )
+    }
 
   } catch (error) {
     console.error('Password reset error:', error)
@@ -68,19 +54,6 @@ export async function POST(request: NextRequest) {
         },
         { status: 400 }
       )
-    }
-
-    // Handle specific password reset errors
-    if (error instanceof Error) {
-      if (error.message.includes('token')) {
-        return NextResponse.json(
-          {
-            success: false,
-            message: 'Invalid or expired reset token',
-          },
-          { status: 400 }
-        )
-      }
     }
 
     return NextResponse.json(

@@ -544,7 +544,17 @@ export function Header() {
               {status === "loading" ? (
                 <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />
               ) : session ? (
-                <div className="relative" ref={profileDropdownRef}>
+                <>
+                  {/* Logout Button */}
+                  <button
+                    onClick={() => signOut()}
+                    className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg transition-colors duration-200 text-sm font-medium"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </button>
+                  
+                  <div className="relative" ref={profileDropdownRef}>
                   <button
                     onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
                     className="group flex items-center space-x-2 bg-gradient-to-r from-[#2D5016] to-[#3A6B1F] text-white px-4 py-2.5 rounded-lg hover:from-[#3A6B1F] hover:to-[#2D5016] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
@@ -647,6 +657,7 @@ export function Header() {
                     </div>
                   )}
                 </div>
+                </>
               ) : (
                 <div className="relative" ref={loginDropdownRef}>
                   <button

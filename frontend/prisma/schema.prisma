@@ -1,0 +1,423 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ===========================================
+// USER MANAGEMENT & AUTHENTICATION
+// ===========================================
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  password    String?  // Hashed password for credentials provider
+  phone       String?
+  organization String?
+  role        UserRole @default(STUDENT)
+  isVerified  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  emailVerified DateTime?
+  passwordResetToken String?
+  passwordResetExpires DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  profile     UserProfile?
+  accounts    Account[]
+  sessions    Session[]
+  enrollments CourseEnrollment[]
+  certificates Certificate[]
+  posts       BlogPost[]
+  comments    Comment[]
+  events      Event[]
+  projects    Project[]
+  notifications Notification[]
+  // Course instructor relation
+  coursesInstructed Course[] @relation("CourseInstructor")
+  // Event registration relation
+  eventRegistrations EventRegistration[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model UserProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  bio         String?
+  avatar      String?
+  location    String?
+  website     String?
+  linkedin    String?
+  twitter     String?
+  github      String?
+  language    String   @default("en")
+  timezone    String   @default("UTC")
+  theme       String   @default("light")
+  emailNotifications Boolean @default(true)
+  pushNotifications  Boolean @default(false)
+  smsNotifications   Boolean @default(false)
+  courseUpdates      Boolean @default(true)
+  eventReminders     Boolean @default(true)
+  newsletter         Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+enum UserRole {
+  ADMIN
+  AFRICAN_CONSULTANT
+  PARTNER
+  EXPATRIATE_CONSULTANT
+  STUDENT
+}
+
+// ===========================================
+// TRAINING PORTAL
+// ===========================================
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  slug        String   @unique
+  thumbnail   String?
+  duration    Int      // in hours
+  level       CourseLevel
+  category    String
+  tags        String[]
+  isPublished Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  price       Decimal? @db.Decimal(10, 2)
+  instructorId String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  instructor    User?              @relation("CourseInstructor", fields: [instructorId], references: [id])
+  modules       CourseModule[]
+  enrollments   CourseEnrollment[]
+  certificates  Certificate[]
+  materials     CourseMaterial[]
+
+  @@map("courses")
+}
+
+model CourseModule {
+  id          String   @id @default(cuid())
+  courseId    String
+  title       String
+  description String?  @db.Text
+  order       Int
+  duration    Int      // in minutes
+  videoUrl    String?
+  content     String?  @db.Text
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  progress CourseProgress[]
+
+  @@map("course_modules")
+}
+
+model CourseEnrollment {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  enrolledAt DateTime @default(now())
+  completedAt DateTime?
+  progress  Decimal  @default(0) @db.Decimal(5, 2) // percentage
+  status    EnrollmentStatus @default(ACTIVE)
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@map("course_enrollments")
+}
+
+model CourseProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  moduleId  String
+  completed Boolean  @default(false)
+  completedAt DateTime?
+  timeSpent Int      @default(0) // in minutes
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  module CourseModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, moduleId])
+  @@map("course_progress")
+}
+
+model CourseMaterial {
+  id          String   @id @default(cuid())
+  courseId    String
+  title       String
+  description String?
+  fileUrl     String
+  fileType    String
+  fileSize    Int
+  order       Int
+  isRequired  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@map("course_materials")
+}
+
+model Certificate {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  certificateNumber String @unique
+  issuedAt  DateTime @default(now())
+  pdfUrl    String?
+  verified  Boolean  @default(false)
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@map("certificates")
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+  SUSPENDED
+  CANCELLED
+}
+
+// ===========================================
+// CONTENT MANAGEMENT
+// ===========================================
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String?
+  content     String   @db.Text
+  featuredImage String?
+  tags        String[]
+  isPublished Boolean  @default(false)
+  isFeatured  Boolean  @default(false)
+  viewCount   Int      @default(0)
+  authorId    String
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author   User      @relation(fields: [authorId], references: [id])
+  comments Comment[]
+
+  @@map("blog_posts")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  authorId  String
+  postId    String
+  parentId  String?  // for nested comments
+  isApproved Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author User      @relation(fields: [authorId], references: [id])
+  post   BlogPost  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parent Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies Comment[] @relation("CommentReplies")
+
+  @@map("comments")
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  slug        String   @unique
+  location    String?
+  online      Boolean  @default(false)
+  eventUrl    String?
+  startDate   DateTime
+  endDate     DateTime
+  timezone    String   @default("UTC")
+  capacity    Int?
+  registered  Int      @default(0)
+  price       Decimal? @db.Decimal(10, 2)
+  isPublished Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  organizerId String
+  category    String
+  tags        String[]
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  organizer User @relation(fields: [organizerId], references: [id])
+  registrations EventRegistration[]
+
+  @@map("events")
+}
+
+model EventRegistration {
+  id        String   @id @default(cuid())
+  userId    String
+  eventId   String
+  registeredAt DateTime @default(now())
+  status    RegistrationStatus @default(CONFIRMED)
+  notes     String?
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@map("event_registrations")
+}
+
+enum RegistrationStatus {
+  CONFIRMED
+  CANCELLED
+  WAITLIST
+}
+
+// ===========================================
+// PROJECTS & GEOPORTAL
+// ===========================================
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  slug        String   @unique
+  status      ProjectStatus @default(PLANNING)
+  startDate   DateTime?
+  endDate     DateTime?
+  budget      Decimal? @db.Decimal(15, 2)
+  region      String
+  country     String
+  coordinates Json?    // GeoJSON coordinates
+  tags        String[]
+  isPublic    Boolean  @default(false)
+  leaderId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  leader User @relation(fields: [leaderId], references: [id])
+
+  @@map("projects")
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  ON_HOLD
+}
+
+// ===========================================
+// NOTIFICATIONS
+// ===========================================
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String   @db.Text
+  type      NotificationType
+  isRead    Boolean  @default(false)
+  data      Json?    // Additional data for the notification
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+enum NotificationType {
+  COURSE_ENROLLMENT
+  COURSE_COMPLETION
+  CERTIFICATE_ISSUED
+  EVENT_REGISTRATION
+  EVENT_REMINDER
+  BLOG_POST
+  PROJECT_UPDATE
+  SYSTEM_ANNOUNCEMENT
+}
+
+// ===========================================
+// SYSTEM CONFIGURATION
+// ===========================================
+
+model SystemConfig {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  type      ConfigType @default(STRING)
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("system_config")
+}
+
+enum ConfigType {
+  STRING
+  NUMBER
+  BOOLEAN
+  JSON
+}

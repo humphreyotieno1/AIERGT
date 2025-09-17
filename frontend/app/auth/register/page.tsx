@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { registerUser } from "@/lib/actions/auth.actions"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
@@ -85,12 +86,21 @@ export default function RegisterPage() {
     }
 
     try {
-      // TODO: Implement actual registration API call
-      // For now, simulate successful registration
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const result = await registerUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        organization: formData.organization,
+        role: formData.userType.toUpperCase() as any
+      })
       
-      // Redirect to login page
-      router.push("/auth/login")
+      if (result.success) {
+        // Redirect to verification pending page
+        router.push("/auth/verification-pending")
+      } else {
+        setError(result.error || "Registration failed. Please try again.")
+      }
     } catch (error) {
       setError("Registration failed. Please try again.")
     } finally {
