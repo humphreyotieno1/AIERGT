@@ -7,7 +7,7 @@ export interface DummyUser {
   name: string
   phone?: string
   organization?: string
-  role: 'africanConsultant' | 'partner' | 'expatriateConsultant' | 'student' | 'admin'
+  role: 'ADMIN' | 'AFRICAN_CONSULTANT' | 'PARTNER' | 'EXPATRIATE_CONSULTANT' | 'STUDENT'
   isVerified: boolean
   createdAt: Date
   updatedAt: Date
@@ -23,7 +23,7 @@ export const dummyUsers: DummyUser[] = [
     name: "Test Admin",
     phone: "+254 700 123 456",
     organization: "AIERGT",
-    role: "admin",
+    role: "ADMIN",
     isVerified: true,
     createdAt: new Date("2024-01-15"),
     updatedAt: new Date("2024-01-15"),
@@ -37,7 +37,7 @@ export const dummyUsers: DummyUser[] = [
     name: "Test Consultant",
     phone: "+234 800 123 456",
     organization: "Environmental Solutions Ltd",
-    role: "africanConsultant",
+    role: "AFRICAN_CONSULTANT",
     isVerified: true,
     createdAt: new Date("2024-02-01"),
     updatedAt: new Date("2024-02-01"),
@@ -51,7 +51,7 @@ export const dummyUsers: DummyUser[] = [
     name: "Test Partner",
     phone: "+27 11 123 456",
     organization: "African Environmental Institute",
-    role: "partner",
+    role: "PARTNER",
     isVerified: true,
     createdAt: new Date("2024-02-15"),
     updatedAt: new Date("2024-02-15"),
@@ -65,7 +65,7 @@ export const dummyUsers: DummyUser[] = [
     name: "Test Expatriate",
     phone: "+1 555 123 456",
     organization: "Global Environmental Consultants",
-    role: "expatriateConsultant",
+    role: "EXPATRIATE_CONSULTANT",
     isVerified: true,
     createdAt: new Date("2024-03-01"),
     updatedAt: new Date("2024-03-01"),
@@ -79,7 +79,7 @@ export const dummyUsers: DummyUser[] = [
     name: "Test Student",
     phone: "+254 700 987 654",
     organization: "University of Nairobi",
-    role: "student",
+    role: "STUDENT",
     isVerified: true,
     createdAt: new Date("2024-03-15"),
     updatedAt: new Date("2024-03-15"),
@@ -93,7 +93,7 @@ export const dummyUsers: DummyUser[] = [
     name: "Test Super Admin",
     phone: "+254 700 555 123",
     organization: "AIERGT",
-    role: "admin",
+    role: "ADMIN",
     isVerified: true,
     createdAt: new Date("2024-01-01"),
     updatedAt: new Date("2024-01-01"),
@@ -133,24 +133,24 @@ export const testCredentials = {
     email: "consultant@aiergt.africa",
     password: "consultant123", 
     name: "Test Consultant",
-    role: "africanConsultant"
+    role: "AFRICAN_CONSULTANT"
   },
   partner: {
     email: "partner@aiergt.africa",
     password: "partner123",
     name: "Test Partner", 
-    role: "partner"
+    role: "PARTNER"
   },
   expat: {
     email: "expat@aiergt.africa",
     password: "expat123",
     name: "Test Expatriate",
-    role: "expatriateConsultant"
+    role: "EXPATRIATE_CONSULTANT"
   },
   student: {
     email: "student@aiergt.africa",
     password: "student123",
     name: "Test Student",
-    role: "student"
+    role: "STUDENT"
   }
 }

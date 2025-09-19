@@ -45,7 +45,7 @@ export interface NotificationSettings {
   newsletter: boolean
 }
 
-export type UserRole = 'africanConsultant' | 'partner' | 'expatriateConsultant' | 'student' | 'admin'
+export type UserRole = 'ADMIN' | 'AFRICAN_CONSULTANT' | 'PARTNER' | 'EXPATRIATE_CONSULTANT' | 'STUDENT'
 
 export interface AuthResult {
   user: User

@@ -27,11 +27,11 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#2D5016", // African forest green
+          DEFAULT: "#2E7D32", // Dark green from logo (top leaves)
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#D4AF37", // African gold
+          DEFAULT: "#4CAF50", // Medium green from logo (Africa map)
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -43,7 +43,7 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#1E3A8A", // Deep blue
+          DEFAULT: "#66BB6A", // Light green from logo (lower leaves)
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {

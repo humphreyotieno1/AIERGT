@@ -40,7 +40,7 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-[#FEF7ED] to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-[#2D5016] mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#2E7D32] mb-6">
               Preparing Africa For Tomorrow
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -70,7 +70,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-[#2D5016] mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-[#2E7D32] mb-2">
                   {stat.value}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -84,7 +84,7 @@ export default function HomePage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2D5016] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2E7D32] mb-4">
               Our Core Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -97,7 +97,7 @@ export default function HomePage() {
             {features.map((feature, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="mx-auto w-12 h-12 bg-[#2D5016] rounded-lg flex items-center justify-center mb-4">
+                  <div className="mx-auto w-12 h-12 bg-[#2E7D32] rounded-lg flex items-center justify-center mb-4">
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
@@ -114,7 +114,7 @@ export default function HomePage() {
       </section>
 
       // CTA Section
-      <section className="py-20 bg-[#2D5016]">
+      <section className="py-20 bg-[#2E7D32]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Make a Difference?
@@ -131,7 +131,7 @@ export default function HomePage() {
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#2D5016]">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#2E7D32]">
                 Contact Us
               </Button>
             </Link>

@@ -14,19 +14,19 @@ const loginTypes = {
     name: "Member Portal",
     icon: User,
     description: "Access your member dashboard, courses, and resources",
-    color: "bg-[#2D5016]"
+    color: "bg-[#2E7D32]"
   },
   geoportal: {
     name: "Geoportal",
     icon: Globe,
     description: "Access geospatial data, maps, and analysis tools",
-    color: "bg-[#1E3A8A]"
+    color: "bg-[#4CAF50]"
   },
   training: {
     name: "Training Portal",
     icon: BookOpen,
     description: "Access training courses, certifications, and learning materials",
-    color: "bg-[#D4AF37]"
+    color: "bg-[#66BB6A]"
   }
 }
 
@@ -73,7 +73,7 @@ function LoginPageContent() {
       <div className="max-w-md w-full space-y-8">
         {/* Back Button */}
         <div className="flex justify-start">
-          <Link href="/" className="flex items-center text-gray-600 hover:text-[#2D5016] transition-colors">
+          <Link href="/" className="flex items-center text-gray-600 hover:text-[#2E7D32] transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Link>
@@ -160,7 +160,7 @@ function LoginPageContent() {
             <div className="mt-4 text-center">
               <Link 
                 href="/auth/forgot-password" 
-                className="text-sm text-[#2D5016] hover:underline font-medium"
+                className="text-sm text-[#2E7D32] hover:underline font-medium"
               >
                 Forgot your password?
               </Link>
@@ -169,7 +169,7 @@ function LoginPageContent() {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{" "}
-                <Link href="/auth/register" className="text-[#2D5016] hover:underline">
+                <Link href="/auth/register" className="text-[#2E7D32] hover:underline">
                   Register here
                 </Link>
               </p>

@@ -69,9 +69,9 @@ aiergt-website/
 ## 🎨 Design System
 
 ### Color Palette
-- **Primary Green**: `#2D5016` (African forest green)
-- **Secondary Gold**: `#D4AF37` (African gold)
-- **Accent Blue**: `#1E3A8A` (Deep blue)
+- **Primary Green**: `#2E7D32` (Dark green from logo)
+- **Secondary Green**: `#4CAF50` (Medium green from logo)
+- **Accent Green**: `#66BB6A` (Light green from logo)
 - **Neutral Gray**: `#6B7280` (Professional gray)
 - **Background Cream**: `#FEF7ED` (Warm background)
 
