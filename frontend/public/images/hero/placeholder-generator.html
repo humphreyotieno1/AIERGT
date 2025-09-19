@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hero Image Placeholder Generator</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .image-item { text-align: center; }
+        .placeholder { width: 100%; height: 200px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); }
+        canvas { max-width: 100%; height: auto; border: 1px solid #ddd; }
+        button { margin: 10px; padding: 10px 20px; background: #2E7D32; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #4CAF50; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AIERGT Hero Image Placeholder Generator</h1>
+        <p>Click "Generate All" to create placeholder images for the hero carousel.</p>
+        
+        <button onclick="generateAllImages()">Generate All Images</button>
+        <button onclick="downloadAllImages()">Download All Images</button>
+        
+        <div class="image-grid" id="imageGrid">
+            <!-- Images will be generated here -->
+        </div>
+    </div>
+
+    <script>
+        const imageData = [
+            { name: "africa-environmental-1", title: "Africa Environmental Research", colors: ["#2E7D32", "#4CAF50", "#66BB6A"] },
+            { name: "geospatial-technology-2", title: "Geospatial Technology", colors: ["#1E3A8A", "#3B82F6", "#60A5FA"] },
+            { name: "training-programs-3", title: "Training Programs", colors: ["#7C3AED", "#8B5CF6", "#A78BFA"] },
+            { name: "research-excellence-4", title: "Research Excellence", colors: ["#DC2626", "#EF4444", "#F87171"] },
+            { name: "climate-action-5", title: "Climate Action", colors: ["#059669", "#10B981", "#34D399"] },
+            { name: "data-analytics-6", title: "Data Analytics", colors: ["#0891B2", "#06B6D4", "#22D3EE"] },
+            { name: "community-impact-7", title: "Community Impact", colors: ["#EA580C", "#F97316", "#FB923C"] },
+            { name: "innovation-lab-8", title: "Innovation Lab", colors: ["#BE185D", "#EC4899", "#F472B6"] },
+            { name: "global-partnerships-9", title: "Global Partnerships", colors: ["#7C2D12", "#EA580C", "#FB923C"] },
+            { name: "sustainable-future-10", title: "Sustainable Future", colors: ["#166534", "#16A34A", "#4ADE80"] }
+        ];
+
+        function generateAllImages() {
+            const grid = document.getElementById('imageGrid');
+            grid.innerHTML = '';
+            
+            imageData.forEach((data, index) => {
+                const canvas = createPlaceholderImage(data, index);
+                const item = document.createElement('div');
+                item.className = 'image-item';
+                item.innerHTML = `
+                    <h3>${data.title}</h3>
+                    <canvas id="canvas-${index}" width="800" height="400"></canvas>
+                    <br>
+                    <button onclick="downloadImage(${index}, '${data.name}')">Download ${data.name}.jpg</button>
+                `;
+                grid.appendChild(item);
+                
+                // Draw the image
+                drawPlaceholderImage(canvas, data, index);
+            });
+        }
+
+        function createPlaceholderImage(data, index) {
+            const canvas = document.getElementById(`canvas-${index}`);
+            if (!canvas) {
+                const newCanvas = document.createElement('canvas');
+                newCanvas.width = 800;
+                newCanvas.height = 400;
+                newCanvas.id = `canvas-${index}`;
+                return newCanvas;
+            }
+            return canvas;
+        }
+
+        function drawPlaceholderImage(canvas, data, index) {
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, data.colors[0]);
+            gradient.addColorStop(0.5, data.colors[1]);
+            gradient.addColorStop(1, data.colors[2]);
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add overlay pattern
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 20 + 5;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // Add title text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(data.title, canvas.width / 2, canvas.height / 2);
+            
+            // Add subtitle
+            ctx.font = '24px Arial';
+            ctx.fillText('AIERGT - Preparing Africa For Tomorrow', canvas.width / 2, canvas.height / 2 + 60);
+            
+            // Add decorative elements
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(canvas.width - 50, 50);
+            ctx.lineTo(canvas.width - 50, canvas.height - 50);
+            ctx.lineTo(50, canvas.height - 50);
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function downloadImage(index, filename) {
+            const canvas = document.getElementById(`canvas-${index}`);
+            const link = document.createElement('a');
+            link.download = `${filename}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+
+        function downloadAllImages() {
+            imageData.forEach((data, index) => {
+                setTimeout(() => {
+                    downloadImage(index, data.name);
+                }, index * 500); // Delay each download
+            });
+        }
+    </script>
+</body>
+</html>
