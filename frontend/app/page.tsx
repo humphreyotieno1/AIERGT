@@ -3,6 +3,7 @@ import { TrustBadgesSection } from "@/components/sections/TrustBadgesSection"
 import PartnersSection from "@/components/sections/PartnersSection"
 import ServicesSection from "@/components/sections/ServicesSection"
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection"
+import FAQsSection from "@/components/sections/FAQsSection"
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <ServicesSection />
       <PartnersSection />
       <WhyChooseUsSection />
+      <FAQsSection />
       {/* <TrustBadgesSection /> */}
       
     </div>
