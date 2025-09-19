@@ -37,6 +37,7 @@ export async function registerUser(data: RegisterData): Promise<AuthResponse> {
       data: {
         name: data.name,
         email: data.email,
+        password: hashedPassword,
         phone: data.phone,
         organization: data.organization,
         role: data.role,

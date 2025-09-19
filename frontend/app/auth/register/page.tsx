@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { registerUser } from "@/lib/actions/auth.actions"
+import { UserRole } from "@/lib/generated/prisma"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
@@ -92,7 +93,7 @@ export default function RegisterPage() {
         password: formData.password,
         phone: formData.phone,
         organization: formData.organization,
-        role: formData.userType.toUpperCase() as any
+        role: formData.userType.toUpperCase() as UserRole
       })
       
       if (result.success) {

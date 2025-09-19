@@ -13,7 +13,7 @@ export const registerSchema = z.object({
   confirmPassword: z.string(),
   phone: phoneSchema.optional(),
   organization: z.string().optional(),
-  role: z.enum(["member", "professional", "admin"]).default("member"),
+  role: z.enum(["ADMIN", "AFRICAN_CONSULTANT", "PARTNER", "EXPATRIATE_CONSULTANT", "STUDENT"]).default("STUDENT"),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"],
