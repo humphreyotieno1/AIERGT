@@ -17,6 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        garamond: ["var(--font-garamond)", "serif"],
         poppins: ["var(--font-poppins)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
       },

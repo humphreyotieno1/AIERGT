@@ -1,8 +1,14 @@
 import type { Metadata } from "next"
-import { Poppins, Montserrat } from "next/font/google"
+import { EB_Garamond, Poppins, Montserrat } from "next/font/google"
 import "./globals.css"
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper"
 import { Providers } from "@/components/providers/Providers"
+
+const garamond = EB_Garamond({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-garamond",
+})
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -36,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${montserrat.variable} font-poppins`}>
+      <body className={`${garamond.variable} ${poppins.variable} ${montserrat.variable} font-garamond`}>
         <Providers>
           <LayoutWrapper>
             {children}

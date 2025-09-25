@@ -372,7 +372,7 @@ export function Header() {
   return (
     <>
       {/* Top Organization Title Bar */}
-      <div className="bg-[#87CEEB] text-white py-2 sm:py-3">
+      <div className="bg-[#79BAEC] text-white py-2 sm:py-3">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center min-h-0">
             {/* Social Media Icons */}
@@ -396,7 +396,7 @@ export function Header() {
 
             {/* Organization Title - Hidden on mobile */}
             <div className="flex-1 text-center hidden sm:block">
-              <h1 className="text-sm sm:text-lg font-bold text-white">
+              <h1 className="font-garamond text-sm sm:text-lg font-bold text-white">
                 African Institute For Environmental Research and Geospatial Technology
               </h1>
             </div>

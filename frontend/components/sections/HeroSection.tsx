@@ -21,7 +21,7 @@ const heroSlides = [
     id: 2,
     title: "Advanced Geospatial Solutions",
     subtitle: "Revolutionary mapping and data analysis tools for environmental challenges",
-    image: "/hero/buildings.jpg",
+    image: "/hero/c2.png",
     cta: "Explore Technology",
     stats: "1000+ Projects",
     description: "Transforming data into actionable environmental insights"
@@ -30,7 +30,7 @@ const heroSlides = [
     id: 3,
     title: "Expert Training Programs",
     subtitle: "Professional development courses in environmental science and geospatial technology",
-    image: "/hero/cape-town.jpg",
+    image: "/hero/Deserts.jpg",
     cta: "Start Learning",
     stats: "10,000+ Graduates",
     description: "Building the next generation of environmental leaders"
@@ -48,7 +48,7 @@ const heroSlides = [
     id: 5,
     title: "Climate Action Hub",
     subtitle: "Comprehensive solutions for climate change adaptation and mitigation",
-    image: "/hero/dakar.jpg",
+    image: "/hero/girraffe.jpg",
     cta: "Take Action",
     stats: "200+ Initiatives",
     description: "Leading Africa's response to climate challenges"
@@ -57,7 +57,7 @@ const heroSlides = [
     id: 6,
     title: "Data-Driven Decisions",
     subtitle: "Advanced analytics and insights for informed environmental policy",
-    image: "/hero/forest.jpg",
+    image: "/hero/kenya.jpg",
     cta: "Access Data",
     stats: "1M+ Data Points",
     description: "Transforming information into environmental solutions"
@@ -75,7 +75,7 @@ const heroSlides = [
     id: 8,
     title: "Innovation Lab",
     subtitle: "Cutting-edge technology development for environmental challenges",
-    image: "/hero/dakar.jpg",
+    image: "/hero/forest.jpg",
     cta: "Discover Innovation",
     stats: "50+ Technologies",
     description: "Pioneering solutions for tomorrow's challenges"
@@ -93,7 +93,7 @@ const heroSlides = [
     id: 10,
     title: "Sustainable Future",
     subtitle: "Building a greener, more resilient Africa for generations to come",
-    image: "/hero/buildings.jpg",
+    image: "/hero/girraffe.jpg",
     cta: "Shape The Future",
     stats: "Future Generations",
     description: "Creating lasting environmental legacy"
