@@ -21,7 +21,7 @@ export default async function AdminUsersPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#2E7D32] mb-2">User Management</h1>
+        <h1 className="text-3xl font-bold text-[#87ceeb] mb-2">User Management</h1>
         <p className="text-gray-600">Manage user registrations, verifications, and access</p>
       </div>
 

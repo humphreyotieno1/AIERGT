@@ -4,6 +4,7 @@ import PartnersSection from "@/components/sections/PartnersSection"
 import ServicesSection from "@/components/sections/ServicesSection"
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection"
 import FAQsSection from "@/components/sections/FAQsSection"
+import BackToTop from "@/components/ui/BackToTop"
 
 export default function HomePage() {
   return (
@@ -14,7 +15,7 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <FAQsSection />
       {/* <TrustBadgesSection /> */}
-      
+      <BackToTop />
     </div>
   )
 }

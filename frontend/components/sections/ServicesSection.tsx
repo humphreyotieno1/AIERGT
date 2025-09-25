@@ -75,7 +75,7 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-16 bg-white">
+    <section id="services" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -87,81 +87,49 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Carousel */}
-        <div className="relative">
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex space-x-6 pb-4" style={{ width: 'max-content' }}>
-              {services.map((service) => (
-                <div
-                  key={service.id}
-                  className="flex-shrink-0 w-80 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
-                >
-                  <div className="p-6">
-                    {/* Service Image */}
-                    <div className="relative w-16 h-16 mx-auto mb-4">
-                      <Image
-                        src={service.image}
-                        alt={`${service.name} service`}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-
-                    {/* Service Name */}
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
-                      {service.name}
-                    </h3>
-
-                    {/* Service Description */}
-                    <p className="text-sm text-gray-600 mb-4 text-center leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    {/* Features List */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-900 mb-2">What We Offer:</h4>
-                      <ul className="space-y-1">
-                        {service.features.map((feature, index) => (
-                          <li key={index} className="text-xs text-gray-600 flex items-center">
-                            <div className="w-1 h-1 bg-primary rounded-full mr-2 flex-shrink-0"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="text-center">
-                      <button className="px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors opacity-75 cursor-not-allowed">
-                        Learn More
-                      </button>
-                    </div>
-                  </div>
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#87ceeb]/20 group"
+            >
+              {/* Service Icon */}
+              <div className="relative w-16 h-16 mb-6 group-hover:scale-105 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#87ceeb]/10 to-[#6bb6ff]/10 rounded-xl"></div>
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src={service.image}
+                    alt={`${service.name} service`}
+                    fill
+                    className="object-contain p-2"
+                  />
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          {/* Scroll Indicators */}
-          <div className="flex justify-center mt-6 space-x-2">
-            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-          </div>
+              {/* Service Title */}
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#87ceeb] transition-colors duration-300">
+                {service.name}
+              </h3>
+
+              {/* Service Description */}
+              <p className="text-gray-600 mb-6 leading-relaxed text-base">
+                {service.description}
+              </p>
+
+              {/* Learn More Link */}
+              <div className="mt-auto">
+                <a 
+                  href="#" 
+                  className="inline-flex items-center text-[#87ceeb] hover:text-[#6bb6ff] font-medium transition-colors duration-300 group-hover:translate-x-1 transform"
+                >
+                  Learn more →
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 }

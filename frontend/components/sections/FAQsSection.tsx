@@ -100,7 +100,7 @@ export default function FAQsSection() {
     : faqs.filter(faq => faq.category === selectedCategory);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section id="faqs" className="py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">

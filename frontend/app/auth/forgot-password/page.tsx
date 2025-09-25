@@ -51,7 +51,7 @@ export default function ForgotPasswordPage() {
           <div className="mb-6">
             <Link 
               href="/auth/login" 
-              className="inline-flex items-center space-x-2 text-[#2E7D32] hover:text-[#4CAF50] transition-colors"
+              className="inline-flex items-center space-x-2 text-[#87ceeb] hover:text-[#6497b1] transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to Login</span>
@@ -131,7 +131,7 @@ export default function ForgotPasswordPage() {
           <div className="text-center mt-6">
             <p className="text-sm text-gray-600">
               Still having trouble?{" "}
-              <Link href="/contact" className="text-[#2E7D32] hover:underline font-medium">
+              <Link href="/contact" className="text-[#87ceeb] hover:underline font-medium">
                 Contact Support
               </Link>
             </p>
@@ -148,7 +148,7 @@ export default function ForgotPasswordPage() {
         <div className="mb-6">
           <Link 
             href="/auth/login" 
-            className="inline-flex items-center space-x-2 text-[#2E7D32] hover:text-[#4CAF50] transition-colors"
+            className="inline-flex items-center space-x-2 text-[#87ceeb] hover:text-[#6497b1] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Login</span>
@@ -157,7 +157,7 @@ export default function ForgotPasswordPage() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-[#2E7D32] rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto w-16 h-16 bg-[#87ceeb] rounded-full flex items-center justify-center mb-4">
             <Mail className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -205,7 +205,7 @@ export default function ForgotPasswordPage() {
               
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#2E7D32] to-[#4CAF50] hover:from-[#4CAF50] hover:to-[#2E7D32] transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-full bg-gradient-to-r from-[#87ceeb] to-[#6497b1] hover:from-[#6497b1] hover:to-[#87ceeb] transition-all duration-300 shadow-lg hover:shadow-xl"
                 disabled={isLoading || !email}
               >
                 {isLoading ? (
@@ -232,13 +232,13 @@ export default function ForgotPasswordPage() {
                 <div className="space-y-2">
                   <Link 
                     href="/contact" 
-                    className="block text-sm text-[#2E7D32] hover:underline"
+                    className="block text-sm text-[#87ceeb] hover:underline"
                   >
                     Contact Support Team
                   </Link>
                   <Link 
                     href="/auth/register" 
-                    className="block text-sm text-[#2E7D32] hover:underline"
+                    className="block text-sm text-[#87ceeb] hover:underline"
                   >
                     Create New Account
                   </Link>
@@ -252,7 +252,7 @@ export default function ForgotPasswordPage() {
         <div className="text-center mt-8">
           <p className="text-sm text-gray-600">
             Remember your password?{" "}
-            <Link href="/auth/login" className="text-[#2E7D32] hover:underline font-medium">
+            <Link href="/auth/login" className="text-[#87ceeb] hover:underline font-medium">
               Sign In
             </Link>
           </p>

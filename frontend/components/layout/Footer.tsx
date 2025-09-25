@@ -30,13 +30,13 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#2E7D32] text-white">
+    <footer className="bg-[#000000] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo and Description */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="h-8 w-8 bg-[#4CAF50] rounded-lg flex items-center justify-center">
+              <div className="h-8 w-8 bg-[#6497b1] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">A</span>
               </div>
               <span className="ml-2 text-xl font-bold">AIERGT</span>
@@ -59,7 +59,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-[#66BB6A] transition-colors"
+                    className="text-gray-300 hover:text-[#b3cde0] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -76,7 +76,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-[#66BB6A] transition-colors"
+                    className="text-gray-300 hover:text-[#b3cde0] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -93,7 +93,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-[#66BB6A] transition-colors"
+                    className="text-gray-300 hover:text-[#b3cde0] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -112,19 +112,19 @@ export function Footer() {
             <div className="flex space-x-6">
               <Link
                 href="/privacy"
-                className="text-gray-400 hover:text-[#66BB6A] text-sm transition-colors"
+                className="text-gray-400 hover:text-[#b3cde0] text-sm transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-gray-400 hover:text-[#66BB6A] text-sm transition-colors"
+                className="text-gray-400 hover:text-[#b3cde0] text-sm transition-colors"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-400 hover:text-[#66BB6A] text-sm transition-colors"
+                className="text-gray-400 hover:text-[#b3cde0] text-sm transition-colors"
               >
                 Contact
               </Link>

@@ -64,17 +64,17 @@
 
 /* Custom AIERGT Styles */
 .aiergt-primary {
-  @apply bg-[#2E7D32] text-white;
+  @apply bg-[#87ceeb] text-gray-800;
 }
 
 .aiergt-secondary {
-  @apply bg-[#4CAF50] text-white;
+  @apply bg-[#6497b1] text-white;
 }
 
 .aiergt-accent {
-  @apply bg-[#66BB6A] text-white;
+  @apply bg-[#b3cde0] text-gray-800;
 }
 
 .aiergt-background {
-  @apply bg-[#FEF7ED];
+  @apply bg-[#f8fafc];
 }

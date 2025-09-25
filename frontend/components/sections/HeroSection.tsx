@@ -161,7 +161,7 @@ export function HeroSection() {
   const currentSlideData = heroSlides[currentSlide]
 
   return (
-    <section className="relative h-[70vh] sm:h-[80vh] md:h-[80vh] lg:h-[80vh] xl:h-[75vh] 2xl:h-[70vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section id="hero" className="relative h-[70vh] sm:h-[80vh] md:h-[80vh] lg:h-[80vh] xl:h-[75vh] 2xl:h-[70vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('/images/patterns/grid-pattern.svg')] opacity-5"></div>
       
@@ -226,12 +226,12 @@ export function HeroSection() {
                 <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300">
                   <CardContent className="p-4 lg:p-4">
                     <div className="flex items-start space-x-3 w-full">
-                      <div className="w-8 h-8 lg:w-8 lg:h-8 bg-[#2E7D32] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 lg:w-8 lg:h-8 bg-[#87ceeb] rounded-lg flex items-center justify-center flex-shrink-0">
                         <item.icon className="h-4 w-4 lg:h-4 lg:w-4 text-white" />
                       </div>
                       <div className="space-y-2 flex-1">
                         <p className="text-sm lg:text-sm text-red-300 font-medium leading-tight">{item.problem}</p>
-                        <p className="text-sm lg:text-sm text-[#66BB6A] font-medium leading-tight">{item.solution}</p>
+                        <p className="text-sm lg:text-sm text-[#b3cde0] font-medium leading-tight">{item.solution}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -244,7 +244,7 @@ export function HeroSection() {
               <Link href="/auth/register" className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="w-full sm:w-auto bg-gradient-to-r from-[#2E7D32] to-[#4CAF50] hover:from-[#4CAF50] hover:to-[#2E7D32] text-white px-6 py-3 lg:px-8 lg:py-4 text-base lg:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full sm:w-auto bg-gradient-to-r from-[#87ceeb] to-[#6497b1] hover:from-[#6497b1] hover:to-[#87ceeb] text-white px-6 py-3 lg:px-8 lg:py-4 text-base lg:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   <span>{currentSlideData.cta}</span>
                   <ArrowRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />
@@ -266,7 +266,7 @@ export function HeroSection() {
             {/* Stats */}
             <div className="sm:flex flex-col sm:flex-row items-center sm:items-center space-y-3 sm:space-y-0 sm:space-x-8 lg:space-x-8 pt-4 lg:pt-4">
               <div className="text-center sm:text-left">
-                <div className="text-3xl lg:text-3xl font-bold text-[#66BB6A]">{currentSlideData.stats}</div>
+                <div className="text-3xl lg:text-3xl font-bold text-[#b3cde0]">{currentSlideData.stats}</div>
                 <div className="text-sm lg:text-sm text-gray-400">Active Projects</div>
               </div>
             </div>
@@ -307,7 +307,7 @@ export function HeroSection() {
                   onClick={() => goToSlide(index)}
                   className={`w-3 h-3 lg:w-3 lg:h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide 
-                      ? 'bg-[#66BB6A] scale-125' 
+                      ? 'bg-[#b3cde0] scale-125' 
                       : 'bg-white/40 hover:bg-white/60'
                   }`}
                 />
@@ -323,7 +323,7 @@ export function HeroSection() {
                 {currentSlideData.title}
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <div className={`w-2 h-2 lg:w-2 lg:h-2 rounded-full ${isAutoPlaying ? 'bg-[#66BB6A] animate-pulse' : 'bg-white/40'}`}></div>
+                <div className={`w-2 h-2 lg:w-2 lg:h-2 rounded-full ${isAutoPlaying ? 'bg-[#b3cde0] animate-pulse' : 'bg-white/40'}`}></div>
                 <span className="text-sm text-white/60">
                   {isAutoPlaying ? 'Auto-playing' : 'Paused'}
                 </span>
@@ -334,8 +334,8 @@ export function HeroSection() {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-20 right-20 w-20 h-20 bg-[#66BB6A]/20 rounded-full blur-xl animate-pulse z-5"></div>
-      <div className="absolute bottom-20 left-20 w-32 h-32 bg-[#4CAF50]/20 rounded-full blur-xl animate-pulse delay-1000 z-5"></div>
+      <div className="absolute top-20 right-20 w-20 h-20 bg-[#b3cde0]/20 rounded-full blur-xl animate-pulse z-5"></div>
+      <div className="absolute bottom-20 left-20 w-32 h-32 bg-[#6497b1]/20 rounded-full blur-xl animate-pulse delay-1000 z-5"></div>
     </section>
   )
 }

@@ -43,7 +43,7 @@ export default function WhyChooseUsSection() {
   ];
 
   return (
-    <section className="relative py-12 bg-gray-900 overflow-hidden">
+    <section id="why-choose-us" className="relative py-12 bg-gray-900 overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

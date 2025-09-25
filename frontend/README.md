@@ -49,9 +49,9 @@ frontend/
 ## 🎨 Design System
 
 ### Color Palette
-- **Primary Green**: `#2E7D32` (Dark green from logo)
-- **Secondary Green**: `#4CAF50` (Medium green from logo)
-- **Accent Green**: `#66BB6A` (Light green from logo)
+- **Primary Blue**: `#87ceeb` (Sky blue - primary brand color)
+- **Secondary Blue**: `#6497b1` (Medium blue - secondary brand color)
+- **Accent Blue**: `#b3cde0` (Light blue - accent brand color)
 - **Background Cream**: `#FEF7ED` (Warm background)
 
 ### Components
