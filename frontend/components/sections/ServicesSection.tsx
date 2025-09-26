@@ -118,14 +118,14 @@ export default function ServicesSection() {
               </p>
 
               {/* Learn More Link */}
-              <div className="mt-auto">
+              {/*<div className="mt-auto">
                 <a 
                   href="#" 
                   className="inline-flex items-center text-[#87ceeb] hover:text-[#6bb6ff] font-medium transition-colors duration-300 group-hover:translate-x-1 transform"
                 >
                   Learn more →
                 </a>
-              </div>
+              </div>*/}
             </div>
           ))}
         </div>

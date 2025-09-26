@@ -10,11 +10,11 @@ const garamond = EB_Garamond({
   variable: "--font-garamond",
 })
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-})
+// const poppins = Poppins({ 
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+//   variable: "--font-poppins",
+// })
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -42,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${garamond.variable} ${poppins.variable} ${montserrat.variable} font-garamond`}>
+      <body className={`${garamond.variable} ${montserrat.variable} font-garamond`}>
         <Providers>
           <LayoutWrapper>
             {children}

@@ -7,7 +7,6 @@ interface FAQ {
   id: number;
   question: string;
   answer: string;
-  category: string;
 }
 
 const faqs: FAQ[] = [
@@ -15,89 +14,66 @@ const faqs: FAQ[] = [
     id: 1,
     question: "What services does AIERGT offer?",
     answer: "We offer comprehensive environmental services including research, training, technology solutions, innovation consulting, and mentorship programs. Our services cover environmental impact assessments, sustainability consulting, digital solutions, and capacity building across various industries.",
-    category: "Services"
   },
   {
     id: 2,
     question: "How long does a typical project take?",
-    answer: "Project timelines vary depending on scope and complexity. Simple assessments typically take 2-4 weeks, while comprehensive environmental studies may require 3-6 months. We provide detailed timelines during the initial consultation and keep you updated throughout the process.",
-    category: "Project Management"
+    answer: "Project timelines vary depending on scope and complexity. Simple assessments typically take 2-4 weeks, while comprehensive environmental studies may require 3-6 months. We provide detailed timelines during the initial consultation and keep you updated throughout the process."
   },
   {
     id: 3,
     question: "What industries do you work with?",
-    answer: "We work across multiple industries including Agriculture, Water Management, Aviation, Renewable Energy, Construction, Tourism & Conservation, ICT, and Academic Research. Our expertise spans both public and private sectors across Africa.",
-    category: "Industries"
+    answer: "We work across multiple industries including Agriculture, Water Management, Aviation, Renewable Energy, Construction, Tourism & Conservation, ICT, and Academic Research. Our expertise spans both public and private sectors across Africa."
   },
   {
     id: 4,
     question: "Do you provide training and capacity building?",
-    answer: "Yes! We offer comprehensive training programs including skills development, certification courses, workshop sessions, and online learning platforms. Our training covers environmental management, sustainability practices, and technology implementation.",
-    category: "Training"
+    answer: "Yes! We offer comprehensive training programs including skills development, certification courses, workshop sessions, and online learning platforms. Our training covers environmental management, sustainability practices, and technology implementation."
   },
   {
     id: 5,
     question: "How do you ensure project quality?",
-    answer: "Quality is our top priority. We follow international standards, use certified professionals, implement rigorous quality control processes, and provide regular progress reports. All our projects undergo multiple review stages before delivery.",
-    category: "Quality"
+    answer: "Quality is our top priority. We follow international standards, use certified professionals, implement rigorous quality control processes, and provide regular progress reports. All our projects undergo multiple review stages before delivery."
   },
   {
     id: 6,
     question: "What technology solutions do you offer?",
-    answer: "We provide cutting-edge technology solutions including IoT monitoring systems, data analytics platforms, remote sensing technologies, and digital environmental management tools. Our solutions are tailored to meet specific client needs and local conditions.",
-    category: "Technology"
+    answer: "We provide cutting-edge technology solutions including IoT monitoring systems, data analytics platforms, remote sensing technologies, and digital environmental management tools. Our solutions are tailored to meet specific client needs and local conditions."
   },
   {
     id: 7,
     question: "How do you handle data privacy and security?",
-    answer: "We maintain strict data privacy and security protocols in compliance with international standards. All data is encrypted, access is restricted to authorized personnel only, and we follow GDPR and local data protection regulations.",
-    category: "Security"
+    answer: "We maintain strict data privacy and security protocols in compliance with international standards. All data is encrypted, access is restricted to authorized personnel only, and we follow GDPR and local data protection regulations."
   },
   {
     id: 8,
     question: "Can you work with small businesses or startups?",
-    answer: "Absolutely! We work with organizations of all sizes, from startups to large corporations. We offer flexible engagement models and can tailor our services to fit different budgets and requirements while maintaining high quality standards.",
-    category: "Engagement"
+    answer: "Absolutely! We work with organizations of all sizes, from startups to large corporations. We offer flexible engagement models and can tailor our services to fit different budgets and requirements while maintaining high quality standards."
   },
   {
     id: 9,
     question: "What makes AIERGT different from other consultancies?",
-    answer: "Our unique combination of local African expertise, international standards, cutting-edge technology, and proven track record sets us apart. We understand local challenges while bringing global best practices, ensuring practical and sustainable solutions.",
-    category: "Differentiation"
+    answer: "Our unique combination of local African expertise, international standards, cutting-edge technology, and proven track record sets us apart. We understand local challenges while bringing global best practices, ensuring practical and sustainable solutions."
   },
   {
     id: 10,
     question: "Do you offer ongoing support after project completion?",
-    answer: "Yes, we provide comprehensive post-project support including monitoring, maintenance, training, and consultation services. Our 24/7 support ensures your solutions continue to perform optimally and adapt to changing conditions.",
-    category: "Support"
+    answer: "Yes, we provide comprehensive post-project support including monitoring, maintenance, training, and consultation services. Our 24/7 support ensures your solutions continue to perform optimally and adapt to changing conditions."
   },
   {
     id: 11,
     question: "How do you ensure environmental compliance?",
-    answer: "We stay updated with all local and international environmental regulations, conduct thorough compliance assessments, and provide guidance on regulatory requirements. Our team includes certified environmental professionals who ensure full compliance.",
-    category: "Compliance"
+    answer: "We stay updated with all local and international environmental regulations, conduct thorough compliance assessments, and provide guidance on regulatory requirements. Our team includes certified environmental professionals who ensure full compliance."
   },
-  {
-    id: 12,
-    question: "What is your pricing structure?",
-    answer: "Our pricing is transparent and competitive, based on project scope, complexity, and duration. We offer flexible payment terms and can provide detailed cost breakdowns during the proposal stage. Contact us for a customized quote.",
-    category: "Pricing"
-  }
 ];
 
-const categories = ["All", "Services", "Project Management", "Industries", "Training", "Quality", "Technology", "Security", "Engagement", "Differentiation", "Support", "Compliance", "Pricing"];
 
 export default function FAQsSection() {
   const [openItem, setOpenItem] = useState<number | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const toggleItem = (id: number) => {
     setOpenItem(prev => prev === id ? null : id);
   };
-
-  const filteredFAQs = selectedCategory === "All" 
-    ? faqs 
-    : faqs.filter(faq => faq.category === selectedCategory);
 
   return (
     <section id="faqs" className="py-16">
@@ -115,26 +91,9 @@ export default function FAQsSection() {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-primary text-white shadow-lg transform scale-105'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 hover:border-primary/30'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
         {/* FAQs Accordion */}
         <div className="space-y-4">
-          {filteredFAQs.map((faq, index) => (
+          {faqs.map((faq, index) => (
             <div
               key={faq.id}
               className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
@@ -159,9 +118,6 @@ export default function FAQsSection() {
                     <h3 className="font-semibold text-gray-900 text-left mb-1">
                       {faq.question}
                     </h3>
-                    <span className="inline-block px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                      {faq.category}
-                    </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 ml-4">

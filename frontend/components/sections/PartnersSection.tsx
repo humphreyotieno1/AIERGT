@@ -58,25 +58,10 @@ export default function PartnersSection() {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
             Our Trusted Partners
           </h2>
-          <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-md md:text-base text-gray-600 max-w-2xl mx-auto">
             We collaborate with industry leaders across various sectors
           </p>
         </div>
-
-        {/* Auto-play Controls */}
-        {/* <div className="flex justify-center mb-6">
-          <button
-            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            className={`flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-              isAutoPlaying
-                ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                : 'bg-green-100 text-green-700 hover:bg-green-200'
-            }`}
-          >
-            <div className={`w-1.5 h-1.5 rounded-full ${isAutoPlaying ? 'bg-red-500' : 'bg-green-500'}`}></div>
-            <span>{isAutoPlaying ? 'Pause' : 'Play'}</span>
-          </button>
-        </div> */}
 
         {/* Partners Carousel */}
         <div 
@@ -91,10 +76,10 @@ export default function PartnersSection() {
             {duplicatedPartners.map((partner, index) => (
               <div
                 key={`${partner.id}-${index}`}
-                className="flex-shrink-0 flex flex-col items-center cursor-pointer group"
+                className="flex-shrink-0 flex flex-col items-center cursor-pointer group p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:border hover:border-gray-100"
                 onClick={() => handlePartnerClick(partner)}
               >
-                <div className="relative w-16 h-16 mb-2">
+                <div className="relative w-16 h-16 mb-3 p-2 bg-gray-50 rounded-lg group-hover:bg-gray-100 transition-colors duration-300">
                   <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
@@ -107,7 +92,7 @@ export default function PartnersSection() {
                   href={partner.website || '/'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-gray-700 hover:text-primary transition-colors text-center max-w-[160px] truncate"
+                  className="text-sm text-gray-700 hover:text-primary transition-colors text-center max-w-[160px] truncate"
                   onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.stopPropagation()}
                 >
                   {partner.name}

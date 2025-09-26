@@ -54,11 +54,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground font-garamond;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-garamond;
+    @apply font-montserrat;
   }
 }
 
