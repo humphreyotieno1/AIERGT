@@ -13,7 +13,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ type
     member: {
       title: "Member Portal",
       description: "Welcome to your member dashboard",
-      color: "bg-[#87ceeb]",
+      color: "bg-[#79BAEC]",
       features: ["Profile Management", "Course Access", "Certificates", "Resources"]
     },
     geoportal: {

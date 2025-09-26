@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/HeroSection"
 import { TrustBadgesSection } from "@/components/sections/TrustBadgesSection"
 import PartnersSection from "@/components/sections/PartnersSection"
 import ServicesSection from "@/components/sections/ServicesSection"
+import LeadMagnetSection from "@/components/sections/LeadMagnetSection"
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection"
 import FAQsSection from "@/components/sections/FAQsSection"
 import BackToTop from "@/components/ui/BackToTop"
@@ -12,6 +13,7 @@ export default function HomePage() {
       <HeroSection />
       <ServicesSection />
       <PartnersSection />
+      <LeadMagnetSection />
       <WhyChooseUsSection />
       <FAQsSection />
       {/* <TrustBadgesSection /> */}

@@ -14,7 +14,7 @@ const loginTypes = {
     name: "Member Portal",
     icon: User,
     description: "Access your member dashboard, courses, and resources",
-    color: "bg-[#87ceeb]"
+    color: "bg-[#79BAEC]"
   },
   geoportal: {
     name: "Geoportal",
@@ -73,7 +73,7 @@ function LoginPageContent() {
       <div className="max-w-md w-full space-y-8">
         {/* Back Button */}
         <div className="flex justify-start">
-          <Link href="/" className="flex items-center text-gray-600 hover:text-[#87ceeb] transition-colors">
+          <Link href="/" className="flex items-center text-gray-600 hover:text-[#79BAEC] transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Link>
@@ -160,7 +160,7 @@ function LoginPageContent() {
             <div className="mt-4 text-center">
               <Link 
                 href="/auth/forgot-password" 
-                className="text-sm text-[#87ceeb] hover:underline font-medium"
+                className="text-sm text-[#79BAEC] hover:underline font-medium"
               >
                 Forgot your password?
               </Link>
@@ -169,7 +169,7 @@ function LoginPageContent() {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{" "}
-                <Link href="/auth/register" className="text-[#87ceeb] hover:underline">
+                <Link href="/auth/register" className="text-[#79BAEC] hover:underline">
                   Register here
                 </Link>
               </p>

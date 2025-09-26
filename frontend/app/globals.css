@@ -64,7 +64,7 @@
 
 /* Custom AIERGT Styles */
 .aiergt-primary {
-  @apply bg-[#87ceeb] text-gray-800;
+  @apply bg-[#79BAEC] text-gray-800;
 }
 
 .aiergt-secondary {

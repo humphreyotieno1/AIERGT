@@ -13,7 +13,7 @@ const heroSlides = [
     title: "Preparing Africa For Tomorrow",
     subtitle: "Leading environmental research and geospatial technology solutions across the continent",
     image: "/hero/c1.png",
-    cta: "Join Our Mission",
+    cta: "Get Your Free Consultation",
     stats: "50+ Countries",
     description: "Empowering sustainable development through cutting-edge research"
   },
@@ -22,7 +22,7 @@ const heroSlides = [
     title: "Advanced Geospatial Solutions",
     subtitle: "Revolutionary mapping and data analysis tools for environmental challenges",
     image: "/hero/c2.png",
-    cta: "Explore Technology",
+    cta: "Download Our Research Report",
     stats: "1000+ Projects",
     description: "Transforming data into actionable environmental insights"
   },
@@ -31,7 +31,7 @@ const heroSlides = [
     title: "Expert Training Programs",
     subtitle: "Professional development courses in environmental science and geospatial technology",
     image: "/hero/Deserts.jpg",
-    cta: "Start Learning",
+    cta: "Start Your Training Today",
     stats: "10,000+ Graduates",
     description: "Building the next generation of environmental leaders"
   },
@@ -40,7 +40,7 @@ const heroSlides = [
     title: "Research Excellence",
     subtitle: "Groundbreaking studies shaping Africa's environmental future",
     image: "/hero/forest.jpg",
-    cta: "View Research",
+    cta: "View Our Case Studies",
     stats: "500+ Publications",
     description: "Advancing knowledge for sustainable development"
   },
@@ -49,7 +49,7 @@ const heroSlides = [
     title: "Climate Action Hub",
     subtitle: "Comprehensive solutions for climate change adaptation and mitigation",
     image: "/hero/girraffe.jpg",
-    cta: "Take Action",
+    cta: "Join Our Climate Initiative",
     stats: "200+ Initiatives",
     description: "Leading Africa's response to climate challenges"
   },
@@ -226,7 +226,7 @@ export function HeroSection() {
                 <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300">
                   <CardContent className="p-4 lg:p-4">
                     <div className="flex items-start space-x-3 w-full">
-                      <div className="w-8 h-8 lg:w-8 lg:h-8 bg-[#87ceeb] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 lg:w-8 lg:h-8 bg-[#79BAEC] rounded-lg flex items-center justify-center flex-shrink-0">
                         <item.icon className="h-4 w-4 lg:h-4 lg:w-4 text-white" />
                       </div>
                       <div className="space-y-2 flex-1">
@@ -244,7 +244,7 @@ export function HeroSection() {
               <Link href="/auth/register" className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="w-full sm:w-auto bg-gradient-to-r from-[#87ceeb] to-[#6497b1] hover:from-[#6497b1] hover:to-[#87ceeb] text-white px-6 py-3 lg:px-8 lg:py-4 text-base lg:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full sm:w-auto bg-gradient-to-r from-[#79BAEC] to-[#6497b1] hover:from-[#6497b1] hover:to-[#79BAEC] text-white px-6 py-3 lg:px-8 lg:py-4 text-base lg:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   <span>{currentSlideData.cta}</span>
                   <ArrowRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />

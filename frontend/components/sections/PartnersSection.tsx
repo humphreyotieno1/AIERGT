@@ -83,7 +83,8 @@ export default function PartnersSection() {
                   <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
-                    fill
+                    width={64}
+                    height={64}
                     priority
                     className="object-contain group-hover:scale-110 transition-transform duration-300"
                   />

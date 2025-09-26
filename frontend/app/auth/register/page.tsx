@@ -16,25 +16,25 @@ const userTypes = {
     name: "African Consultants/Experts",
     description: "A citizen of any of the 54 AU member states",
     icon: Users,
-    color: "bg-[#87ceeb] hover:bg-[#87ceeb]/90"
+    color: "bg-[#79BAEC] hover:bg-[#79BAEC]/90"
   },
   PARTNER: {
     name: "Partners",
     description: "Private Institution, Universities, Government Agencies, NGOs, CBOs, Consultancy Firms",
     icon: Building,
-    color: "bg-[#87ceeb] hover:bg-[#87ceeb]/90"
+    color: "bg-[#79BAEC] hover:bg-[#79BAEC]/90"
   },
   EXPATRIATE_CONSULTANT: {
     name: "Expatriates Consultants/Experts",
     description: "Citizen from any of the following regions: Asia, Australia, Europe, North America, South America",
     icon: Globe,
-    color: "bg-[#87ceeb] hover:bg-[#87ceeb]/90"
+    color: "bg-[#79BAEC] hover:bg-[#79BAEC]/90"
   },
   STUDENT: {
     name: "Students",
     description: "Students enrolled in environmental or geospatial programs",
     icon: GraduationCap,
-    color: "bg-[#87ceeb] hover:bg-[#87ceeb]/90"
+    color: "bg-[#79BAEC] hover:bg-[#79BAEC]/90"
   }
 }
 
@@ -114,7 +114,7 @@ export default function RegisterPage() {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <div className="mb-8">
-          <Link href="/" className="flex items-center text-gray-600 hover:text-[#87ceeb] transition-colors">
+          <Link href="/" className="flex items-center text-gray-600 hover:text-[#79BAEC] transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Link>
@@ -122,7 +122,7 @@ export default function RegisterPage() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-[#87ceeb] rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto w-16 h-16 bg-[#79BAEC] rounded-full flex items-center justify-center mb-4">
             <User className="h-8 w-8 text-white" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
@@ -153,16 +153,16 @@ export default function RegisterPage() {
                         onClick={() => handleUserTypeSelect(key)}
                         className={`w-full p-4 rounded-lg border-2 transition-all duration-200 text-left ${
                           formData.userType === key
-                            ? `${userType.color} text-white border-[#87ceeb]`
-                            : "bg-white text-gray-700 border-gray-200 hover:border-[#87ceeb] hover:bg-gray-50"
+                            ? `${userType.color} text-white border-[#79BAEC]`
+                            : "bg-white text-gray-700 border-gray-200 hover:border-[#79BAEC] hover:bg-gray-50"
                         }`}
                       >
                         <div className="flex items-center space-x-3">
                           <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                            formData.userType === key ? "bg-white/20" : "bg-[#87ceeb]/10"
+                            formData.userType === key ? "bg-white/20" : "bg-[#79BAEC]/10"
                           }`}>
                             <userType.icon className={`h-5 w-5 ${
-                              formData.userType === key ? "text-white" : "text-[#87ceeb]"
+                              formData.userType === key ? "text-white" : "text-[#79BAEC]"
                             }`} />
                           </div>
                           <div>
@@ -313,7 +313,7 @@ export default function RegisterPage() {
                   
                   <Button
                     type="submit"
-                    className="w-full bg-[#87ceeb] hover:bg-[#87ceeb]/90"
+                    className="w-full bg-[#79BAEC] hover:bg-[#79BAEC]/90"
                     disabled={isLoading}
                   >
                     {isLoading ? "Creating account..." : "Create Account"}
@@ -324,7 +324,7 @@ export default function RegisterPage() {
                 <div className="mt-4 text-center">
                   <Link 
                     href="/auth/forgot-password" 
-                    className="text-sm text-[#87ceeb] hover:underline font-medium"
+                    className="text-sm text-[#79BAEC] hover:underline font-medium"
                   >
                     Forgot your password?
                   </Link>
@@ -333,7 +333,7 @@ export default function RegisterPage() {
                 <div className="mt-6 text-center">
                   <p className="text-sm text-gray-600">
                     Already have an account?{" "}
-                    <Link href="/auth/login" className="text-[#87ceeb] hover:underline">
+                    <Link href="/auth/login" className="text-[#79BAEC] hover:underline">
                       Sign in here
                     </Link>
                   </p>
