@@ -34,6 +34,7 @@ import {
   UserCircle,
   Shield,
   LayoutDashboard,
+  Heart,
 } from "lucide-react"
 
 export function Header() {
@@ -115,23 +116,29 @@ export function Header() {
       description: "Learn about our mission, leadership, and organizational structure",
       dropdown: [
         { 
+          name: "Our Story", 
+          href: "/about#our-story",
+          icon: BookOpen,
+          description: "Discover how AIERGT was founded and our journey to transform Africa"
+        },
+        { 
           name: "Mission and Vision", 
-          href: "/about/mission",
+          href: "/about#mission-vision",
           icon: Award,
           description: "Our commitment to environmental sustainability and geospatial innovation across Africa"
         },
         { 
-          name: "Structure", 
-          href: "/about/structure",
+          name: "Organizational Structure", 
+          href: "/about#structure",
           icon: Users,
           description: "Meet the experts driving environmental research and geospatial technology"
         },
         { 
-          name: "Contact Us", 
-          href: "/contact",
-          icon: Phone,
-          description: "Get in touch with our team of environmental and geospatial experts"
-        }
+          name: "Our Values", 
+          href: "/about#values",
+          icon: Heart,
+          description: "The principles that guide our work and define our commitment to Africa"
+        },
       ]
     },
     { 
@@ -477,7 +484,7 @@ export function Header() {
                 <div key={item.name} className="relative group">
                   <Link
                     href={item.href}
-                    className={`px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`px-3 py-2 text-sm font-bold transition-colors ${
                       item.name === "Home"
                         ? "text-[#79BAEC]"
                         : "text-gray-700 hover:text-[#79BAEC]"
