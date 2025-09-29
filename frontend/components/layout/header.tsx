@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useSession, signOut } from "next-auth/react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/contexts/LanguageContext"
 import { 
   Menu, 

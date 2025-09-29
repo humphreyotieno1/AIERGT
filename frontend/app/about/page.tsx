@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import OurStorySection from '@/components/sections/about/OurStorySection';
-import MissionVisionSection from '@/components/sections/about/MissionVisionSection';
-import OrganizationalStructureSection from '@/components/sections/about/OrganizationalStructureSection';
-import ValuesSection from '@/components/sections/about/ValuesSection';
+import OurStorySection from '@/components/sections/about/our-story-section';
+import MissionVisionSection from '@/components/sections/about/mission-vision-section';
+import OrganizationalStructureSection from '@/components/sections/about/organizational-structure-section';
+import ValuesSection from '@/components/sections/about/values-section';
 
 export const metadata: Metadata = {
   title: 'About Us - AIERGT | Preparing Africa For Tomorrow',

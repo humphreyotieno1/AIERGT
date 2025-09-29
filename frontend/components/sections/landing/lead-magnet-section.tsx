@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Download, FileText, Users, Award, CheckCircle, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 export default function LeadMagnetSection() {
   const resources = [

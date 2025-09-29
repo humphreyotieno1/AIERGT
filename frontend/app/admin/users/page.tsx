@@ -1,9 +1,9 @@
 import { requireAdmin } from "@/lib/utils/auth.utils"
 import { getAllUsers, getPendingVerifications } from "@/lib/actions/auth.actions"
 import { handleVerifyUser, handleRejectUser } from "@/lib/actions/admin.actions"
-import { Button } from "@/components/ui/Button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-import { Badge } from "@/components/ui/Badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { CheckCircle, XCircle, Users, UserCheck, UserX, Mail, Phone, Building } from "lucide-react"
 import { redirect } from "next/navigation"
 

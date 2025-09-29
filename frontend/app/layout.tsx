@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import { EB_Garamond, Poppins, Montserrat } from "next/font/google"
 import "./globals.css"
-import { LayoutWrapper } from "@/components/layout/LayoutWrapper"
-import { Providers } from "@/components/providers/Providers"
+import { LayoutWrapper } from "@/components/layout/layout-wrapper"
+import { Providers } from "@/components/providers/providers"
 
 const garamond = EB_Garamond({ 
   subsets: ["latin"],

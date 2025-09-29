@@ -1,7 +1,7 @@
 'use client';
 
 import { Target, Eye, ArrowRight, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 export default function MissionVisionSection() {
   return (
