@@ -10,12 +10,6 @@ const garamond = EB_Garamond({
   variable: "--font-garamond",
 })
 
-// const poppins = Poppins({ 
-//   subsets: ["latin"],
-//   weight: ["300", "400", "500", "600", "700"],
-//   variable: "--font-poppins",
-// })
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -27,6 +21,16 @@ export const metadata: Metadata = {
   description: "Leading provider of sustainable environmental and geospatial solutions across Africa. Preparing Africa For Tomorrow.",
   keywords: "environmental research, geospatial technology, Africa, sustainability, training, research",
   authors: [{ name: "AIERGT" }],
+  icons: {
+    icon: [
+      { url: '/logo.png', sizes: 'any', type: 'image/png' },
+      { url: '/logo.png', sizes: '16x16', type: 'image/png' },
+      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/logo.png' }
+    ]
+  },
   openGraph: {
     title: "AIERGT - Preparing Africa For Tomorrow",
     description: "Leading provider of sustainable environmental and geospatial solutions across Africa",

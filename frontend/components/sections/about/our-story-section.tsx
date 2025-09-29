@@ -1,112 +1,129 @@
-'use client';
+"use client";
 
-import { Globe, Lightbulb, Heart, Target } from 'lucide-react';
+import Image from "next/image";
 
 export default function OurStorySection() {
   return (
-    <section id="our-story" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Our Story
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Born from a vision to transform Africa through environmental excellence and geospatial innovation
-          </p>
+    <section id="our-story" className="relative isolate bg-gray-50 pb-24">
+      {/* Visual Banner */}
+      <div className="relative min-h-[420px] sm:min-h-[460px] lg:min-h-[520px] bg-gray-900 overflow-hidden">
+        <Image
+          src="/about/africa.jpg"
+          alt="AIERGT supporting Africa"
+          fill
+          priority
+          className="object-cover"
+          sizes="(min-width: 1024px) 100vw, 100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/20" />
+        <div className="absolute inset-0">
+          <div className="relative z-10 max-w-6xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-end py-14 sm:py-16 lg:py-20">
+            <span className="hidden sm:block inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-[0.2em] text-white/90 w-fit">
+              About AIERGT
+            </span>
+            <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-3xl">
+              Preparing Africa for tomorrow through environmental intelligence
+              and geospatial innovation
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-white/80 max-w-2xl">
+              We unite Africa&apos;s leading environmental and geospatial
+              experts to co-create sustainable solutions tailored to our
+              continent.
+            </p>
+          </div>
         </div>
+      </div>
 
-        {/* Story Timeline */}
-        <div className="max-w-4xl mx-auto">
-          {/* The Challenge */}
-          <div className="mb-16">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-                  <Target className="w-8 h-8 text-red-600" />
+      {/* Content Card */}
+      <div className="relative z-10 mt-10 sm:mt-12 lg:mt-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl bg-white shadow-xl shadow-blue-100/40 border border-gray-100 overflow-hidden">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:items-center p-8 sm:p-10 lg:p-12">
+              {/* Narrative */}
+              <div>
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="h-1 w-16 rounded-full bg-[#79BAEC]" />
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#79BAEC]">
+                    Our Story
+                  </p>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-6">
+                  African Institute for Environmental Research and Geospatial
+                  Technology
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                  AIERGT is a professional platform that provides sustainable solutions for the challenges facing the African continent. There is a need for African Environmental and Geospatial Experts to participate in shaping the destiny of the African continent. This can only be achieved in a united front with diverse expertise, experience, and competences.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                  Africa is rich in diversity in terms of race(color), ethnicity, culture, tradition, and religion. These are all our heritages, and we embrace them as AIERGT, they are our strength. We further acknowlegde that they do not define our competences, but rather enrich our way of life.
+                </p>
+                <div className="grid gap-6 sm:grid-cols-2 mt-8">
+                  <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      Why we exist
+                    </h3>
+                    <p className="text-base text-gray-600 leading-relaxed">
+                      To unite environmental and geospatial leaders across the
+                      continent, providing the shared tools, knowledge, and
+                      mentorship needed to design Africa-first solutions.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-[#79BAEC]/30 bg-[#79BAEC]/10 p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      What drives us
+                    </h3>
+                    <p className="text-base text-gray-600 leading-relaxed">
+                      Diversity is our strength. We celebrate Africa&apos;s
+                      cultures, traditions, and expertise while building a
+                      sustainable future powered by local competence and global
+                      collaboration.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">The Challenge</h3>
-                <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  Africa faces unprecedented environmental challenges - from climate change impacts to rapid urbanization, 
-                  biodiversity loss, and water scarcity. Yet, the continent lacked a unified platform where African 
-                  environmental and geospatial experts could collaborate, share knowledge, and drive sustainable solutions.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  We recognized that Africa's environmental destiny needed to be shaped by Africans themselves, 
-                  leveraging local knowledge, expertise, and innovative approaches tailored to our unique challenges.
-                </p>
-              </div>
-            </div>
-          </div>
 
-          {/* The Vision */}
-          <div className="mb-16">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Lightbulb className="w-8 h-8 text-blue-600" />
+              {/* Supporting Visual */}
+              <div className="lg:h-full">
+                <div className="relative rounded-3xl border border-gray-100 bg-gradient-to-br from-[#79BAEC]/10 via-white to-white p-4 shadow-sm">
+                  <div className="relative aspect-square rounded-2xl overflow-hidden bg-white">
+                    <Image
+                      src="/about/africa.jpg"
+                      alt="AIERGT regional reach across Africa"
+                      fill
+                      className="object-contain"
+                      sizes="(min-width: 1024px) 360px, 60vw"
+                    />
+                  </div>
+                  <p className="mt-4 text-sm text-gray-500 leading-relaxed">
+                    AIERGT operates across all five African regions, partnering
+                    with governments, institutions, and communities to
+                    accelerate environmental resilience.
+                  </p>
+                  <div className="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div>
+                      <p className="text-2xl font-bold text-gray-900">50+</p>
+                      <p className="text-sm text-gray-500">Countries served</p>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-gray-900">500+</p>
+                      <p className="text-sm text-gray-500">
+                        Projects delivered
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-gray-900">10k+</p>
+                      <p className="text-sm text-gray-500">
+                        Professionals trained
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-gray-900">15</p>
+                      <p className="text-sm text-gray-500">
+                        Years of collective expertise
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">The Vision</h3>
-                <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  In 2020, AIERGT was founded with a clear vision: to create a professional platform that unites 
-                  Africa's brightest minds in environmental research and geospatial technology. We envisioned a 
-                  continent where sustainable solutions emerge from collaborative expertise, cutting-edge technology, 
-                  and deep local understanding.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Our founders, recognizing the power of unity in diversity, established AIERGT as a platform 
-                  that embraces Africa's rich heritage while building a sustainable future.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* The Solution */}
-          <div className="mb-16">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <Globe className="w-8 h-8 text-green-600" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">The Solution</h3>
-                <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  AIERGT emerged as Africa's premier platform for environmental research and geospatial technology, 
-                  bringing together experts from across the continent. We provide comprehensive solutions through 
-                  research, training, technology innovation, and mentorship programs.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Today, we serve 50+ countries, have trained over 10,000 professionals, and completed 500+ projects 
-                  that directly contribute to Africa's sustainable development goals.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Our Values */}
-          <div>
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-[#79BAEC]/20 rounded-full flex items-center justify-center">
-                  <Heart className="w-8 h-8 text-[#79BAEC]" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
-                <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  Africa's diversity in race, ethnicity, culture, tradition, and religion is our greatest strength. 
-                  We embrace this heritage as AIERGT, recognizing that diversity enriches our way of life and 
-                  enhances our collective competence.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  We believe that competence is not defined by background, but by dedication, expertise, and 
-                  commitment to Africa's sustainable future.
-                </p>
               </div>
             </div>
           </div>

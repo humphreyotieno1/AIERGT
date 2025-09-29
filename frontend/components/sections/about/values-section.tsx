@@ -1,6 +1,7 @@
 'use client';
 
 import { Heart, Users, Lightbulb, Shield, Globe, Award } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ValuesSection() {
   const values = [
@@ -93,12 +94,12 @@ export default function ValuesSection() {
               through environmental excellence and sustainable development.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#79BAEC] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#79BAEC]/90 transition-colors duration-300">
+              <Link href="/auth/register" className="bg-[#79BAEC] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#79BAEC]/90 transition-colors duration-300">
                 Join Our Community
-              </button>
-              <button className="border-2 border-[#79BAEC] text-[#79BAEC] px-8 py-4 rounded-lg font-semibold hover:bg-[#79BAEC] hover:text-white transition-colors duration-300">
+              </Link>
+              <Link href="/about" className="border-2 border-[#79BAEC] text-[#79BAEC] px-8 py-4 rounded-lg font-semibold hover:bg-[#79BAEC] hover:text-white transition-colors duration-300">
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
         </div>

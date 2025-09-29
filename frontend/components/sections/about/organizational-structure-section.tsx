@@ -1,41 +1,33 @@
 'use client';
 
-import { Users, MapPin, Building, Award } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { X } from 'lucide-react';
 
 export default function OrganizationalStructureSection() {
-  const regions = [
-    { name: 'Eastern Africa', color: 'bg-orange-500' },
-    { name: 'Southern Africa', color: 'bg-green-600' },
-    { name: 'Central Africa', color: 'bg-yellow-500' },
-    { name: 'West Africa', color: 'bg-green-400' },
-    { name: 'North Africa', color: 'bg-orange-400' }
-  ];
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const directorates = [
-    {
-      name: 'Safety, Social, Health and Environmental Services',
-      count: 5,
-      description: 'Ensuring comprehensive environmental and social impact assessments'
-    },
-    {
-      name: 'Geospatial and Space Technology',
-      count: 5,
-      description: 'Advancing mapping, remote sensing, and spatial analysis capabilities'
-    },
-    {
-      name: 'Research and Enterprise Development',
-      count: 5,
-      description: 'Driving innovation through research and supporting enterprise growth'
-    },
-    {
-      name: 'Digital Innovation and Media Services',
-      count: 5,
-      description: 'Leveraging digital tools and media for environmental communication'
-    }
-  ];
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsLightboxOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isLightboxOpen]);
 
   return (
-    <section id="structure" className="py-20 bg-white">
+    <section id="structure" className="py-18 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -49,126 +41,69 @@ export default function OrganizationalStructureSection() {
 
         {/* Leadership Hierarchy */}
         <div className="max-w-6xl mx-auto">
-          {/* CEO Level */}
-          <div className="text-center mb-12">
-            <div className="inline-block bg-[#79BAEC] text-white rounded-2xl px-8 py-6 shadow-lg">
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                  <Users className="w-8 h-8" />
-                </div>
-                <div className="text-left">
-                  <h3 className="text-2xl font-bold">CEO and Founder</h3>
-                  <p className="text-[#79BAEC]/80">Strategic Leadership</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Advisory Board */}
-          <div className="text-center mb-12">
-            <div className="inline-block bg-gray-800 text-white rounded-2xl px-8 py-6 shadow-lg">
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                  <Building className="w-8 h-8" />
-                </div>
-                <div className="text-left">
-                  <h3 className="text-2xl font-bold">The Africa Advisory Board</h3>
-                  <p className="text-gray-300">Continental Governance</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Regional Coordinators */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-              Regional Coordinators
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {regions.map((region, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
-                >
-                  <div className="text-center">
-                    <div className={`w-12 h-12 ${region.color} rounded-full mx-auto mb-4 flex items-center justify-center`}>
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 text-sm">
-                      {region.name} Regional Coordinator
-                    </h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Regional Directors */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-              Regional Directors
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {directorates.map((directorate, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#79BAEC] rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Award className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 mb-2">
-                        {directorate.name}
-                      </h4>
-                      <p className="text-gray-600 text-sm mb-3">
-                        {directorate.description}
-                      </p>
-                      <div className="flex items-center">
-                        <span className="text-[#79BAEC] font-semibold">
-                          {directorate.count} Directors
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+            <div className="relative rounded-[32px] border border-gray-100 bg-white p-4 shadow-lg shadow-blue-100/40">
+              <button
+                type="button"
+                onClick={() => setIsLightboxOpen(true)}
+                className="group relative aspect-[16/9] w-full overflow-hidden rounded-[28px] bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#79BAEC]/40"
+                aria-label="View organizational structure in full screen"
+              >
+                <Image
+                  src="/about/structure.png"
+                  alt="AIERGT organizational structure"
+                  fill
+                  className="object-contain p-4 transition-transform duration-300 group-hover:scale-[1.01]"
+                  sizes="(min-width: 1280px) 960px, (min-width: 768px) 80vw, 100vw"
+                  priority
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-4">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    Tap to enlarge
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Key Statistics */}
-        <div className="bg-gradient-to-br from-[#79BAEC]/5 to-[#79BAEC]/10 rounded-3xl p-8 md:p-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Our Continental Reach
-            </h3>
-            <p className="text-lg text-gray-600">
-              A network spanning across Africa with dedicated professionals in every region
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#79BAEC] mb-2">5</div>
-              <p className="text-gray-600">Regional Coordinators</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#79BAEC] mb-2">20</div>
-              <p className="text-gray-600">Regional Directors</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#79BAEC] mb-2">50+</div>
-              <p className="text-gray-600">Countries Covered</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#79BAEC] mb-2">1000+</div>
-              <p className="text-gray-600">Active Members</p>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-16 sm:px-8"
+          onClick={() => setIsLightboxOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Organizational structure full screen view"
+        >
+          <div
+            className="relative w-full max-w-5xl" 
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#79BAEC]/60"
+              aria-label="Close full screen view"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[32px] bg-white p-2 shadow-xl">
+              <div className="relative h-full w-full rounded-[24px] bg-gray-50">
+                <Image
+                  src="/about/structure.png"
+                  alt="AIERGT organizational structure"
+                  fill
+                  className="object-contain p-4"
+                  sizes="(min-width: 1280px) 960px, (min-width: 768px) 80vw, 100vw"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

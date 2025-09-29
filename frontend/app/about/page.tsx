@@ -8,6 +8,16 @@ export const metadata: Metadata = {
   title: 'About Us - AIERGT | Preparing Africa For Tomorrow',
   description: 'Learn about AIERGT\'s mission to transform Africa through environmental research, geospatial technology, and sustainable solutions. Discover our story, values, and organizational structure.',
   keywords: 'about AIERGT, environmental research Africa, geospatial technology, sustainable development, Africa transformation',
+  icons: {
+    icon: [
+      { url: '/logo.png', sizes: 'any', type: 'image/png' },
+      { url: '/logo.png', sizes: '16x16', type: 'image/png' },
+      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/logo.png' }
+    ]
+  }
 };
 
 export default function AboutPage() {
