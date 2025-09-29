@@ -184,7 +184,7 @@ export function Header() {
           description: "Environmental modelling and simulation tools"
         },
         {
-          name: "Environmetal Management",
+          name: "Environmental Management",
           href: "/services/management",
           icon: Building,
           description: "Environmental management and compliance systems"
