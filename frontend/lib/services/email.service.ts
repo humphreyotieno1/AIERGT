@@ -1,4 +1,16 @@
 import nodemailer from 'nodemailer'
+import type { Attachment } from 'nodemailer/lib/mailer'
+
+type BasicUserDetails = {
+  name: string
+  email: string
+}
+
+type AdminCandidateDetails = BasicUserDetails & {
+  role: string
+  organization?: string | null
+  phone?: string | null
+}
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -14,6 +26,7 @@ const transporter = nodemailer.createTransport({
 export interface EmailTemplate {
   subject: string
   html: string
+  attachments?: Attachment[]
 }
 
 export class EmailService {
@@ -24,6 +37,7 @@ export class EmailService {
         to,
         subject: template.subject,
         html: template.html,
+        attachments: template.attachments,
       })
       return true
     } catch (error) {
@@ -32,7 +46,62 @@ export class EmailService {
     }
   }
 
-  static async sendAdminVerificationEmail(user: any): Promise<boolean> {
+  static async sendConsultancyRequestEmails(payload: {
+    name: string
+    email: string
+    phone: string
+    description: string
+    categoryName: string
+    categorySlug?: string
+    serviceName?: string
+    attachment?: { filename: string; content: Buffer }
+  }): Promise<boolean> {
+    const adminRecipients = process.env.SMTP_FROM || process.env.SMTP_USER
+
+    if (!adminRecipients) {
+      throw new Error('No consultancy request recipient configured')
+    }
+
+    const adminHtml = `
+      <h2>New Consultancy Quote Request</h2>
+      <p><strong>Category:</strong> ${payload.categoryName}${payload.categorySlug ? ` (${payload.categorySlug})` : ''}</p>
+      ${payload.serviceName ? `<p><strong>Service:</strong> ${payload.serviceName}</p>` : ''}
+      <h3>Contact Details</h3>
+      <ul>
+        <li><strong>Name:</strong> ${payload.name}</li>
+        <li><strong>Email:</strong> ${payload.email}</li>
+        <li><strong>Phone:</strong> ${payload.phone}</li>
+      </ul>
+      <h3>Project Description</h3>
+      <p>${payload.description.replace(/\n/g, '<br/>')}</p>
+    `
+
+    const adminTemplate: EmailTemplate = {
+      subject: `Consultancy Quote Request – ${payload.categoryName}`,
+      html: adminHtml,
+      attachments: payload.attachment ? [payload.attachment] : undefined,
+    }
+
+    const userTemplate: EmailTemplate = {
+      subject: 'We received your consultancy request – AIERGT',
+      html: `
+        <h2>Thank you, ${payload.name}!</h2>
+        <p>We have received your consultancy request for <strong>${payload.categoryName}</strong>${
+          payload.serviceName ? ` (service: ${payload.serviceName})` : ''
+        }.</p>
+        <p>Our team will review your brief and respond within two working days with the next steps.</p>
+        <p>If you need to share additional material, reply directly to this email.</p>
+        <p>Warm regards,<br/>The AIERGT Consultancy Team</p>
+      `,
+    }
+
+    const adminSent = await this.sendEmail(adminRecipients, adminTemplate)
+    const userSent = await this.sendEmail(payload.email, userTemplate)
+
+    return adminSent && userSent
+  }
+
+  static async sendAdminVerificationEmail(user: AdminCandidateDetails): Promise<boolean> {
     const adminEmails = await this.getAdminEmails()
     const adminEmailList = adminEmails.join(', ')
 
@@ -55,7 +124,7 @@ export class EmailService {
     return this.sendEmail(adminEmailList, template)
   }
 
-  static async sendWelcomeEmail(user: any): Promise<boolean> {
+  static async sendWelcomeEmail(user: BasicUserDetails): Promise<boolean> {
     const template: EmailTemplate = {
       subject: 'Welcome to AIERGT',
       html: `
@@ -71,7 +140,7 @@ export class EmailService {
     return this.sendEmail(user.email, template)
   }
 
-  static async sendUserVerificationEmail(user: any): Promise<boolean> {
+  static async sendUserVerificationEmail(user: BasicUserDetails): Promise<boolean> {
     const template: EmailTemplate = {
       subject: 'Account Verified - AIERGT',
       html: `
@@ -93,7 +162,7 @@ export class EmailService {
     return this.sendEmail(user.email, template)
   }
 
-  static async sendUserRejectionEmail(user: any): Promise<boolean> {
+  static async sendUserRejectionEmail(user: BasicUserDetails): Promise<boolean> {
     const template: EmailTemplate = {
       subject: 'Account Registration - AIERGT',
       html: `
@@ -109,7 +178,7 @@ export class EmailService {
     return this.sendEmail(user.email, template)
   }
 
-  static async sendPasswordChangeEmail(user: any): Promise<boolean> {
+  static async sendPasswordChangeEmail(user: BasicUserDetails): Promise<boolean> {
     const template: EmailTemplate = {
       subject: 'Password Changed - AIERGT',
       html: `
@@ -125,7 +194,7 @@ export class EmailService {
     return this.sendEmail(user.email, template)
   }
 
-  static async sendPasswordResetEmail(user: any, resetUrl: string): Promise<boolean> {
+  static async sendPasswordResetEmail(user: BasicUserDetails, resetUrl: string): Promise<boolean> {
     const template: EmailTemplate = {
       subject: 'Password Reset - AIERGT',
       html: `

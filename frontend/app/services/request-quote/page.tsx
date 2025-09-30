@@ -7,7 +7,7 @@ import {
   getConsultancyServiceCategory,
 } from "@/lib/store/consultancy-services.store"
 import { RequestQuoteForm } from "@/components/sections/services/request-quote-form"
-import Image from "next/image"
+
 
 export const metadata: Metadata = {
   title: "Request a Consultancy Quote | AIERGT",
@@ -94,6 +94,8 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
       <section className="relative z-10 mx-auto mt-12 grid w-full max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.4fr,0.9fr] lg:px-10">
         <RequestQuoteForm
           categoryName={category.name}
+          categorySlug={category.slug}
+          serviceName={service?.name}
           defaultDescription={defaultDescription}
         />
 

@@ -1,12 +1,14 @@
 "use client"
 
-import { useMemo, useState } from "react"
-import { User, Mail, Phone, FileText, UploadCloud, CheckCircle } from "lucide-react"
+import { useMemo, useRef, useState } from "react"
+import { User, Mail, Phone, FileText, UploadCloud, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 type RequestQuoteFormProps = {
   categoryName: string
+  categorySlug: string
+  serviceName?: string
   defaultDescription?: string
 }
 
@@ -26,13 +28,20 @@ const initialState: QuoteFormState = {
   file: null,
 }
 
-export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQuoteFormProps) {
+export function RequestQuoteForm({
+  categoryName,
+  categorySlug,
+  serviceName,
+  defaultDescription,
+}: RequestQuoteFormProps) {
   const [formState, setFormState] = useState<QuoteFormState>({
     ...initialState,
     description: defaultDescription ?? "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -40,23 +49,56 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
     const { name, value } = event.target
     setFormState((prev) => ({ ...prev, [name]: value }))
     setIsSubmitted(false)
+    setErrorMessage(null)
   }
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     setFormState((prev) => ({ ...prev, file }))
     setIsSubmitted(false)
+    setErrorMessage(null)
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setIsSubmitting(true)
+    setIsSubmitted(false)
+    setErrorMessage(null)
 
     try {
-      // Placeholder for server action or API call.
-      await new Promise((resolve) => setTimeout(resolve, 900))
+      const formData = new FormData()
+      formData.append("name", formState.name)
+      formData.append("email", formState.email)
+      formData.append("phone", formState.phone)
+      formData.append("description", formState.description)
+      formData.append("categoryName", categoryName)
+      formData.append("categorySlug", categorySlug)
+      if (serviceName) {
+        formData.append("serviceName", serviceName)
+      }
+      if (formState.file) {
+        formData.append("file", formState.file)
+      }
+
+      const response = await fetch("/api/consultancy/request", {
+        method: "POST",
+        body: formData,
+      })
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null)
+        const message = result?.error ?? "We could not send your request. Please try again later."
+        throw new Error(message)
+      }
+
       setFormState({ ...initialState, description: defaultDescription ?? "" })
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""
+      }
       setIsSubmitted(true)
+    } catch (error) {
+      console.error(error)
+      setErrorMessage(error instanceof Error ? error.message : "An unexpected error occurred")
     } finally {
       setIsSubmitting(false)
     }
@@ -104,7 +146,14 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
         <form
           onSubmit={handleSubmit}
           className="relative grid gap-4 rounded-3xl border border-white/80 bg-white/95 p-6 shadow-lg lg:col-span-2 lg:p-8"
+          encType="multipart/form-data"
         >
+          <input type="hidden" name="categoryName" value={categoryName} />
+          <input type="hidden" name="categorySlug" value={categorySlug} />
+          {serviceName ? (
+            <input type="hidden" name="serviceName" value={serviceName} />
+          ) : null}
+
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-semibold text-slate-700">
               Your Name
@@ -198,6 +247,7 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
               name="file"
               type="file"
               onChange={handleFileChange}
+              ref={fileInputRef}
               className="sr-only"
             />
           </div>
@@ -210,9 +260,15 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
             {isSubmitting ? "Sending..." : "Send message"}
           </Button>
 
+          {errorMessage && (
+            <div className="flex items-center gap-2 rounded-lg bg-rose-50/90 p-3 text-sm font-medium text-rose-600">
+              <AlertCircle className="h-4 w-4" /> {errorMessage}
+            </div>
+          )}
+
           {isSubmitted && (
             <div className="flex items-center justify-center gap-2 rounded-lg bg-emerald-50/90 p-3 text-sm font-medium text-emerald-600">
-              <CheckCircle className="h-4 w-4" /> Request received. We will reach out shortly.
+              <CheckCircle className="h-4 w-4" /> Request received. Check your email for confirmation.
             </div>
           )}
         </form>
