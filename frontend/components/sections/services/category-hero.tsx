@@ -77,7 +77,7 @@ export function CategoryHero({
         <h1 className="max-w-3xl font-garamond text-3xl font-bold text-white sm:text-4xl">
           {title}
         </h1>
-        <p className="max-w-3xl text-sm text-slate-100 sm:text-base">
+        <p className="max-w-3xl text-base text-slate-100 sm:text-base">
           {description}
         </p>
       </div>

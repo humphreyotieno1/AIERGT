@@ -115,7 +115,7 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#79BAEC]/25 bg-[#EFF6FF] p-6 shadow-lg">
+          <div className="rounded-3xl border border-[#79BAEC]/25 p-6 shadow-lg">
             <h3 className="text-sm font-semibold uppercase tracking-[0.35em] text-[#79BAEC]">
               Need additional support?
             </h3>

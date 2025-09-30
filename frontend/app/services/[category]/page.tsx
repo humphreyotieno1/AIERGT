@@ -73,7 +73,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
                     <h2 className="font-garamond text-2xl font-semibold text-slate-900">
                       {service.name}
                     </h2>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-base text-slate-600">
                       {service.description}
                     </p>
                     <Link
@@ -102,10 +102,10 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
               <h3 className="font-garamond text-xl font-semibold text-slate-900">
                 Need supporting documents?
               </h3>
-              <p className="mt-2 text-sm text-slate-600">
+              <p className="mt-2 text-base text-slate-600">
                 We can supply TOR drafts, inspection checklists, and participation frameworks tailored to your procurement requirements.
               </p>
-              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[#79BAEC]/20 bg-[#F7FBFF] px-4 py-3 text-sm text-slate-600">
+              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[#79BAEC]/20 bg-[#F7FBFF] px-4 py-3 text-base text-slate-600">
                 <FileText className="h-4 w-4 text-[#79BAEC]" />
                 <span>Fast turnaround on proposal packs</span>
               </div>
@@ -120,7 +120,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
                   <li key={sibling.slug}>
                     <Link
                       href={`/services/${sibling.slug}`}
-                      className="flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold text-slate-600 transition hover:border-[#79BAEC]/40 hover:bg-[#F7FBFF] hover:text-[#79BAEC]"
+                      className="flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-base font-semibold text-slate-600 transition hover:border-[#79BAEC]/40 hover:bg-[#F7FBFF] hover:text-[#79BAEC]"
                     >
                       {sibling.name}
                       <ArrowRight className="h-4 w-4" />
@@ -137,7 +137,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
             <h2 className="font-garamond text-2xl font-semibold text-slate-900">
               Ready to scope your {category.name.toLowerCase()} engagement?
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-slate-600">
+            <p className="mt-3 max-w-2xl text-base text-slate-600">
               Our consultants respond within two working days with a tailored proposal covering scope, timelines, and indicative budgets. Share your materials and we will fast-track the review.
             </p>
             <Link
@@ -148,11 +148,11 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="rounded-3xl border border-[#79BAEC]/25 bg-[#F4F8FE] p-6 shadow-lg">
+          <div className="rounded-3xl border border-[#79BAEC]/25 p-6 shadow-lg">
             <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#79BAEC]">
               Helpful tips
             </h3>
-            <ul className="mt-4 space-y-3 text-sm text-slate-600">
+            <ul className="mt-4 space-y-3 text-base text-slate-600">
               <li className="flex items-start gap-2">
                 <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
                 Attach TORs, feasibility studies, or baseline data for faster turnaround.
