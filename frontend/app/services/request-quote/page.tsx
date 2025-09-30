@@ -83,7 +83,7 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
               <h1 className="font-garamond text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl drop-shadow-md">
                 Scope your {category.name.toLowerCase()} engagement
               </h1>
-              <p className="max-w-2xl text-sm text-slate-700 sm:text-base drop-shadow">
+              <p className="max-w-2xl text-base text-slate-700 sm:text-base drop-shadow">
                 Provide a concise brief, attach any supporting documents, and our consultants will respond within two working days with a tailored proposal.
               </p>
             </div>
@@ -102,7 +102,7 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
             <h2 className="font-garamond text-xl font-semibold text-slate-900">
               Included in {category.name}
             </h2>
-            <p className="mt-3 text-sm text-slate-600">
+            <p className="mt-3 text-base text-slate-600">
               {categoryDescription}
             </p>
             <div className="mt-4 rounded-2xl border border-[#79BAEC]/20 bg-[#F7FBFF] p-4 text-sm text-slate-600">
