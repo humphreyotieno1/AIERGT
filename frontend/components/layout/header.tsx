@@ -42,7 +42,6 @@ export function Header() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false)
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false)
-  const [expandedSections, setExpandedSections] = useState<string[]>([])
   const [mobileCurrentSection, setMobileCurrentSection] = useState<string | null>(null)
   const { data: session, status } = useSession()
   const { currentLanguage, setLanguage, languages } = useLanguage()
@@ -85,14 +84,6 @@ export function Header() {
       document.body.style.overflow = 'unset'
     }
   }, [isMenuOpen])
-
-  const toggleSection = (sectionName: string) => {
-    setExpandedSections(prev => 
-      prev.includes(sectionName) 
-        ? prev.filter(name => name !== sectionName)
-        : [...prev, sectionName]
-    )
-  }
 
   const openMobileSection = (sectionName: string) => {
     setMobileCurrentSection(sectionName)
@@ -501,7 +492,7 @@ export function Header() {
                           </div>
                           <div>
                             <h3 className="font-semibold text-lg text-[#79BAEC]">{item.name}</h3>
-                            <p className="text-sm text-gray-600">{item.description}</p>
+                            <p className="text-base text-gray-600">{item.description}</p>
                           </div>
                         </div>
                         
@@ -526,7 +517,7 @@ export function Header() {
                                 <h4 className="font-semibold text-sm text-gray-900 group-hover/item:text-[#79BAEC] transition-colors mb-1">
                                   {subItem.name}
                                 </h4>
-                                <p className="text-xs text-gray-600 leading-relaxed">
+                                <p className="text-base text-gray-600 leading-relaxed">
                                   {subItem.description}
                                 </p>
                               </div>
@@ -683,7 +674,7 @@ export function Header() {
                       
                       {/* Portal Options */}
                       <div className="py-2">
-                        {loginOptions.map((option, index) => (
+                        {loginOptions.map((option) => (
                           <Link
                             key={option.name}
                             href={option.href}
