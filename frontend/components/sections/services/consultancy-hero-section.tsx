@@ -8,10 +8,13 @@ import { Layers, ArrowRight, ClipboardSignature } from "lucide-react"
 const BACKGROUND_ROTATION_INTERVAL = 6000
 
 const backgroundImages = [
-  "/hero/c1.png",
-  "/hero/c2.png",
-  "/hero/lagos.jpg",
-  "/hero/cape-town.jpg",
+  "/consultancy/management/environmental-economics.jpg",
+  "/consultancy/management/forestry.jpg",
+  "/consultancy/management/solid-waste.jpg",
+  "/consultancy/management/water-resources.jpg",
+  "/consultancy/management/natural-resources.jpg",
+  "/consultancy/management/solid-waste.jpg",
+  "/consultancy/management/water-resources.jpg",
 ]
 
 export function ConsultancyHeroSection() {

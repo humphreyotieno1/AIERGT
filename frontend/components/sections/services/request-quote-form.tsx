@@ -189,7 +189,7 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
                   {formState.file ? formState.file.name : "Upload project brief, TOR or site layout"}
                 </span>
               </div>
-              <span className="rounded-full bg-[#79BAEC]/10 px-3 py-1 text-xs font-semibold text-[#79BAEC]">
+              <span className="rounded-full bg-[#79BAEC]/15 px-3 py-1 text-xs font-semibold text-[#79BAEC]">
                 Browse
               </span>
             </label>

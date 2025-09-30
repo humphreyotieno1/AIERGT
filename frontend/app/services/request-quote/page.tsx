@@ -39,9 +39,9 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
           </h1>
           <p className="mt-3 text-sm text-slate-600">
             We are populating the consultancy services portfolio. Please check back later or reach us at
-            <a href="mailto:consultancy@aiergt.africa" className="ml-1 text-[#79BAEC] underline">
-              consultancy@aiergt.africa
-            </a>
+            <Link href="mailto:info@aiergt.africa" className="ml-1 text-[#79BAEC] underline">
+              info@aiergt.africa
+            </Link>
             .
           </p>
           <Link
@@ -126,14 +126,21 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
               </li>
               <li className="flex items-start gap-2">
                 <Sparkles className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
+                Call
+                <Link href="tel:+254720470545" className="ml-1 text-[#79BAEC] underline">
+                  +254720470545
+                </Link>
+              </li>
+              <li className="flex items-start gap-2">
+                <Sparkles className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
                 Ask about retainers for ongoing compliance monitoring or embedded teams.
               </li>
               <li className="flex items-start gap-2">
                 <Sparkles className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
                 Prefer email? Write to
-                <a href="mailto:consultancy@aiergt.africa" className="ml-1 text-[#79BAEC] underline">
-                  consultancy@aiergt.africa
-                </a>
+                <Link href="mailto:info@aiergt.africa" className="ml-1 text-[#79BAEC] underline">
+                  info@aiergt.africa
+                </Link>
                 with your brief.
               </li>
             </ul>
