@@ -196,12 +196,6 @@ export function Header() {
           description: "Environmental security and risk assessment"
         },
         {
-          name: "Consultancy Services",
-          href: "/services/consultancy",
-          icon: Settings,
-          description: "Consultancy services for environmental and geospatial projects"
-        },
-        {
           name: "Climate Change and Renewable Energy",
           href: "/services/climate",
           icon: Globe,
