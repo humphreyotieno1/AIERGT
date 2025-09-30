@@ -103,13 +103,13 @@ export function ConsultancyCategoriesGrid() {
                         <ArrowRight className="h-4 w-4" />
                       </Link>
                     </div>
-                    <div className="overflow-hidden rounded-2xl border border-[#79BAEC]/20 bg-[#F0F7FE]">
+                    <div className="overflow-hidden rounded-lg border border-[#79BAEC]/20">
                       <Image
                         src={category.heroImage}
                         alt={`${category.name} illustration`}
                         width={720}
                         height={420}
-                        className="h-44 w-full object-cover"
+                        className="h-96 w-full object-cover"
                       />
                     </div>
                   </div>

@@ -59,7 +59,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
         backgroundImages={[category.heroImage, "/hero/c1.png"]}
       />
 
-      <section className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 mx-auto w-full max-w-8xl px-4 sm:px-6 lg:px-8">
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.66fr,0.34fr]">
           <div className="space-y-6">
             {category.services.map((service) => (
@@ -83,13 +83,13 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
                       Request quote <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
-                  <div className="overflow-hidden rounded-3xl border border-[#79BAEC]/25 bg-[#F5F9FF] shadow-md">
+                  <div className="overflow-hidden rounded-lg border border-[#79BAEC]/25">
                     <Image
                       src={service.image}
                       alt={service.name}
                       width={720}
                       height={420}
-                      className="h-52 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                      className="h-96 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                     />
                   </div>
                 </div>
