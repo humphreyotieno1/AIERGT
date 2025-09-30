@@ -7,6 +7,7 @@ import {
   getConsultancyServiceCategory,
 } from "@/lib/store/consultancy-services.store"
 import { RequestQuoteForm } from "@/components/sections/services/request-quote-form"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Request a Consultancy Quote | AIERGT",
@@ -63,8 +64,10 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
 
   return (
     <main className="relative min-h-screen overflow-hidden pb-20">
-      <section className="relative pb-12 pt-20">
-        <div className="pointer-events-none absolute inset-x-0 top-[-260px] h-[520px] bg-[radial-gradient(circle_at_top,#79BAEC33,transparent_70%)]" />
+      <section className="relative isolate min-h-[200px] pb-12 pt-20">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#79BAEC33] via-white/70 to-white" />
+        </div>
         <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 text-center">
             <Link
@@ -77,10 +80,10 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
               <span className="inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/40 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#79BAEC] shadow-sm">
                 <ClipboardSignature className="h-4 w-4" /> Request a Quote
               </span>
-              <h1 className="font-garamond text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl">
+              <h1 className="font-garamond text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl drop-shadow-md">
                 Scope your {category.name.toLowerCase()} engagement
               </h1>
-              <p className="max-w-2xl text-sm text-slate-600 sm:text-base">
+              <p className="max-w-2xl text-sm text-slate-700 sm:text-base drop-shadow">
                 Provide a concise brief, attach any supporting documents, and our consultants will respond within two working days with a tailored proposal.
               </p>
             </div>
@@ -88,7 +91,7 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto grid w-full max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.4fr,0.9fr] lg:px-10">
+      <section className="relative z-10 mx-auto mt-12 grid w-full max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.4fr,0.9fr] lg:px-10">
         <RequestQuoteForm
           categoryName={category.name}
           defaultDescription={defaultDescription}

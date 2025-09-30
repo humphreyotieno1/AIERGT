@@ -74,9 +74,9 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
       id="request-quote"
       className="relative overflow-hidden rounded-3xl border border-[#79BAEC]/30 bg-white/90 shadow-2xl backdrop-blur-sm"
     >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#79BAEC]/20 via-transparent to-slate-100/40" />
+      <div className="pointer-events-none absolute inset-0" />
       <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.1fr,1.1fr] 2xl:grid-cols-[1.3fr,0.9fr]">
-        <div className="flex flex-col justify-center gap-6">
+        <div className="col-span-full flex flex-col justify-center gap-6 pb-2 lg:col-span-2">
           <div className="inline-flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-[#79BAEC]" />
             <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#79BAEC]">
@@ -103,7 +103,7 @@ export function RequestQuoteForm({ categoryName, defaultDescription }: RequestQu
 
         <form
           onSubmit={handleSubmit}
-          className="relative grid gap-4 rounded-3xl border border-white/80 bg-white/95 p-6 shadow-lg lg:p-8"
+          className="relative grid gap-4 rounded-3xl border border-white/80 bg-white/95 p-6 shadow-lg lg:col-span-2 lg:p-8"
         >
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-semibold text-slate-700">
