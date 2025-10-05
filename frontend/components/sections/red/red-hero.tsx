@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Layers, ArrowRight, ClipboardSignature } from "lucide-react"
+import { Layers, ArrowRight, ClipboardSignature, GraduationCap } from "lucide-react"
 
 const BACKGROUND_ROTATION_INTERVAL = 6000
 
@@ -11,6 +11,7 @@ const iconRegistry = {
   layers: Layers,
   arrowRight: ArrowRight,
   clipboardSignature: ClipboardSignature,
+  graduationCap: GraduationCap,
 }
 
 type IconKey = keyof typeof iconRegistry
@@ -30,6 +31,7 @@ type RedHeroProps = {
   description: string
   backgroundImages: string[]
   primaryAction?: RedHeroAction
+  secondaryAction?: RedHeroAction
 }
 
 export function RedHero({
@@ -38,6 +40,8 @@ export function RedHero({
   title,
   description,
   backgroundImages,
+  primaryAction,
+  secondaryAction,
 }: RedHeroProps) {
   const images = useMemo(() => (backgroundImages.length ? backgroundImages : ["/hero/cape-town.jpg"]), [
     backgroundImages,
@@ -116,6 +120,12 @@ export function RedHero({
         ) : null}
         <h1 className="font-garamond text-4xl font-bold sm:text-5xl lg:text-6xl">{title}</h1>
         <p className="max-w-3xl text-base text-slate-100 sm:text-base">{description}</p>
+        {primaryAction || secondaryAction ? (
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            {primaryAction ? renderAction(primaryAction, "primary") : null}
+            {secondaryAction ? renderAction(secondaryAction, "secondary") : null}
+          </div>
+        ) : null}
       </div>
     </section>
   )
