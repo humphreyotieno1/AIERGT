@@ -101,6 +101,47 @@ export class EmailService {
     return adminSent && userSent
   }
 
+  static async sendContactMessage(payload: {
+    name: string
+    email: string
+    subject: string
+    message: string
+  }): Promise<boolean> {
+    const adminRecipients = process.env.SMTP_FROM || process.env.SMTP_USER
+
+    if (!adminRecipients) {
+      throw new Error('No contact recipient configured')
+    }
+
+    const adminTemplate: EmailTemplate = {
+      subject: `New Contact Message – ${payload.subject}`,
+      html: `
+        <h2>New Contact Submission</h2>
+        <p><strong>Name:</strong> ${payload.name}</p>
+        <p><strong>Email:</strong> ${payload.email}</p>
+        <p><strong>Subject:</strong> ${payload.subject}</p>
+        <h3>Message</h3>
+        <p>${payload.message.replace(/\n/g, '<br/>')}</p>
+      `,
+    }
+
+    const userTemplate: EmailTemplate = {
+      subject: 'We received your message – AIERGT',
+      html: `
+        <h2>Thank you for reaching out, ${payload.name}!</h2>
+        <p>We have received your message regarding <strong>${payload.subject}</strong>.</p>
+        <p>Our team will review your note and respond within two working days.</p>
+        <p>If this is urgent, you can reach us directly at ${adminRecipients}.</p>
+        <p>Warm regards,<br/>The AIERGT Team</p>
+      `,
+    }
+
+    const adminSent = await this.sendEmail(adminRecipients, adminTemplate)
+    const userSent = await this.sendEmail(payload.email, userTemplate)
+
+    return adminSent && userSent
+  }
+
   static async sendAdminVerificationEmail(user: AdminCandidateDetails): Promise<boolean> {
     const adminEmails = await this.getAdminEmails()
     const adminEmailList = adminEmails.join(', ')
