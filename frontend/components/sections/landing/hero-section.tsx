@@ -226,7 +226,7 @@ export function HeroSection() {
                 <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300">
                   <CardContent className="p-4 lg:p-4">
                     <div className="flex items-start space-x-3 w-full">
-                      <div className="w-8 h-8 lg:w-8 lg:h-8 bg-[#79BAEC] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 lg:w-8 lg:h-8 bg-[#71B045] rounded-lg flex items-center justify-center flex-shrink-0">
                         <item.icon className="h-4 w-4 lg:h-4 lg:w-4 text-white" />
                       </div>
                       <div className="space-y-2 flex-1">
@@ -244,7 +244,7 @@ export function HeroSection() {
               <Link href="/auth/register" className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="w-full sm:w-auto bg-gradient-to-r from-[#79BAEC] to-[#6497b1] hover:from-[#6497b1] hover:to-[#79BAEC] text-white px-6 py-3 lg:px-8 lg:py-4 text-base lg:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full sm:w-auto bg-gradient-to-r from-[#71B045] to-[#0F1023] hover:from-[#0F1023] hover:to-[#71B045] text-white px-6 py-3 lg:px-8 lg:py-4 text-base lg:text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   <span>{currentSlideData.cta}</span>
                   <ArrowRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />
@@ -335,7 +335,7 @@ export function HeroSection() {
 
       {/* Floating Elements */}
       <div className="absolute top-20 right-20 w-20 h-20 bg-[#b3cde0]/20 rounded-full blur-xl animate-pulse z-5"></div>
-      <div className="absolute bottom-20 left-20 w-32 h-32 bg-[#6497b1]/20 rounded-full blur-xl animate-pulse delay-1000 z-5"></div>
+      <div className="absolute bottom-20 left-20 w-32 h-32 bg-[#0F1023]/20 rounded-full blur-xl animate-pulse delay-1000 z-5"></div>
     </section>
   )
 }

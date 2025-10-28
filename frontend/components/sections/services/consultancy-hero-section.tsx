@@ -52,7 +52,7 @@ export function ConsultancyHeroSection() {
       </div>
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-12 text-left sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#79BAEC]">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#71B045]">
           <Layers className="h-4 w-4" /> Consultancy Services
         </div>
         <h1 className="max-w-3xl font-garamond text-3xl font-bold text-white sm:text-4xl">
@@ -64,14 +64,14 @@ export function ConsultancyHeroSection() {
         <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">
           <Link
             href="#consultancy-categories"
-            className="group inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/50 bg-[#79BAEC] px-5 py-2 text-white transition hover:border-[#5EA6E5] hover:bg-[#5EA6E5]"
+            className="group inline-flex items-center gap-2 rounded-full border border-[#71B045]/50 bg-[#71B045] px-5 py-2 text-white transition hover:border-[#5F9938] hover:bg-[#5F9938]"
           >
             View categories
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </Link>
           <Link
             href="/services/request-quote"
-            className="group inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/30 bg-white/80 px-5 py-2 text-black transition hover:border-[#79BAEC] hover:bg-[#79BAEC] hover:text-white"
+            className="group inline-flex items-center gap-2 rounded-full border border-[#71B045]/30 bg-white/80 px-5 py-2 text-black transition hover:border-[#71B045] hover:bg-[#71B045] hover:text-white"
           >
             Request quote
             <ClipboardSignature className="h-4 w-4 transition group-hover:scale-110" />

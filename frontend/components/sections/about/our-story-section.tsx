@@ -42,8 +42,8 @@ export default function OurStorySection() {
               {/* Narrative */}
               <div>
                 <div className="flex items-center gap-4 mb-8">
-                  <span className="h-1 w-16 rounded-full bg-[#79BAEC]" />
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#79BAEC]">
+                  <span className="h-1 w-16 rounded-full bg-[#71B045]" />
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#71B045]">
                     Our Story
                   </p>
                 </div>
@@ -68,7 +68,7 @@ export default function OurStorySection() {
                       mentorship needed to design Africa-first solutions.
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-[#79BAEC]/30 bg-[#79BAEC]/10 p-6">
+                  <div className="rounded-2xl border border-[#71B045]/30 bg-[#71B045]/10 p-6">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       What drives us
                     </h3>
@@ -84,7 +84,7 @@ export default function OurStorySection() {
 
               {/* Supporting Visual */}
               <div className="lg:h-full">
-                <div className="relative rounded-3xl border border-gray-100 bg-gradient-to-br from-[#79BAEC]/10 via-white to-white p-4 shadow-sm">
+                <div className="relative rounded-3xl border border-gray-100 bg-gradient-to-br from-[#71B045]/10 via-white to-white p-4 shadow-sm">
                   <div className="relative aspect-square rounded-2xl overflow-hidden bg-white">
                     <Image
                       src="/about/africa.jpg"

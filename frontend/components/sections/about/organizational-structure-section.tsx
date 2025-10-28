@@ -46,7 +46,7 @@ export default function OrganizationalStructureSection() {
               <button
                 type="button"
                 onClick={() => setIsLightboxOpen(true)}
-                className="group relative aspect-[16/9] w-full overflow-hidden rounded-[28px] bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#79BAEC]/40"
+                className="group relative aspect-[16/9] w-full overflow-hidden rounded-[28px] bg-gray-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#71B045]/40"
                 aria-label="View organizational structure in full screen"
               >
                 <Image
@@ -83,7 +83,7 @@ export default function OrganizationalStructureSection() {
             <button
               type="button"
               onClick={() => setIsLightboxOpen(false)}
-              className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#79BAEC]/60"
+              className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#71B045]/60"
               aria-label="Close full screen view"
             >
               <X className="h-5 w-5" />

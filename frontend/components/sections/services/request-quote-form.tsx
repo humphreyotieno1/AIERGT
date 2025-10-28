@@ -114,14 +114,14 @@ export function RequestQuoteForm({
   return (
     <section
       id="request-quote"
-      className="relative overflow-hidden rounded-3xl border border-[#79BAEC]/30 bg-white/90 shadow-2xl backdrop-blur-sm"
+      className="relative overflow-hidden rounded-3xl border border-[#71B045]/30 bg-white/90 shadow-2xl backdrop-blur-sm"
     >
       <div className="pointer-events-none absolute inset-0" />
       <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.1fr,1.1fr] 2xl:grid-cols-[1.3fr,0.9fr]">
         <div className="col-span-full flex flex-col justify-center gap-6 pb-2 lg:col-span-2">
           <div className="inline-flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-[#79BAEC]" />
-            <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#79BAEC]">
+            <CheckCircle className="h-5 w-5 text-[#71B045]" />
+            <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#71B045]">
               Request a Quote
             </span>
           </div>
@@ -135,10 +135,10 @@ export function RequestQuoteForm({
           </div>
           <div className="flex flex-wrap gap-4 text-xs font-medium uppercase text-slate-500">
             <span className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-white px-3 py-2 shadow-sm">
-              <Mail className="h-3.5 w-3.5 text-[#79BAEC]" /> Response in 48 hours
+              <Mail className="h-3.5 w-3.5 text-[#71B045]" /> Response in 48 hours
             </span>
             <span className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-white px-3 py-2 shadow-sm">
-              <FileText className="h-3.5 w-3.5 text-[#79BAEC]" /> Confidential review
+              <FileText className="h-3.5 w-3.5 text-[#71B045]" /> Confidential review
             </span>
           </div>
         </div>
@@ -159,7 +159,7 @@ export function RequestQuoteForm({
               Your Name
             </label>
             <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3">
-              <User className="h-4 w-4 text-[#79BAEC]" />
+              <User className="h-4 w-4 text-[#71B045]" />
               <Input
                 id="name"
                 name="name"
@@ -177,7 +177,7 @@ export function RequestQuoteForm({
               Your Email
             </label>
             <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3">
-              <Mail className="h-4 w-4 text-[#79BAEC]" />
+              <Mail className="h-4 w-4 text-[#71B045]" />
               <Input
                 id="email"
                 name="email"
@@ -196,7 +196,7 @@ export function RequestQuoteForm({
               Phone Number
             </label>
             <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3">
-              <Phone className="h-4 w-4 text-[#79BAEC]" />
+              <Phone className="h-4 w-4 text-[#71B045]" />
               <Input
                 id="phone"
                 name="phone"
@@ -219,7 +219,7 @@ export function RequestQuoteForm({
               value={formState.description}
               onChange={handleChange}
               placeholder="Briefly outline scope, site location, timelines, and any compliance targets."
-              className="min-h-[150px] rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm focus:border-[#79BAEC] focus:outline-none focus:ring-2 focus:ring-[#79BAEC]/40"
+              className="min-h-[150px] rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm focus:border-[#71B045] focus:outline-none focus:ring-2 focus:ring-[#71B045]/40"
               required
             />
           </div>
@@ -230,15 +230,15 @@ export function RequestQuoteForm({
             </label>
             <label
               htmlFor="supporting-file"
-              className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-dashed border-[#79BAEC]/50 bg-[#F4F8FE] px-4 py-3 text-sm text-slate-600 transition hover:border-[#79BAEC] hover:bg-white"
+              className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-dashed border-[#71B045]/50 bg-[#F4F8FE] px-4 py-3 text-sm text-slate-600 transition hover:border-[#71B045] hover:bg-white"
             >
               <div className="flex items-center gap-3">
-                <UploadCloud className="h-5 w-5 text-[#79BAEC]" />
+                <UploadCloud className="h-5 w-5 text-[#71B045]" />
                 <span>
                   {formState.file ? formState.file.name : "Upload project brief, TOR or site layout"}
                 </span>
               </div>
-              <span className="rounded-full bg-[#79BAEC]/15 px-3 py-1 text-xs font-semibold text-[#79BAEC]">
+              <span className="rounded-full bg-[#71B045]/15 px-3 py-1 text-xs font-semibold text-[#71B045]">
                 Browse
               </span>
             </label>
@@ -254,7 +254,7 @@ export function RequestQuoteForm({
 
           <Button
             type="submit"
-            className="mt-2 w-full rounded-xl bg-[#79BAEC] py-3 text-sm font-semibold text-white transition hover:bg-[#5EA6E5] disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-2 w-full rounded-xl bg-[#71B045] py-3 text-sm font-semibold text-white transition hover:bg-[#5F9938] disabled:cursor-not-allowed disabled:opacity-70"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Sending..." : "Send message"}

@@ -141,7 +141,7 @@ function ResetPasswordPageContent() {
         <div className="mb-6">
           <Link 
             href="/auth/login" 
-            className="inline-flex items-center space-x-2 text-[#6bb6ff] hover:text-[#6497b1] transition-colors"
+            className="inline-flex items-center space-x-2 text-[#8DD65E] hover:text-[#0F1023] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Login</span>
@@ -150,7 +150,7 @@ function ResetPasswordPageContent() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-[#6bb6ff] rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto w-16 h-16 bg-[#8DD65E] rounded-full flex items-center justify-center mb-4">
             <Lock className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -268,7 +268,7 @@ function ResetPasswordPageContent() {
               
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#6bb6ff] to-[#6497b1] hover:from-[#6497b1] hover:to-[#6bb6ff] transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-full bg-gradient-to-r from-[#8DD65E] to-[#0F1023] hover:from-[#0F1023] hover:to-[#8DD65E] transition-all duration-300 shadow-lg hover:shadow-xl"
                 disabled={isLoading || !passwordValidation.isValid || password !== confirmPassword}
               >
                 {isLoading ? (
@@ -304,7 +304,7 @@ function ResetPasswordPageContent() {
         <div className="text-center mt-8">
           <p className="text-sm text-gray-600">
             Remember your password?{" "}
-            <Link href="/auth/login" className="text-[#6bb6ff] hover:underline font-medium">
+            <Link href="/auth/login" className="text-[#8DD65E] hover:underline font-medium">
               Sign In
             </Link>
           </p>

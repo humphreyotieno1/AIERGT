@@ -364,24 +364,24 @@ export function Header() {
   return (
     <>
       {/* Top Organization Title Bar */}
-      <div className="bg-[#79BAEC] text-white py-2 sm:py-3">
+      <div className="bg-primary-500 text-white py-2 sm:py-3">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center min-h-0">
             {/* Social Media Icons */}
             <div className="flex items-center space-x-2 sm:space-x-4 ">
-              <Link href="https://www.facebook.com/profile.php?id=100066952923372#" target="_blank" className="hover:text-[#6bb6ff] transition-colors">
+              <Link href="https://www.facebook.com/profile.php?id=100066952923372#" target="_blank" className="hover:text-primary-500-500-500 transition-colors">
                 <Facebook className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="https://x.com/aiergt" target="_blank" className="hover:text-[#6bb6ff] transition-colors">
+              <Link href="https://x.com/aiergt" target="_blank" className="hover:text-primary-500-500-500 transition-colors">
                 <Twitter className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="https://www.youtube.com/channel/UCHCIovKKlsdytFxRUTAJrGQ" target="_blank" className="hover:text-[#6bb6ff] transition-colors">
+              <Link href="https://www.youtube.com/channel/UCHCIovKKlsdytFxRUTAJrGQ" target="_blank" className="hover:text-primary-500-500-500 transition-colors">
                 <Youtube className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="https://www.linkedin.com/company/african-institute-for-environmental-research-and-geospatial-technology/" target="_blank" className="hover:text-[#6bb6ff] transition-colors">
+              <Link href="https://www.linkedin.com/company/african-institute-for-environmental-research-and-geospatial-technology/" target="_blank" className="hover:text-primary-500-500-500 transition-colors">
                 <Linkedin className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
-              <Link href="https://www.instagram.com/a.i.e.r.g.t/" target="_blank" className="hover:text-[#6bb6ff] transition-colors">
+              <Link href="https://www.instagram.com/a.i.e.r.g.t/" target="_blank" className="hover:text-primary-500-500-500 transition-colors">
                 <Instagram className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
             </div>
@@ -417,8 +417,8 @@ export function Header() {
                         }}
                         className={`flex items-center space-x-2 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm w-full text-left transition-colors ${
                           lang.code === currentLanguage.code
-                            ? "bg-[#79BAEC] text-white"
-                            : "text-gray-700 hover:bg-gray-100 hover:text-[#6bb6ff]"
+                            ? "bg-primary text-white"
+                            : "text-gray-700 hover:bg-gray-100 hover:text-primary-500-500-500"
                         }`}
                       >
                         <span>{lang.flag}</span>
@@ -458,7 +458,7 @@ export function Header() {
                 />
                 {/* Organization Name for Mobile */}
                 <div className="sm:hidden">
-                  <span className="text-sm sm:text-lg font-bold text-[#79BAEC]">A.I.E.R.G.T</span>
+                  <span className="text-sm sm:text-lg font-bold text-primary-500">A.I.E.R.G.T</span>
                 </div>
               </Link>
             </div>
@@ -471,8 +471,8 @@ export function Header() {
                     href={item.href}
                     className={`px-3 py-2 text-sm font-bold transition-colors ${
                       item.name === "Home"
-                        ? "text-[#79BAEC]"
-                        : "text-gray-700 hover:text-[#79BAEC]"
+                        ? "text-primary-500"
+                        : "text-gray-700 hover:text-primary-500-500"
                     }`}
                   >
                     {item.name}
@@ -487,11 +487,11 @@ export function Header() {
                       <div className="p-6">
                         {/* Header */}
                         <div className="flex items-center space-x-3 mb-6 pb-4 border-b">
-                          <div className="w-10 h-10 bg-[#79BAEC] rounded-lg flex items-center justify-center">
+                          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                             <item.icon className="h-5 w-5 text-white" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-lg text-[#79BAEC]">{item.name}</h3>
+                            <h3 className="font-semibold text-lg text-primary-500">{item.name}</h3>
                             <p className="text-base text-gray-600">{item.description}</p>
                           </div>
                         </div>
@@ -510,11 +510,11 @@ export function Header() {
                               href={subItem.href}
                               className="flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-50 transition-colors group/item border border-transparent hover:border-gray-200"
                             >
-                              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mt-0.5 group-hover/item:bg-[#79BAEC] transition-colors flex-shrink-0">
+                              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mt-0.5 group-hover/item:bg-primary-500 transition-colors flex-shrink-0">
                                 <subItem.icon className="h-4 w-4 text-gray-600 group-hover/item:text-white transition-colors" />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <h4 className="font-semibold text-sm text-gray-900 group-hover/item:text-[#79BAEC] transition-colors mb-1">
+                                <h4 className="font-semibold text-sm text-gray-900 group-hover/item:text-primary-500 transition-colors mb-1">
                                   {subItem.name}
                                 </h4>
                                 <p className="text-base text-gray-600 leading-relaxed">
@@ -549,11 +549,11 @@ export function Header() {
                   <div className="relative" ref={profileDropdownRef}>
                   <button
                     onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
-                    className="group flex items-center space-x-2 bg-gradient-to-r from-[#79BAEC] to-[#6497b1] text-white px-4 py-2.5 rounded-lg hover:from-[#6497b1] hover:to-[#79BAEC] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="group flex items-center space-x-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2.5 rounded-lg hover:from-secondary hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <div className="relative">
                       <UserCircle className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#6bb6ff] rounded-full animate-pulse"></div>
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
                     </div>
                     <span className="font-semibold text-sm">{session.user?.name}</span>
                     <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isProfileDropdownOpen ? 'rotate-180' : ''}`} />
@@ -562,7 +562,7 @@ export function Header() {
                   {isProfileDropdownOpen && (
                     <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
                       {/* Header */}
-                      <div className="bg-gradient-to-r from-[#79BAEC] to-[#6497b1] px-4 py-3">
+                      <div className="bg-gradient-to-r from-primary to-secondary px-4 py-3">
                         <h3 className="text-white font-semibold text-sm">Welcome back!</h3>
                         <p className="text-gray-200 text-xs mt-1">{session.user?.email}</p>
                       </div>
@@ -571,49 +571,49 @@ export function Header() {
                       <div className="py-2">
                         <Link
                           href="/profile"
-                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#79BAEC]"
+                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-primary-500"
                           onClick={() => setIsProfileDropdownOpen(false)}
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-[#79BAEC] transition-colors duration-200">
+                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors duration-200">
                             <User className="h-4 w-4 text-gray-600 group-hover:text-white transition-colors duration-200" />
                           </div>
                           <div className="flex-1">
                             <span className="font-medium">My Profile</span>
                             <p className="text-xs text-gray-500 mt-0.5">View and edit your profile</p>
                           </div>
-                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#79BAEC] transition-colors duration-200" />
+                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-primary-500-500 transition-colors duration-200" />
                         </Link>
                         
                         <Link
                           href="/dashboard"
-                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#79BAEC]"
+                          className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-primary-500"
                           onClick={() => setIsProfileDropdownOpen(false)}
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-[#79BAEC] transition-colors duration-200">
+                          <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors duration-200">
                             <LayoutDashboard className="h-4 w-4 text-gray-600 group-hover:text-white transition-colors duration-200" />
                           </div>
                           <div className="flex-1">
                             <span className="font-medium">Dashboard</span>
                             <p className="text-xs text-gray-500 mt-0.5">Access your dashboard</p>
                           </div>
-                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#79BAEC] transition-colors duration-200" />
+                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-primary-500-500 transition-colors duration-200" />
                         </Link>
                         
                         {/* Admin Dashboard - Only show for admin users */}
                         {session.user?.role === 'ADMIN' && (
                           <Link
                             href="/admin/dashboard"
-                            className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#6bb6ff]"
+                            className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-primary-500-500"
                             onClick={() => setIsProfileDropdownOpen(false)}
                           >
-                            <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center group-hover:bg-[#6bb6ff] transition-colors duration-200">
+                            <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors duration-200">
                               <Shield className="h-4 w-4 text-yellow-600 group-hover:text-white transition-colors duration-200" />
                             </div>
                             <div className="flex-1">
                               <span className="font-medium">Admin Dashboard</span>
                               <p className="text-xs text-gray-500 mt-0.5">Manage system settings</p>
                             </div>
-                              <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#6bb6ff] transition-colors duration-200" />
+                              <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-primary-500-500-500 transition-colors duration-200" />
                           </Link>
                         )}
                       </div>
@@ -643,7 +643,7 @@ export function Header() {
                       {/* Footer */}
                       <div className="bg-gray-50 px-4 py-2 border-t border-gray-100">
                         <p className="text-xs text-gray-500 text-center">
-                          Need help? <Link href="/contact" className="text-[#79BAEC] hover:underline">Contact Support</Link>
+                          Need help? <Link href="/contact" className="text-primary-500 hover:underline">Contact Support</Link>
                         </p>
                       </div>
                     </div>
@@ -654,11 +654,11 @@ export function Header() {
                 <div className="relative" ref={loginDropdownRef}>
                   <button
                     onClick={() => setIsLoginDropdownOpen(!isLoginDropdownOpen)}
-                    className="group flex items-center space-x-2 bg-gradient-to-r from-[#79BAEC] to-[#6497b1] text-white px-4 py-2.5 rounded-lg hover:from-[#6497b1] hover:to-[#79BAEC] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="group flex items-center space-x-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2.5 rounded-lg hover:from-secondary hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <div className="relative">
                       <User className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#6bb6ff] rounded-full animate-pulse"></div>
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
                     </div>
                     <span className="font-semibold text-sm">LOGIN</span>
                     <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isLoginDropdownOpen ? 'rotate-180' : ''}`} />
@@ -667,7 +667,7 @@ export function Header() {
                   {isLoginDropdownOpen && (
                     <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
                       {/* Header */}
-                      <div className="bg-gradient-to-r from-[#79BAEC] to-[#6497b1] px-4 py-3">
+                      <div className="bg-gradient-to-r from-primary to-secondary px-4 py-3">
                         <h3 className="text-white font-semibold text-sm">Access Your Portal</h3>
                         <p className="text-gray-200 text-xs mt-1">Choose your preferred platform</p>
                       </div>
@@ -678,10 +678,10 @@ export function Header() {
                           <Link
                             key={option.name}
                             href={option.href}
-                            className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-[#79BAEC]"
+                            className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-primary-500"
                             onClick={() => setIsLoginDropdownOpen(false)}
                           >
-                            <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-[#79BAEC] transition-colors duration-200">
+                            <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors duration-200">
                               <option.icon className="h-4 w-4 text-gray-600 group-hover:text-white transition-colors duration-200" />
                             </div>
                             <div className="flex-1">
@@ -692,7 +692,7 @@ export function Header() {
                                 {option.name === "Training Portal" && "Courses & Certifications"}
                               </p>
                             </div>
-                            <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-[#79BAEC] transition-colors duration-200" />
+                            <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-primary-500-500 transition-colors duration-200" />
                           </Link>
                         ))}
                       </div>
@@ -704,11 +704,11 @@ export function Header() {
                       <div className="py-2">
                         <Link
                           href="/auth/register"
-                          className="flex items-center space-x-3 px-4 py-3 text-sm text-[#79BAEC] hover:bg-gradient-to-r hover:from-[#79BAEC]/5 hover:to-[#6497b1]/5 transition-all duration-200"
+                          className="flex items-center space-x-3 px-4 py-3 text-sm text-primary-500 hover:bg-gradient-to-r hover:from-primary-500/5 hover:to-secondary/5 transition-all duration-200"
                           onClick={() => setIsLoginDropdownOpen(false)}
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-[#79BAEC]/10 rounded-lg flex items-center justify-center">
-                            <User className="h-4 w-4 text-[#79BAEC]" />
+                          <div className="flex-shrink-0 w-8 h-8 bg-primary-500/10 rounded-lg flex items-center justify-center">
+                            <User className="h-4 w-4 text-primary-500" />
                           </div>
                           <div className="flex-1">
                             <span className="font-medium">Create Account</span>
@@ -734,7 +734,7 @@ export function Header() {
                       {/* Footer */}
                       <div className="bg-gray-50 px-4 py-2 border-t border-gray-100">
                         <p className="text-xs text-gray-500 text-center">
-                          Need help? <Link href="/contact" className="text-[#79BAEC] hover:underline">Contact Support</Link>
+                          Need help? <Link href="/contact" className="text-primary-500 hover:underline">Contact Support</Link>
                         </p>
                       </div>
                     </div>
@@ -776,7 +776,7 @@ export function Header() {
               <div className="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-white shadow-xl z-50 lg:hidden overflow-y-auto transform transition-transform duration-300 ease-in-out">
                 <div className="flex flex-col h-full">
                   {/* Header */}
-                  <div className="flex items-center justify-between p-4 border-b bg-[#79BAEC] text-white">
+                  <div className="flex items-center justify-between p-4 border-b bg-primary text-white">
                     <div className="flex items-center space-x-3">
                       {mobileCurrentSection && (
                         <Button
@@ -827,7 +827,7 @@ export function Header() {
                                 className="flex items-center justify-between w-full p-3 sm:p-4 border-b hover:bg-gray-50 transition-colors"
                               >
                                 <div className="flex items-center space-x-2 sm:space-x-3">
-                                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#79BAEC] rounded-lg flex items-center justify-center">
+                                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
                                     <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                                   </div>
                                   <div className="text-left">
@@ -844,7 +844,7 @@ export function Header() {
                                 className="flex items-center space-x-2 sm:space-x-3 p-3 sm:p-4 border-b hover:bg-gray-50 transition-colors"
                                 onClick={() => setIsMenuOpen(false)}
                               >
-                                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#79BAEC] rounded-lg flex items-center justify-center">
+                                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
                                   <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                                 </div>
                                 <div className="text-left">
@@ -880,7 +880,7 @@ export function Header() {
                       {session ? (
                         <div className="space-y-3">
                           {/* User Info */}
-                          <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gradient-to-r from-[#79BAEC] to-[#6497b1] rounded-lg">
+                          <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gradient-to-r from-primary to-secondary rounded-lg">
                             <div className="w-7 h-7 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center">
                               <UserCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                             </div>
@@ -896,7 +896,7 @@ export function Header() {
                             
                             <Link
                               href="/profile"
-                              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-[#79BAEC] hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
+                              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-primary hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
                               onClick={() => setIsMenuOpen(false)}
                             >
                               <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -911,7 +911,7 @@ export function Header() {
                             
                             <Link
                               href="/dashboard"
-                              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-[#79BAEC] hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
+                              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-primary-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
                               onClick={() => setIsMenuOpen(false)}
                             >
                               <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -966,13 +966,13 @@ export function Header() {
                               className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg border hover:bg-gray-50 transition-colors"
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              <option.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#79BAEC]" />
+                              <option.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary-500" />
                               <span className="font-medium text-sm sm:text-base">{option.name}</span>
                             </Link>
                           ))}
                           <Link
                             href="/auth/register"
-                            className="flex items-center justify-center space-x-2 p-2 sm:p-3 rounded-lg bg-[#79BAEC] text-white hover:bg-[#79BAEC]/90 transition-colors"
+                            className="flex items-center justify-center space-x-2 p-2 sm:p-3 rounded-lg bg-primary text-white hover:bg-primary-500/90 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             <User className="h-3.5 w-3.5 sm:h-4 sm:w-4" />

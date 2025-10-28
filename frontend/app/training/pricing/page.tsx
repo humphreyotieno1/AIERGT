@@ -24,7 +24,7 @@ export default function TrainingPricingPage() {
         />
 
         <header className="mt-10 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/30 bg-[#EAF3FF] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#3978C0]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#71B045]/30 bg-[#EAF3FF] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#3978C0]">
             Pricing Plan
           </span>
           <h1 className="mt-6 font-garamond text-4xl font-semibold text-slate-900 sm:text-5xl">

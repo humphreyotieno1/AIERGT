@@ -47,8 +47,8 @@ export default function LeadMagnetSection() {
               key={index}
               className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#79BAEC]/10 to-[#6bb6ff]/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
-                <resource.icon className="w-8 h-8 text-[#79BAEC]" />
+              <div className="w-16 h-16 bg-gradient-to-br from-[#71B045]/10 to-[#8DD65E]/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
+                <resource.icon className="w-8 h-8 text-[#71B045]" />
               </div>
               
               <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -79,7 +79,7 @@ export default function LeadMagnetSection() {
         {/* Benefits List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
           <div className="text-center">
-            <div className="w-12 h-12 bg-[#79BAEC] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 bg-[#71B045] rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
             <h4 className="font-semibold text-gray-900 mb-2">Expert Insights</h4>
@@ -87,7 +87,7 @@ export default function LeadMagnetSection() {
           </div>
           
           <div className="text-center">
-            <div className="w-12 h-12 bg-[#79BAEC] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 bg-[#71B045] rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
             <h4 className="font-semibold text-gray-900 mb-2">Latest Research</h4>
@@ -95,7 +95,7 @@ export default function LeadMagnetSection() {
           </div>
           
           <div className="text-center">
-            <div className="w-12 h-12 bg-[#79BAEC] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 bg-[#71B045] rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
             <h4 className="font-semibold text-gray-900 mb-2">Case Studies</h4>
@@ -103,7 +103,7 @@ export default function LeadMagnetSection() {
           </div>
           
           <div className="text-center">
-            <div className="w-12 h-12 bg-[#79BAEC] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 bg-[#71B045] rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
             <h4 className="font-semibold text-gray-900 mb-2">Free Resources</h4>

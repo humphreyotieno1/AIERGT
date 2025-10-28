@@ -92,11 +92,11 @@ export default function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#79BAEC]/20 group"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#71B045]/20 group"
             >
               {/* Service Icon */}
               <div className="relative w-16 h-16 mb-6 group-hover:scale-105 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#79BAEC]/10 to-[#6bb6ff]/10 rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#71B045]/10 to-[#8DD65E]/10 rounded-xl"></div>
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
                     src={service.image}
@@ -110,7 +110,7 @@ export default function ServicesSection() {
               </div>
 
               {/* Service Title */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#79BAEC] transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#71B045] transition-colors duration-300">
                 {service.name}
               </h3>
 
@@ -123,7 +123,7 @@ export default function ServicesSection() {
               {/*<div className="mt-auto">
                 <a 
                   href="#" 
-                  className="inline-flex items-center text-[#79BAEC] hover:text-[#6bb6ff] font-medium transition-colors duration-300 group-hover:translate-x-1 transform"
+                  className="inline-flex items-center text-[#71B045] hover:text-[#8DD65E] font-medium transition-colors duration-300 group-hover:translate-x-1 transform"
                 >
                   Learn more →
                 </a>

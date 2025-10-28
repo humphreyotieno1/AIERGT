@@ -85,7 +85,7 @@ export default function EnterpriseDevelopmentPage() {
                 key={index}
                 className="flex flex-1 items-center justify-center rounded-[24px] border border-[#E3E9F5] bg-white/70 p-10 shadow-sm"
               >
-                <Icon className="h-20 w-20 text-[#79BAEC]" />
+                <Icon className="h-20 w-20 text-[#71B045]" />
               </div>
             ))}
           </div>

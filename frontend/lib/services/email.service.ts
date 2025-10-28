@@ -195,7 +195,7 @@ export class EmailService {
           <li>Community Features</li>
           <li>Research Resources</li>
         </ul>
-        <p><a href="${process.env.NEXTAUTH_URL}/dashboard" style="background: #79BAEC; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Access Your Dashboard</a></p>
+        <p><a href="${process.env.NEXTAUTH_URL}/dashboard" style="background: #71B045; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Access Your Dashboard</a></p>
         <p>Best regards,<br>The AIERGT Team</p>
       `
     }
@@ -243,7 +243,7 @@ export class EmailService {
         <p>Dear ${user.name},</p>
         <p>We received a request to reset your password for your AIERGT account.</p>
         <p>Click the button below to reset your password:</p>
-        <p><a href="${resetUrl}" style="background: #79BAEC; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Reset Password</a></p>
+        <p><a href="${resetUrl}" style="background: #71B045; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Reset Password</a></p>
         <p>Or copy and paste this link into your browser:</p>
         <p><a href="${resetUrl}">${resetUrl}</a></p>
         <p><strong>This link will expire in 1 hour.</strong></p>

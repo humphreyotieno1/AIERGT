@@ -12,7 +12,7 @@ export default function UnauthorizedPage() {
             <div className="mx-auto w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
               <Shield className="h-6 w-6 text-yellow-600" />
             </div>
-            <CardTitle className="text-2xl text-[#79BAEC]">Access Denied</CardTitle>
+            <CardTitle className="text-2xl text-[#71B045]">Access Denied</CardTitle>
             <CardDescription>
               You don't have permission to access this area
             </CardDescription>
@@ -66,7 +66,7 @@ export default function UnauthorizedPage() {
 
             <div className="text-center text-xs text-gray-400">
               <p>
-                Contact support: <span className="text-[#79BAEC]">support@aiergt.africa</span>
+                Contact support: <span className="text-[#71B045]">support@aiergt.africa</span>
               </p>
             </div>
           </CardContent>
