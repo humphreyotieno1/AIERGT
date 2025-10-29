@@ -103,12 +103,12 @@ const heroSlides = [
 // Problem-Solution highlights
 const problemSolutions = [
   {
-    problem: "Environmental data scattered across Africa",
+    problem: "Environmental data across Africa",
     solution: "Centralized geospatial platform",
     icon: Globe
   },
   {
-    problem: "Limited access to environmental expertise",
+    problem: "Limitless access to environmental expertise",
     solution: "Comprehensive training programs",
     icon: Users
   },
