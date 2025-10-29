@@ -71,10 +71,14 @@ const faqs: FAQ[] = [
 
 export default function FAQsSection() {
   const [openItem, setOpenItem] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const toggleItem = (id: number) => {
     setOpenItem(prev => prev === id ? null : id);
   };
+
+  const displayedFAQs = showAll ? faqs : faqs.slice(0, 5);
+  const remainingCount = faqs.length - 5;
 
   return (
     <section id="faqs" className="py-16">
@@ -94,7 +98,7 @@ export default function FAQsSection() {
 
         {/* FAQs Accordion */}
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {displayedFAQs.map((faq, index) => (
             <div
               key={faq.id}
               className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
@@ -151,6 +155,38 @@ export default function FAQsSection() {
             </div>
           ))}
         </div>
+
+        {/* Show More / Show Less Button */}
+        {!showAll && remainingCount > 0 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg"
+            >
+              Show More FAQs
+              <span className="ml-2 text-sm bg-white/20 px-2 py-1 rounded-full">
+                {remainingCount} more
+              </span>
+              <ChevronDown className="ml-2 w-5 h-5" />
+            </button>
+          </div>
+        )}
+
+        {showAll && remainingCount > 0 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => {
+                setShowAll(false);
+                setOpenItem(null);
+                window.scrollTo({ top: document.getElementById('faqs')?.offsetTop || 0, behavior: 'smooth' });
+              }}
+              className="inline-flex items-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-colors"
+            >
+              Show Less
+              <ChevronUp className="ml-2 w-5 h-5" />
+            </button>
+          </div>
+        )}
 
         {/* Still Have Questions CTA */}
         <div className="text-center mt-12 p-8 bg-white rounded-lg shadow-md">
