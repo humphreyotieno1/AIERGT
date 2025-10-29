@@ -64,8 +64,8 @@ export function ConsultancyCategoriesGrid() {
                 aria-controls={`${category.slug}-panel`}
               >
                 <div className="flex items-start gap-4 text-left">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#79BAEC]/10">
-                    <Icon className="h-5 w-5 text-[#79BAEC]" />
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#71B045]/10">
+                    <Icon className="h-5 w-5 text-[#71B045]" />
                   </span>
                   <div className="space-y-1">
                     <h2 className="font-garamond text-xl font-semibold text-slate-900">
@@ -77,7 +77,7 @@ export function ConsultancyCategoriesGrid() {
                   </div>
                 </div>
                 <ChevronDown
-                  className={`h-5 w-5 flex-shrink-0 text-[#79BAEC] transition-transform duration-300 ${
+                  className={`h-5 w-5 flex-shrink-0 text-[#71B045] transition-transform duration-300 ${
                     isActive ? "rotate-180" : ""
                   }`}
                 />
@@ -85,7 +85,7 @@ export function ConsultancyCategoriesGrid() {
 
               <div
                 id={`${category.slug}-panel`}
-                className={`grid gap-6 border-t border-[#79BAEC]/15 px-6 pb-6 transition-all duration-300 ease-in-out ${
+                className={`grid gap-6 border-t border-[#71B045]/15 px-6 pb-6 transition-all duration-300 ease-in-out ${
                   isActive ? "grid-rows-[1fr] pt-6" : "grid-rows-[0fr] pt-0"
                 }`}
               >
@@ -97,13 +97,13 @@ export function ConsultancyCategoriesGrid() {
                       </p>
                       <Link
                         href={`/services/${category.slug}`}
-                        className="inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/40 bg-white px-4 py-2 text-md font-semibold text-[#79BAEC] transition hover:border-[#79BAEC] hover:bg-[#79BAEC] hover:text-white"
+                        className="inline-flex items-center gap-2 rounded-full border border-[#71B045]/40 bg-white px-4 py-2 text-md font-semibold text-[#71B045] transition hover:border-[#71B045] hover:bg-[#71B045] hover:text-white"
                       >
                         View services
                         <ArrowRight className="h-4 w-4" />
                       </Link>
                     </div>
-                    <div className="overflow-hidden rounded-lg border border-[#79BAEC]/20">
+                    <div className="overflow-hidden rounded-lg border border-[#71B045]/20">
                       <Image
                         src={category.heroImage}
                         alt={`${category.name} illustration`}

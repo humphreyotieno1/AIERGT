@@ -99,7 +99,7 @@ export default function ContactPage() {
 
       <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-24 sm:px-6 lg:px-8">
         <header className="flex flex-col gap-6">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#79BAEC]/30 bg-[#EAF3FF] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#3978C0]">
+          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#71B045]/30 bg-[#EAF3FF] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#3978C0]">
             Contact
           </span>
           <div className="max-w-3xl space-y-4">
@@ -171,7 +171,7 @@ export default function ContactPage() {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/40 bg-[#F4F8FE] px-4 py-2 text-sm font-medium text-[#3978C0] transition hover:border-[#79BAEC] hover:bg-white"
+                    className="group inline-flex items-center gap-2 rounded-full border border-[#71B045]/40 bg-[#F4F8FE] px-4 py-2 text-sm font-medium text-[#3978C0] transition hover:border-[#71B045] hover:bg-white"
                     aria-label={`Follow AIERGT on ${label}`}
                   >
                     <Icon className="h-4 w-4" aria-hidden="true" />

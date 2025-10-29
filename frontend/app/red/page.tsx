@@ -11,7 +11,7 @@ const overviewSections = [
     summary:
       "Calls for proposals, papers, abstracts, and funding support that accelerate environmental and geospatial scholarship across Africa.",
     icon: Beaker,
-    accent: "from-[#79BAEC]/20 to-white",
+    accent: "from-[#71B045]/20 to-white",
   },
   {
     slug: "enterprise",
@@ -19,7 +19,7 @@ const overviewSections = [
     summary:
       "Concept incubation, green business modelling, and funding enablement that help climate-positive ventures scale responsibly.",
     icon: Building2,
-    accent: "from-[#5EA6E5]/20 to-white",
+    accent: "from-[#5F9938]/20 to-white",
   },
 ]
 
@@ -45,7 +45,7 @@ export default function ResearchEnterpriseDevelopmentPage() {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
           <article className="relative overflow-hidden rounded-[32px] border border-white/60 bg-white/95 p-10 shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#79BAEC]/10 via-transparent to-white" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#71B045]/10 via-transparent to-white" />
             <div className="relative flex flex-col gap-6">
               <h2 className="font-garamond text-3xl font-semibold text-slate-900">
                 A single gateway for climate intelligence
@@ -54,12 +54,12 @@ export default function ResearchEnterpriseDevelopmentPage() {
                 From scholarly outputs to market-ready enterprises, RED harmonises AIERGT’s support into one journey. Start by exploring the dedicated spaces for research collaborations and enterprise acceleration.
               </p>
               <div className="grid gap-4 text-base text-slate-600 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[#79BAEC]/25 bg-[#F7FBFF] p-5 shadow-sm">
-                  <p className="font-semibold text-[#79BAEC]">Collaborative networks</p>
+                <div className="rounded-2xl border border-[#71B045]/25 bg-[#F7FBFF] p-5 shadow-sm">
+                  <p className="font-semibold text-[#71B045]">Collaborative networks</p>
                   <p className="mt-1 text-slate-500">Meet academics, practitioners, and investors shaping resilient futures.</p>
                 </div>
-                <div className="rounded-2xl border border-[#79BAEC]/25 bg-white p-5 shadow-sm">
-                  <p className="font-semibold text-[#79BAEC]">Tailored toolkits</p>
+                <div className="rounded-2xl border border-[#71B045]/25 bg-white p-5 shadow-sm">
+                  <p className="font-semibold text-[#71B045]">Tailored toolkits</p>
                   <p className="mt-1 text-slate-500">Access templates, guidance, and funding pathways aligned to African contexts.</p>
                 </div>
               </div>
@@ -76,12 +76,12 @@ export default function ResearchEnterpriseDevelopmentPage() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
                 <div className="relative flex items-start gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/80 shadow-inner">
-                    <Icon className="h-6 w-6 text-[#79BAEC]" />
+                    <Icon className="h-6 w-6 text-[#71B045]" />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-garamond text-2xl font-semibold text-slate-900">{title}</h3>
                     <p className="mt-2 text-base text-slate-600">{summary}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#79BAEC]">
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#71B045]">
                       Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                     </span>
                   </div>

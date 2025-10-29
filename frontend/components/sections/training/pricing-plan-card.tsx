@@ -10,11 +10,11 @@ export function PricingPlanCard({ plan }: PricingPlanCardProps) {
   return (
     <article
       className={`relative flex h-full flex-col rounded-[28px] border border-[#D9E4F5] bg-white/80 p-8 text-slate-900 shadow-lg shadow-slate-200/30 transition hover:-translate-y-1 hover:shadow-2xl ${
-        plan.highlight ? "scale-[1.02] border-[#79BAEC] bg-gradient-to-b from-[#DDF3FF] via-white to-white" : ""
+        plan.highlight ? "scale-[1.02] border-[#71B045] bg-gradient-to-b from-[#DDF3FF] via-white to-white" : ""
       }`}
     >
       {plan.highlight ? (
-        <span className="absolute right-6 top-6 inline-flex items-center gap-2 rounded-full bg-[#79BAEC] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
+        <span className="absolute right-6 top-6 inline-flex items-center gap-2 rounded-full bg-[#71B045] px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
           Popular
         </span>
       ) : null}
@@ -41,7 +41,7 @@ export function PricingPlanCard({ plan }: PricingPlanCardProps) {
       </ul>
 
       <div className="mt-auto">
-        <button className={`w-full rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] transition ${plan.highlight ? "bg-[#79BAEC] text-white hover:bg-[#5EA6E5]" : "bg-white text-[#24527E] shadow-inner shadow-slate-200 hover:bg-[#F2F7FF]"}`}>
+        <button className={`w-full rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] transition ${plan.highlight ? "bg-[#71B045] text-white hover:bg-[#5F9938]" : "bg-white text-[#24527E] shadow-inner shadow-slate-200 hover:bg-[#F2F7FF]"}`}>
           Select plan
         </button>
       </div>

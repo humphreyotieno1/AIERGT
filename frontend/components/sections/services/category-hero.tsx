@@ -66,11 +66,11 @@ export function CategoryHero({
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-12 text-left sm:px-6 lg:px-8">
         <Link
           href={backHref}
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-[#79BAEC]/40 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-black shadow-sm transition hover:border-[#79BAEC] hover:bg-[#79BAEC] hover:text-white"
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-[#71B045]/40 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-black shadow-sm transition hover:border-[#71B045] hover:bg-[#71B045] hover:text-white"
         >
           {backLabel}
         </Link>
-        <div className="flex items-center gap-3 text-[#79BAEC]">
+        <div className="flex items-center gap-3 text-[#71B045]">
           {Icon ? <Icon className="h-6 w-6" /> : null}
           <span className="text-xs font-semibold uppercase tracking-[0.35em]">Consultancy</span>
         </div>

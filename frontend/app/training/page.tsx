@@ -47,7 +47,7 @@ export default function TrainingPage() {
               href={tab.href}
               className={`rounded-full px-6 py-2 text-sm font-semibold transition ${
                 tab.href === "#catalogue"
-                  ? "bg-[#79BAEC] text-white shadow-md"
+                  ? "bg-[#71B045] text-white shadow-md"
                   : "text-[#24527E] hover:bg-[#EAF3FF]"
               }`}
             >
@@ -58,7 +58,7 @@ export default function TrainingPage() {
 
         <section id="catalogue" className="relative mt-20 space-y-8 rounded-[32px] border border-[#E3E9F5] bg-white/90 p-10 shadow-xl shadow-slate-200/30">
           <header className="space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/30 bg-[#EAF3FF] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#3978C0]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#71B045]/30 bg-[#EAF3FF] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#3978C0]">
               Programmes
             </span>
             <div className="space-y-2">
@@ -75,10 +75,10 @@ export default function TrainingPage() {
             {categorySummaries.map((category, index) => (
               <li
                 key={category.slug}
-                className="group relative flex flex-col gap-4 rounded-2xl border border-[#E3E9F5] bg-white/95 p-6 shadow-lg shadow-slate-200/20 transition hover:-translate-y-1 hover:border-[#79BAEC]"
+                className="group relative flex flex-col gap-4 rounded-2xl border border-[#E3E9F5] bg-white/95 p-6 shadow-lg shadow-slate-200/20 transition hover:-translate-y-1 hover:border-[#71B045]"
               >
                 <div className="flex items-start gap-4">
-                  <span className="flex h-8 w-20 items-center justify-center rounded-full bg-[#79BAEC] text-lg font-semibold text-white shadow-md">
+                  <span className="flex h-8 w-20 items-center justify-center rounded-full bg-[#71B045] text-lg font-semibold text-white shadow-md">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="space-y-1">

@@ -133,7 +133,7 @@ export function ContactForm() {
           </Tooltip>
         </div>
         <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3">
-          <User className="h-4 w-4 text-[#79BAEC]" aria-hidden="true" />
+          <User className="h-4 w-4 text-[#71B045]" aria-hidden="true" />
           <Input
             id="name"
             name="name"
@@ -166,7 +166,7 @@ export function ContactForm() {
           </Tooltip>
         </div>
         <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3">
-          <Mail className="h-4 w-4 text-[#79BAEC]" aria-hidden="true" />
+          <Mail className="h-4 w-4 text-[#71B045]" aria-hidden="true" />
           <Input
             id="email"
             name="email"
@@ -249,7 +249,7 @@ export function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#79BAEC] text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#5EA6E5] disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-2 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#71B045] text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#5F9938] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {isSubmitting ? "Sending" : "Send Message"}
         <Send className="h-4 w-4" aria-hidden="true" />

@@ -67,7 +67,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
                 key={service.id}
                 className="group relative overflow-hidden rounded-3xl border border-white/30 bg-white/95 p-6 shadow-lg transition hover:-translate-y-2 hover:shadow-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#79BAEC]/7 via-transparent to-white" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#71B045]/7 via-transparent to-white" />
                 <div className="relative grid gap-6 lg:grid-cols-[1fr,1.1fr] lg:items-center">
                   <div className="space-y-4">
                     <h2 className="font-garamond text-2xl font-semibold text-slate-900">
@@ -78,12 +78,12 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
                     </p>
                     <Link
                       href={`/services/request-quote?category=${category.slug}&service=${service.id}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/40 bg-white px-4 py-2 text-sm font-semibold text-[#79BAEC] transition hover:border-[#79BAEC] hover:bg-[#79BAEC] hover:text-white"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#71B045]/40 bg-white px-4 py-2 text-sm font-semibold text-[#71B045] transition hover:border-[#71B045] hover:bg-[#71B045] hover:text-white"
                     >
                       Request quote <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
-                  <div className="overflow-hidden rounded-lg border border-[#79BAEC]/25">
+                  <div className="overflow-hidden rounded-lg border border-[#71B045]/25">
                     <Image
                       src={service.image}
                       alt={service.name}
@@ -98,21 +98,21 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
           </div>
 
           <aside className="flex flex-col gap-6">
-            <div className="rounded-3xl border border-[#79BAEC]/30 bg-white/95 p-6 shadow-lg">
+            <div className="rounded-3xl border border-[#71B045]/30 bg-white/95 p-6 shadow-lg">
               <h3 className="font-garamond text-xl font-semibold text-slate-900">
                 Need supporting documents?
               </h3>
               <p className="mt-2 text-base text-slate-600">
                 We can supply TOR drafts, inspection checklists, and participation frameworks tailored to your procurement requirements.
               </p>
-              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[#79BAEC]/20 bg-[#F7FBFF] px-4 py-3 text-base text-slate-600">
-                <FileText className="h-4 w-4 text-[#79BAEC]" />
+              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[#71B045]/20 bg-[#F7FBFF] px-4 py-3 text-base text-slate-600">
+                <FileText className="h-4 w-4 text-[#71B045]" />
                 <span>Fast turnaround on proposal packs</span>
               </div>
             </div>
 
-            <div className="rounded-3xl border border-[#79BAEC]/40 bg-white/80 p-6 shadow-lg">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#79BAEC]">
+            <div className="rounded-3xl border border-[#71B045]/40 bg-white/80 p-6 shadow-lg">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#71B045]">
                 Explore other categories
               </h3>
               <ul className="mt-4 space-y-3">
@@ -120,7 +120,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
                   <li key={sibling.slug}>
                     <Link
                       href={`/services/${sibling.slug}`}
-                      className="flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-base font-semibold text-slate-600 transition hover:border-[#79BAEC]/40 hover:bg-[#F7FBFF] hover:text-[#79BAEC]"
+                      className="flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-base font-semibold text-slate-600 transition hover:border-[#71B045]/40 hover:bg-[#F7FBFF] hover:text-[#71B045]"
                     >
                       {sibling.name}
                       <ArrowRight className="h-4 w-4" />
@@ -133,7 +133,7 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.66fr,0.34fr]">
-          <div className="rounded-3xl border border-[#79BAEC]/35 bg-white/95 p-8 shadow-xl">
+          <div className="rounded-3xl border border-[#71B045]/35 bg-white/95 p-8 shadow-xl">
             <h2 className="font-garamond text-2xl font-semibold text-slate-900">
               Ready to scope your {category.name.toLowerCase()} engagement?
             </h2>
@@ -142,27 +142,27 @@ export default async function ServiceCategoryPage({ params }: ServiceCategoryPag
             </p>
             <Link
               href={`/services/request-quote?category=${category.slug}`}
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#79BAEC]/40 bg-[#79BAEC] px-6 py-3 text-sm font-semibold text-white transition hover:border-[#5EA6E5] hover:bg-[#5EA6E5]"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#71B045]/40 bg-[#71B045] px-6 py-3 text-sm font-semibold text-white transition hover:border-[#5F9938] hover:bg-[#5F9938]"
             >
               Go to request form
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="rounded-3xl border border-[#79BAEC]/25 p-6 shadow-lg">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#79BAEC]">
+          <div className="rounded-3xl border border-[#71B045]/25 p-6 shadow-lg">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#71B045]">
               Helpful tips
             </h3>
             <ul className="mt-4 space-y-3 text-base text-slate-600">
               <li className="flex items-start gap-2">
-                <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
+                <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#71B045]" />
                 Attach TORs, feasibility studies, or baseline data for faster turnaround.
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
+                <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#71B045]" />
                 Indicate any regulatory submission deadlines and stakeholder requirements.
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#79BAEC]" />
+                <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#71B045]" />
                 Let us know the preferred engagement model (full delivery, advisory, or embedded teams).
               </li>
             </ul>

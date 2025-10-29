@@ -69,7 +69,7 @@ export function RedHero({
           key={action.label}
           href={action.href}
           target={action.target}
-          className={`${baseClasses} border-[#79BAEC]/60 bg-[#79BAEC] text-white hover:border-[#5EA6E5] hover:bg-[#5EA6E5]`}
+          className={`${baseClasses} border-[#71B045]/60 bg-[#71B045] text-white hover:border-[#5F9938] hover:bg-[#5F9938]`}
         >
           {action.label}
           {Icon ? <Icon className="h-4 w-4 transition group-hover:translate-x-1" /> : null}
@@ -113,7 +113,7 @@ export function RedHero({
 
       <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-6 py-16 text-center text-white sm:px-10 lg:px-16">
         {tagLabel ? (
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#79BAEC] backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#71B045] backdrop-blur">
             {TagIcon ? <TagIcon className="h-4 w-4" /> : null}
             {tagLabel}
           </span>

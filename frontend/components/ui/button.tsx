@@ -17,8 +17,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        aiergt: "bg-[#2563eb] text-white hover:bg-[#2563eb]/90",
-        aiergtSecondary: "bg-[#6497b1] text-white hover:bg-[#6497b1]/90",
+        aiergt: "bg-[#71B045] text-white hover:bg-[#5F9938]",
+        aiergtSecondary: "bg-[#0F1023] text-white hover:bg-black",
       },
       size: {
         default: "h-10 px-4 py-2",
