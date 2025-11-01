@@ -1,4 +1,4 @@
-import { UserRole } from '@/lib/generated/prisma'
+import { UserRole } from '@prisma/client'
 
 export interface RegisterData {
   name: string

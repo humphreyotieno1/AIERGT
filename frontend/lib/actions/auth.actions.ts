@@ -1,7 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
-import { UserRole } from '@/lib/generated/prisma'
+import { UserRole } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 import { revalidatePath } from 'next/cache'
 import { EmailService } from '@/lib/services/email.service'

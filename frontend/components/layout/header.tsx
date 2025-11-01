@@ -625,8 +625,8 @@ export function Header() {
                       <div className="py-2">
                         <button
                           onClick={() => {
-                            signOut()
                             setIsProfileDropdownOpen(false)
+                            signOut({ callbackUrl: "/" })
                           }}
                           className="group flex items-center space-x-3 px-4 py-3 text-sm text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 transition-all duration-200 w-full"
                         >
@@ -947,10 +947,10 @@ export function Header() {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => {
-                              signOut()
-                              setIsMenuOpen(false)
-                            }}
+                          onClick={() => {
+                            setIsMenuOpen(false)
+                            signOut({ callbackUrl: "/" })
+                          }}
                             className="w-full justify-start border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300"
                           >
                             <LogOut className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />

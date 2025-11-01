@@ -1,4 +1,4 @@
-import { PrismaClient, UserRole, CourseLevel, ProjectStatus, ConfigType } from '../lib/generated/prisma'
+import { PrismaClient, UserRole, CourseLevel, ProjectStatus, ConfigType } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
