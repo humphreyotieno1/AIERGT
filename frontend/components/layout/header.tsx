@@ -570,7 +570,7 @@ export function Header() {
                       {/* Profile Options */}
                       <div className="py-2">
                         <Link
-                          href="/profile"
+                          href="/dashboard/profile"
                           className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-primary-500"
                           onClick={() => setIsProfileDropdownOpen(false)}
                         >
@@ -602,7 +602,7 @@ export function Header() {
                         {/* Admin Dashboard - Only show for admin users */}
                         {session.user?.role === 'ADMIN' && (
                           <Link
-                            href="/admin/dashboard"
+                          href="/dashboard/admin"
                             className="group flex items-center space-x-3 px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200 border-l-4 border-transparent hover:border-primary-500-500"
                             onClick={() => setIsProfileDropdownOpen(false)}
                           >
@@ -895,7 +895,7 @@ export function Header() {
                             <h4 className="text-sm font-semibold text-gray-900 px-2">Account</h4>
                             
                             <Link
-                              href="/profile"
+                            href="/dashboard/profile"
                               className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-primary hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
                               onClick={() => setIsMenuOpen(false)}
                             >
@@ -927,7 +927,7 @@ export function Header() {
                             {/* Admin Dashboard - Only show for admin users */}
                             {session.user?.role === 'ADMIN' && (
                               <Link
-                                href="/admin/dashboard"
+                                href="/dashboard/admin"
                                 className="flex items-center space-x-3 p-3 rounded-lg border border-yellow-200 hover:border-[#b3cde0] hover:bg-gradient-to-r hover:from-yellow-50 hover:to-yellow-100 transition-all duration-200"
                                 onClick={() => setIsMenuOpen(false)}
                               >

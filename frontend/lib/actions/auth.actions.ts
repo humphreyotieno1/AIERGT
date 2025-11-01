@@ -42,7 +42,7 @@ export async function registerUser(data: RegisterData): Promise<AuthResponse> {
         organization: data.organization,
         role: data.role,
         isVerified: false, // Admin needs to verify
-        isActive: true,
+        isActive: false,
         profile: {
           create: {
             language: 'en',
@@ -93,8 +93,9 @@ export async function verifyUser(userId: string): Promise<AuthResponse> {
   try {
     const user = await prisma.user.update({
       where: { id: userId },
-      data: { 
+      data: {
         isVerified: true,
+        isActive: true,
         emailVerified: new Date()
       }
     })
@@ -159,6 +160,68 @@ export async function rejectUser(userId: string): Promise<AuthResponse> {
     return {
       success: false,
       error: 'Failed to reject user'
+    }
+  }
+}
+
+export async function activateUser(userId: string): Promise<AuthResponse> {
+  try {
+    const user = await prisma.user.update({
+      where: { id: userId },
+      data: { isActive: true }
+    })
+
+    try {
+      revalidatePath('/admin/users')
+    } catch (error) {
+      console.log('Revalidation skipped (non-request context)')
+    }
+
+    return {
+      success: true,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        isActive: user.isActive
+      }
+    }
+  } catch (error) {
+    console.error('Activate user error:', error)
+    return {
+      success: false,
+      error: 'Failed to activate user'
+    }
+  }
+}
+
+export async function deactivateUser(userId: string): Promise<AuthResponse> {
+  try {
+    const user = await prisma.user.update({
+      where: { id: userId },
+      data: { isActive: false }
+    })
+
+    try {
+      revalidatePath('/admin/users')
+    } catch (error) {
+      console.log('Revalidation skipped (non-request context)')
+    }
+
+    return {
+      success: true,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        isActive: user.isActive
+      }
+    }
+  } catch (error) {
+    console.error('Deactivate user error:', error)
+    return {
+      success: false,
+      error: 'Failed to deactivate user'
     }
   }
 }
@@ -259,8 +322,7 @@ export async function getPendingVerifications(): Promise<{ success: boolean; use
   try {
     const users = await prisma.user.findMany({
       where: {
-        isVerified: false,
-        isActive: true
+        isVerified: false
       },
       include: {
         profile: true

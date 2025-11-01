@@ -6,11 +6,13 @@ import { prisma } from '@/lib/prisma'
 const roleAccess = {
   '/admin': ['ADMIN'],
   '/dashboard/admin': ['ADMIN'],
+  '/dashboard/profile': ['AFRICAN_CONSULTANT', 'EXPATRIATE_CONSULTANT', 'PARTNER', 'STUDENT', 'ADMIN'],
   '/dashboard/consultant': ['AFRICAN_CONSULTANT', 'EXPATRIATE_CONSULTANT', 'ADMIN'],
   '/dashboard/partner': ['PARTNER', 'ADMIN'],
   '/dashboard/student': ['STUDENT', 'ADMIN'],
   '/training': ['AFRICAN_CONSULTANT', 'EXPATRIATE_CONSULTANT', 'PARTNER', 'STUDENT', 'ADMIN'],
   '/geoportal': ['AFRICAN_CONSULTANT', 'EXPATRIATE_CONSULTANT', 'PARTNER', 'ADMIN'],
+  '/dashboard': ['AFRICAN_CONSULTANT', 'EXPATRIATE_CONSULTANT', 'PARTNER', 'STUDENT', 'ADMIN'],
 }
 
 export async function middleware(request: NextRequest) {

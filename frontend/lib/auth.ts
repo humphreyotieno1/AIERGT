@@ -68,6 +68,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             return null
           }
 
+          if (!user.isVerified) {
+            throw new Error("ACCOUNT_NOT_VERIFIED")
+          }
+
+          if (!user.isActive) {
+            throw new Error("ACCOUNT_INACTIVE")
+          }
+
           // Return user data (without password)
           return {
             id: user.id,
@@ -76,6 +84,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             role: user.role,
           }
         } catch (error) {
+          if (error instanceof Error && (error.message === "ACCOUNT_NOT_VERIFIED" || error.message === "ACCOUNT_INACTIVE")) {
+            throw error
+          }
           console.error("Auth error:", error)
           return null
         }

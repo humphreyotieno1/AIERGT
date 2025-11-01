@@ -57,6 +57,18 @@ function LoginPageContent() {
       })
 
       if (result?.error) {
+        const errorCode = result.error.toString()
+
+        if (errorCode.includes("ACCOUNT_INACTIVE")) {
+          router.push("/auth/account-inactive")
+          return
+        }
+
+        if (errorCode.includes("ACCOUNT_NOT_VERIFIED")) {
+          router.push("/auth/verification-pending")
+          return
+        }
+
         setError("Invalid credentials. Please try again.")
       } else if (result?.ok) {
         router.push(`/dashboard/${loginType}`)

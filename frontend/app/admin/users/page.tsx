@@ -1,10 +1,10 @@
 import { requireAdmin } from "@/lib/utils/auth.utils"
 import { getAllUsers, getPendingVerifications } from "@/lib/actions/auth.actions"
-import { handleVerifyUser, handleRejectUser } from "@/lib/actions/admin.actions"
+import { handleVerifyUser, handleRejectUser, handleActivateUser, handleDeactivateUser } from "@/lib/actions/admin.actions"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, Users, UserCheck, UserX, Mail, Phone, Building } from "lucide-react"
+import { CheckCircle, XCircle, Users, UserCheck, UserX, UserMinus, Mail, Phone, Building } from "lucide-react"
 import { redirect } from "next/navigation"
 
 export default async function AdminUsersPage() {
@@ -17,6 +17,7 @@ export default async function AdminUsersPage() {
 
   const users = usersResult.success ? usersResult.users || [] : []
   const pendingUsers = pendingResult.success ? pendingResult.users || [] : []
+  const inactiveUsers = users.filter(user => !user.isActive)
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -26,7 +27,7 @@ export default async function AdminUsersPage() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Users</CardTitle>
@@ -64,6 +65,16 @@ export default async function AdminUsersPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{users.filter(u => u.isActive).length}</div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Inactive Users</CardTitle>
+            <UserMinus className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{inactiveUsers.length}</div>
           </CardContent>
         </Card>
       </div>
@@ -115,13 +126,76 @@ export default async function AdminUsersPage() {
                     <form action={handleVerifyUser.bind(null, user.id)}>
                       <Button type="submit" size="sm" className="bg-green-600 hover:bg-green-700">
                         <CheckCircle className="h-4 w-4 mr-1" />
-                        Verify
+                        Verify & Activate
                       </Button>
                     </form>
                     <form action={handleRejectUser.bind(null, user.id)}>
                       <Button type="submit" size="sm" variant="destructive">
                         <XCircle className="h-4 w-4 mr-1" />
                         Reject
+                      </Button>
+                    </form>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Inactive Accounts */}
+      {inactiveUsers.length > 0 && (
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <UserMinus className="h-5 w-5" />
+              Inactive Accounts
+            </CardTitle>
+            <CardDescription>
+              Users who cannot access the platform until reactivated
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {inactiveUsers.map((user) => (
+                <div key={user.id} className="border rounded-lg p-4 flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="font-semibold">{user.name}</h3>
+                      <Badge variant="outline">{user.role}</Badge>
+                      {!user.isVerified && (
+                        <Badge variant="destructive">Unverified</Badge>
+                      )}
+                    </div>
+                    <div className="space-y-1 text-sm text-gray-600">
+                      <div className="flex items-center gap-2">
+                        <Mail className="h-4 w-4" />
+                        {user.email}
+                      </div>
+                      {user.organization && (
+                        <div className="flex items-center gap-2">
+                          <Building className="h-4 w-4" />
+                          {user.organization}
+                        </div>
+                      )}
+                      <div className="text-xs text-gray-500">
+                        Joined: {new Date(user.createdAt).toLocaleDateString()}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    {!user.isVerified && (
+                      <form action={handleVerifyUser.bind(null, user.id)}>
+                        <Button type="submit" size="sm" className="bg-green-600 hover:bg-green-700">
+                          <CheckCircle className="h-4 w-4 mr-1" />
+                          Verify & Activate
+                        </Button>
+                      </form>
+                    )}
+                    <form action={handleActivateUser.bind(null, user.id)}>
+                      <Button type="submit" size="sm" variant="outline" className="border-primary-500 text-primary-600 hover:bg-primary-50">
+                        <UserCheck className="h-4 w-4 mr-1" />
+                        Activate
                       </Button>
                     </form>
                   </div>
@@ -191,6 +265,33 @@ export default async function AdminUsersPage() {
                   <span>Courses: {user.stats.enrollments}</span>
                   <span>Certificates: {user.stats.certificates}</span>
                   <span>Posts: {user.stats.posts}</span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 mt-4">
+                  {!user.isVerified && (
+                    <form action={handleVerifyUser.bind(null, user.id)}>
+                      <Button type="submit" size="sm" className="bg-green-600 hover:bg-green-700">
+                        <UserCheck className="h-4 w-4 mr-1" />
+                        Verify
+                      </Button>
+                    </form>
+                  )}
+
+                  {user.isActive ? (
+                    <form action={handleDeactivateUser.bind(null, user.id)}>
+                      <Button type="submit" size="sm" variant="outline" className="border-red-200 text-red-600 hover:bg-red-50">
+                        <UserX className="h-4 w-4 mr-1" />
+                        Deactivate
+                      </Button>
+                    </form>
+                  ) : (
+                    <form action={handleActivateUser.bind(null, user.id)}>
+                      <Button type="submit" size="sm" className="bg-[#71B045] hover:bg-[#5a9036]">
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        Activate
+                      </Button>
+                    </form>
+                  )}
                 </div>
               </div>
             ))}
